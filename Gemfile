@@ -50,8 +50,18 @@ gem "cucumber-rails", ">= 1.3.0", :require => false, :group => :test
 gem "launchy", ">= 2.1.2", :group => :test
 gem "capybara", ">= 1.1.3", :group => :test
 gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
-gem "bootstrap-sass", ">= 2.1.1.0"
+#gem "bootstrap-sass", ">= 2.1.1.0"
 gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
-gem "rolify", ">= 3.2.0"
+#gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.0.4"
+gem "quiet_assets", ">= 1.0.1", :group => :development
+gem "hub", ">= 1.10.2", :group => [:development], :require => nil
+
+#tim's gems
+gem 'inherited_resources'
+gem 'has_scope'
+
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
