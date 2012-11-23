@@ -11,15 +11,70 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122023730) do
+ActiveRecord::Schema.define(:version => 20121122123120) do
+
+  create_table "event_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.date     "starts_at"
+    t.date     "ends_at"
+    t.boolean  "all_day"
+    t.text     "description"
+    t.integer  "time_slot_id"
+    t.integer  "event_type_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "events", ["event_type_id"], :name => "index_events_on_event_type_id"
+  add_index "events", ["time_slot_id"], :name => "index_events_on_time_slot_id"
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "goals", :force => true do |t|
     t.string   "name"
     t.date     "due_date"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "lost_items", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.date     "date_lost"
+    t.text     "description"
+    t.integer  "priority"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "lost_items", ["user_id"], :name => "index_lost_items_on_user_id"
+
+  create_table "time_slots", :force => true do |t|
+    t.string   "title"
+    t.integer  "event_type_id"
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.boolean  "saturday"
+    t.boolean  "sunday"
+    t.integer  "user_id"
+    t.time     "starts_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "time_slots", ["event_type_id"], :name => "index_time_slots_on_event_type_id"
+  add_index "time_slots", ["user_id"], :name => "index_time_slots_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

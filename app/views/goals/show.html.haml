@@ -1,11 +1,7 @@
 - model_class = Goal
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
 
-%p
-  %strong= model_class.human_attribute_name(:name) + ':'
-  %br
-  = @goal.name
+- title "Show #{@goal.name}"
+
 %p
   %strong= model_class.human_attribute_name(:due_date) + ':'
   %br
@@ -16,6 +12,6 @@
   = @goal.description
 
 .form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), goals_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_goal_path(@goal), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), goal_path(@goal), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  = link_to t('.back', :default => t("helpers.links.back")), user_goals_path(@user), :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_goal_path(@user, @goal), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), user_goal_path(@user, @goal), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

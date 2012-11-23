@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h1>Calendar for <%= User.find(@user_id).name %></h1>
+</div>
+
+<div id="loading" style="display:none;">
+  Loading . . .
+</div>
+
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li><%=link_to 'New Event', new_user_event_path(@user_id)  %></li>
+      <li><%=link_to "loading . . . ", "",{:id => "populate"} %></li>
+      <li><%=link_to "loading . . . ", "",  {:confirm => "You are about to delete all events for this month, are you sure?", :id => "empty"} %></li>
+      <li><%=link_to "loading . . . ", "", {:id => "timeslots"} %></li>
+    </ul>
+  </div>
+</div>
+
+<div id='calendar' data-user="<%= @user_id %>" data-year="<%= @year %>" data-month="<%= @month %>"></div>

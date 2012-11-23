@@ -1,0 +1,24 @@
+- model_class = LostItem
+- title "#{@lost_item.name} for #{@user.name}"
+
+%p
+  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %br
+  = @lost_item.user_id
+%p
+  %strong= model_class.human_attribute_name(:date_lost) + ':'
+  %br
+  = @lost_item.date_lost
+%p
+  %strong= model_class.human_attribute_name(:description) + ':'
+  %br
+  = @lost_item.description
+%p
+  %strong= model_class.human_attribute_name(:priority) + ':'
+  %br
+  = @lost_item.priority
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), user_lost_items_path(@user), :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_lost_item_path(@user, @lost_item), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), user_lost_item_path(@user, @lost_item), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

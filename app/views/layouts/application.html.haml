@@ -29,6 +29,12 @@
           .container.nav-collapse
             %ul.nav
               %li= link_to "Users", users_path
+              - unless user_signed_in?
+                %li= link_to "Sign in", new_user_session_path
+                %li= link_to "Create Account", new_user_registration_path
+              - else
+                %li= link_to "Sign out", destroy_user_session_path, method: :delete
+                %li= link_to "Edit account", edit_user_registration_path
 
     .container-fluid
 
@@ -40,6 +46,11 @@
               - @users.each do |user|
                 %li= link_to user.name, user_path(user)
         .span9
+          = bootstrap_flash
+          - if content_for?(:title)
+            %section{id: yield(:title)}
+              .page-header
+                %h1= yield(:title)
           = yield
     
       %footer

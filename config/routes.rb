@@ -6,7 +6,18 @@ BooherFamily::Application.routes.draw do
 
   resources :users do
     resources :goals
+    resources :lost_items
+    resources :events
+    resources :time_slots
   end
+
+  resources :event_types
+
+  # calendar views
+  match "calendar/index(/:user_id/month/:month_string)", to: "calendar#index", as: :calendar_display
+  match "calendar/populate/:month_string/user/:user_id", to: "calendar#populate"
+  match "calendar/empty_out_month/:month_string/user/:user_id", to: "calendar#empty_out_month"
+  match "calendar/serve_events/:user_id", to: "calendar#serve_events"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   attr_accessible :admin, :email, :name
 
   has_many :goals
+  has_many :lost_items
+  has_many :events
 end
