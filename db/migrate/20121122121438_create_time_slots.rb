@@ -12,6 +12,7 @@ class CreateTimeSlots < ActiveRecord::Migration
       t.boolean :sunday
       t.references :user
       t.time :starts_at
+      t.time :ends_at
 
       t.timestamps
     end

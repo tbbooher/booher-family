@@ -19,16 +19,10 @@ updateEvent = (the_event) ->
     return false
 
 $(document).ready ->
-  # date = new Date()
-  # d = date.getDate()
-  # m = date.getMonth()
-  # y = date.getFullYear()
   months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
-  location_id = $("#calendar").data('location')
+  user_id = $("#calendar").data('user')
   $("#calendar").fullCalendar
     editable: true
-    # need to figure out how to go to specific date
-
     header:
       left: "prev,next today"
       center: "title"
@@ -44,14 +38,14 @@ $(document).ready ->
       d = $("#calendar").fullCalendar("getDate")
       month_string = months[d.getMonth()] + "-" + d.getFullYear()
       $("#populate").html "Populate " + month_string
-      # match "calendar/populate/:month_string/location/:location_id"
-      $("#populate").attr "href", "/calendar/populate/" + month_string + "/location/" + location_id
-      $("#empty").attr "href", "/calendar/empty_out_month/" + month_string + "/location/" + location_id
+      # match "calendar/populate/:month_string/user/:user_id"
+      $("#populate").attr "href", "/calendar/populate/" + month_string + "/user/" + user_id
+      $("#empty").attr "href", "/calendar/empty_out_month/" + month_string + "/user/" + user_id
       $("#empty").html "Delete events for " + month_string
-      $("#timeslots").attr "href", "/locations/" + location_id + "/time_slots/"
+      $("#timeslots").attr "href", "/users/" + user_id + "/time_slots/"
       $("#timeslots").html "Time Slots"
     eventSources: [
-      url: "/calendar/serve_events/" + location_id
+      url: "/calendar/serve_events/" + user_id
       textColor: "black"
       ignoreTimezone: false
     ]
@@ -64,37 +58,6 @@ $(document).ready ->
     eventResize: (event, dayDelta, minuteDelta, revertFunc) ->
       updateEvent event
 
-    eventClick: (event, jsEvent, view) ->
-      e = event
-      el = $(this)
-      id = el.attr("href").split("/")[4]
-      if $('.popover').size() == 0
-        # calendar/show_coaches/:location_id/event/:id
-        $.ajax url: "/calendar/show_coaches/" + location_id + "/event/" + id, cache: false, success: (data) ->
-          el.popover(
-            {title: 'Edit Coaches',
-            content: data,
-            html: true,
-            animation: false,
-            trigger: 'manual'
-            }
-          ).popover('show')
-          edit_form = $('#edit_event_'+id)
-          edit_form.on('ajax:complete', (event, elements) ->
-            $.get('/calendar/show_coaches/' + location_id + '/event/' + id + '.json', (coaches) ->
-              el.children().first().children().last().html(coaches.join(", "))
-            )
-            el.popover('destroy')
-            # now update the top partial
-            $.get('/coaches/show_usage/' + id + '/' + encodeURI(e.start.toDateString()) + '.json', (events) ->
-              for e in events
-                $("#coach_count_" + e.id).html(e.slots)
-            )
-          )
-      else
-        console.log "***** removed *****"
-        $('.popover').remove()
-      return false
   year = $("#calendar").data('year')
   month = $("#calendar").data('month')
   $("#calendar").fullCalendar('gotoDate',year,month)

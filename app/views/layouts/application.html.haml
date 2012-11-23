@@ -33,6 +33,10 @@
                 %li= link_to "Sign in", new_user_session_path
                 %li= link_to "Create Account", new_user_registration_path
               - else
+                %li= link_to "Calendar", calendar_display_path(current_user.id, Date.today.to_s(:for_cal))
+                %li= link_to "Goals", user_goals_path(current_user)
+                %li= link_to "Time Slots", user_time_slots_path(current_user)
+                %li= link_to "Lost Items", user_lost_items_path(current_user)
                 %li= link_to "Sign out", destroy_user_session_path, method: :delete
                 %li= link_to "Edit account", edit_user_registration_path
 

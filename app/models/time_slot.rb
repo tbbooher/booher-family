@@ -3,6 +3,8 @@ class TimeSlot < ActiveRecord::Base
   belongs_to :user
   has_many :events
 
-  attr_accessible :friday, :monday, :saturday, :starts_at, :sunday, :thursday, :title, :tuesday, :wednesday
+  attr_accessible :friday, :monday, :saturday, :starts_at, :sunday, :thursday, :title, :tuesday, :wednesday, :ends_at, :user_id, :event_type_id
+
+  validates :starts_at, presence: true
 
 end

@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20121122123120) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
-    t.date     "starts_at"
-    t.date     "ends_at"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
     t.boolean  "all_day"
     t.text     "description"
     t.integer  "time_slot_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20121122123120) do
     t.boolean  "sunday"
     t.integer  "user_id"
     t.time     "starts_at"
+    t.time     "ends_at"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

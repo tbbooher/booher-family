@@ -20,7 +20,7 @@
   %tbody
     - @time_slots.each do |time_slot|
       %tr
-        %td= link_to time_slot.title, time_slot_path(time_slot)
+        %td= link_to time_slot.title, user_time_slot_path(@user, time_slot)
         %td= time_slot.event_type_id
         %td= time_slot.monday
         %td= time_slot.tuesday

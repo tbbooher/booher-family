@@ -17,8 +17,26 @@ h1 {
 }
 
 footer {
-    footer {
     padding-top: 20px;
     margin-top: 10px;
     color: #a9a9a9;
+}
+
+/* EVENT COLORS */
+.Important, .fc-agenda .Important .fc-event-time, .Important a {
+    background-color:burlywood !important; /* background color */
+    border-color: black;     /* border color */
+    color: black;           /* text color */
+}
+
+.Mandatory, .fc-agenda .Mandatory .fc-event-time, .Mandatory a {
+    background-color:darkseagreen; /* background color */
+    border-color: black;     /* border color */
+    color: black;           /* text color */
+}
+
+.Optional, .fc-agenda .Optional .fc-event-time, .Optional a {
+    background-color:gainsboro; /* background color */
+    border-color: slategray;     /* border color */
+    color: black;           /* text color */
 }
