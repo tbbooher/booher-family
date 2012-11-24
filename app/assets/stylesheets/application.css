@@ -22,6 +22,12 @@ footer {
     color: #a9a9a9;
 }
 
+.black {
+    background-color: #daa520 !important;
+    border:1px solid black !important;
+    width: 20px;
+}
+
 /* EVENT COLORS */
 .Important, .fc-agenda .Important .fc-event-time, .Important a {
     background-color:burlywood !important; /* background color */

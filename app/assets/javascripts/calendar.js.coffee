@@ -52,6 +52,7 @@ $(document).ready ->
     timeFormat: "h:mm "
     dragOpacity: "0.5"
 
+
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
       updateEvent event
 

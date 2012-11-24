@@ -1,11 +1,7 @@
-- title "Events for #{@user.name}"
+- title "#{@event.title} for #{@user.name}"
 
 - model_class = Event
 
-%p
-  %strong= model_class.human_attribute_name(:title) + ':'
-  %br
-  = @event.title
 %p
   %strong= model_class.human_attribute_name(:starts_at) + ':'
   %br
