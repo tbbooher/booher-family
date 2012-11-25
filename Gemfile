@@ -71,3 +71,4 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 gem 'kaminari'
+#gem "combined_time_select", "~> 0.0.1"

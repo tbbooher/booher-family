@@ -9,8 +9,8 @@
   = f.input :friday
   = f.input :saturday
   = f.input :sunday
-  = f.input :starts_at
-  = f.input :ends_at
+  = f.input :starts_at, as: :string
+  = f.input :ends_at, as: :string
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), user_time_slots_path(@user), :class => 'btn'

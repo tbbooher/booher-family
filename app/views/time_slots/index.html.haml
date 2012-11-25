@@ -24,7 +24,7 @@
     - @time_slots.each do |time_slot|
       %tr
         %td= link_to time_slot.title, user_time_slot_path(@user, time_slot)
-        %td= time_slot.event_type.name
+        %td= time_slot.event_type.name unless time_slot.event_type.nil?
         %td{class: "#{s time_slot.monday}"}
         %td{class: "#{s time_slot.tuesday}"}
         %td{class: "#{s time_slot.wednesday}"}
