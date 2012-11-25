@@ -1,6 +1,7 @@
 BooherFamily::Application.routes.draw do
 
   get "home/index"
+  get "calendar/work_history"
 
   devise_for :users
 

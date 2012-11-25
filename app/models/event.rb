@@ -10,6 +10,15 @@ class Event < ActiveRecord::Base
 
   scope :before, lambda {|end_time, user_id| {:conditions => ["ends_at < ? and user_id = ?", Event.format_date(end_time), user_id] }}
   scope :after, lambda {|start_time, user_id| {:conditions => ["starts_at > ? and user_id = ?", Event.format_date(start_time), user_id] }}
+  # given two dates, we want all events that start after
+  #scope :started_or_finished, lambda {|start_date, end_date| where("(starts_at >= ? AND starts_at <= ?) OR (ends_at >= ? AND ends_at <= ?)", start_date, start_date, end_date, end_date)}
+  # project started in the timeframe:
+  # project ended in the timeframe:
+  # project started before and ended after the timeframe:
+  scope :started_or_finished, lambda {|st,ed| where("(starts_at BETWEEN :st AND :ed) OR (ends_at BETWEEN :st AND :ed) OR (starts_at <= :st AND ends_at >= :ed)", st: st, ed: ed)}
+
+  scope :started_between, lambda {|start_date| where("starts_at >= ? AND starts_at <= ?", start_date )}
+  scope :ended_between, lambda {|end_date| where("ends_at >= ? AND ends_at <= ?", end_date )}
 
   def self.destroy_all_in_month(month_string, user_id)
     date = Date.parse("1-#{month_string}")

@@ -1,0 +1,6 @@
+- title 'Work report'
+
+%ul
+  - while @date < @today.end_of_week
+    %li= "Week of #{@date.strftime('%e %b')}: #{distance_of_time_in_words(@user.worked_in_week(@date))}"
+    - @date = 1.week.since(@date)

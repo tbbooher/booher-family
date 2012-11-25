@@ -49,6 +49,13 @@ class CalendarController < ApplicationController
     redirect_to calendar_display_path(@user_id, @month_string)
   end
 
+  def work_history
+    @user = current_user
+    @start_date = @user.events.first.starts_at
+    @date = @start_date.beginning_of_week
+    @today = Date.today()
+  end
+
   def find_user_and_month
     unless @user_id = params[:user_id]
       @user_id = User.first.id

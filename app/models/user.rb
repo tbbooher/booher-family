@@ -14,4 +14,17 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :time_slots
 
+  def worked_in_week(date_in_week)
+    self.seconds_worked(date_in_week.beginning_of_week, date_in_week.end_of_week)
+  end
+
+  def seconds_worked(start_date, end_date)
+    # given an arbitrary time line three cases must be considered
+    duration = 0
+    self.events.started_or_finished(start_date, end_date).each do |e|
+      duration = duration + (e.ends_at - e.starts_at)
+    end
+    duration
+  end
+
 end
