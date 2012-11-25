@@ -1,5 +1,8 @@
 BooherFamily::Application.routes.draw do
 
+  resources :family_goals
+
+
   get "home/index"
   get "calendar/work_history"
 
