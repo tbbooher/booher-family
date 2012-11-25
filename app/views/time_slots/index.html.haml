@@ -1,18 +1,22 @@
 - model_class = TimeSlot
 - title 'Time Slots'
+%p
+  %strong
+    Total work time in week:
+  = distance_of_time_in_words @user.total_duration_for_time_slots
 
 %table.table.table-striped
   %thead
     %tr
       %th Title
       %th Type
-      %th Monday
-      %th Tuesday
-      %th Wednesday
-      %th Thursday
-      %th Friday
-      %th Saturday
-      %th Sunday
+      %th.day Mon
+      %th.day Tue
+      %th.day Wed
+      %th.day Thu
+      %th.day Fri
+      %th.day Sat
+      %th.day Sun
       %th Starts at
       %th Ends at
       %th=t '.actions', :default => t("helpers.actions")

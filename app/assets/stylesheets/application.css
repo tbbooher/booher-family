@@ -46,3 +46,7 @@ footer {
     border-color: slategray;     /* border color */
     color: black;           /* text color */
 }
+
+.day {
+    width:30px;
+}

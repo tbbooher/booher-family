@@ -18,6 +18,15 @@ class User < ActiveRecord::Base
     self.seconds_worked(date_in_week.beginning_of_week, date_in_week.end_of_week)
   end
 
+  def total_duration_for_time_slots
+    time_slots = self.time_slots
+    duration = 0
+    [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday].each do |day|
+      duration = duration + time_slots.where(day => true).inject(0) {|result, ts| result + (ts.ends_at - ts.starts_at)}
+    end
+    duration
+  end
+
   def seconds_worked(start_date, end_date)
     # given an arbitrary time line three cases must be considered
     duration = 0
