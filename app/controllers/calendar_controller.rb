@@ -22,23 +22,7 @@ class CalendarController < ApplicationController
   end
 
   def populate
-    month = @inspection_date.month
-    year = @inspection_date.year
-    TimeSlot.where(user_id: @user_id).each do |ts|
-      (@inspection_date.beginning_of_month.day..@inspection_date.end_of_month.day).to_a.each do |day|
-        starts_at = Time.local(year,month,day,ts.starts_at.hour,ts.starts_at.min,0)
-        if Event.date_match(ts,starts_at.strftime('%A')) && Event.does_not_exist(ts.id,starts_at)
-          e = Event.new
-          e.starts_at = Time.local(year,month,day, ts.starts_at.hour, ts.starts_at.min)
-          e.ends_at = Time.local(year,month,day, ts.ends_at.hour, ts.ends_at.min)
-          e.time_slot_id = ts.id
-          e.user_id = @user_id
-          e.event_type = ts.event_type
-          e.title = ts.title.blank? ? "no title" : ts.title
-          e.save!
-        end
-      end
-    end
+    Event.populate_next_two_weeks(@user_id)
     #   match "calendar/index(/:user_id/month/:month_string)" => "calendar#index", as: :calendar_display
     redirect_to calendar_display_path(@user_id, @month_string)
   end

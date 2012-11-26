@@ -77,6 +77,26 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.populate_next_two_weeks(user_id)
+    start_day = Date.today.beginning_of_week(:sunday)
+    end_day = start_day.end_of_week(:sunday)+7
+    TimeSlot.where(user_id: @user_id).each do |ts|
+      (start_day..end_day).to_a.each do |day|
+        starts_at = Time.local(day.year,day.month,day.day,ts.starts_at.hour,ts.starts_at.min,0)
+        if Event.date_match(ts,starts_at.strftime('%A')) && Event.does_not_exist(ts.id,starts_at)
+          e = Event.new
+          e.starts_at = Time.local(year,month,day, ts.starts_at.hour, ts.starts_at.min)
+          e.ends_at = Time.local(year,month,day, ts.ends_at.hour, ts.ends_at.min)
+          e.time_slot_id = ts.id
+          e.user_id = user_id
+          e.event_type = ts.event_type
+          e.title = ts.title.blank? ? "no title" : ts.title
+          e.save!
+        end
+      end
+    end
+  end
+
   def self.find_existing_time_slots_in_date(dt)
     # need to include user
     Event.where(["starts_at >= '#{dt.beginning_of_day.to_s(:db)}' and ends_at <= '#{dt.end_of_day.to_s(:db)}'"] ).map(&:time_slot_id)
