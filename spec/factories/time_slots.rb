@@ -2,16 +2,17 @@
 
 FactoryGirl.define do
   factory :time_slot do
-    title "MyString"
+    title "Just a test event"
     event_type nil
-    monday false
+    monday true
     tuesday false
     wednesday false
     thursday false
     friday false
     saturday false
     sunday false
-    user nil
-    starts_at "2012-11-22 07:14:42"
+    user
+    starts_at "2012-11-22 07:00:00"
+    ends_at "2012-11-22 08:00:00"
   end
 end

@@ -22,7 +22,7 @@ class CalendarController < ApplicationController
   end
 
   def populate
-    Event.populate_next_two_weeks(@user_id)
+    current_user.populate_next_two_weeks
     #   match "calendar/index(/:user_id/month/:month_string)" => "calendar#index", as: :calendar_display
     redirect_to calendar_display_path(@user_id, @month_string)
   end
