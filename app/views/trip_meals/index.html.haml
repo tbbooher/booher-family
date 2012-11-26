@@ -1,0 +1,22 @@
+- title "Trip Meal"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Meal
+      %th Place
+      %th Location
+      %th Budget
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @trip_meals.each do |trip_meal|
+      %tr
+        %td= link_to trip_meal.meal_name, trip_trip_day_trip_meal_path(@trip, @trip_day, trip_meal)
+        %td= link_to trip_meal.place, trip_meal.link
+        %td= trip_meal.location_id
+        %td= trip_meal.budget
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_trip_day_trip_meal_path(@trip, @trip_day, trip_meal), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_trip_day_trip_meal_path(@trip, @trip_day, trip_meal), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_trip_trip_day_trip_meal_path(@trip_day), :class => 'btn btn-primary'

@@ -1,5 +1,15 @@
 BooherFamily::Application.routes.draw do
 
+  resources :locations
+
+
+  resources :trips do
+    resources :trip_days do
+      resources :trip_meals
+    end
+  end
+
+  resources :principles
   resources :family_goals
 
 

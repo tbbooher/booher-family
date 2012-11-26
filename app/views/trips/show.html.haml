@@ -1,0 +1,25 @@
+- title @trip.title
+
+%h3= @trip.date_range
+
+%p
+  %strong Description
+  %br
+  = @trip.description
+%p
+  %strong Budget
+  %br
+  = @trip.budget
+%p
+  %strong Total Cost
+  %br
+  = @trip.total_cost
+
+%ul
+  - @trip.trip_days.each do |day|
+    %li= link_to day.title, trip_trip_day_path(@trip, day)
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), trips_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_path(@trip), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_path(@trip), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

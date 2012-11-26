@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125121832) do
+ActiveRecord::Schema.define(:version => 20121126012237) do
 
   create_table "event_types", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(:version => 20121125121832) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.decimal  "loc_lat"
+    t.decimal  "loc_lon"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "lost_items", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -66,6 +75,13 @@ ActiveRecord::Schema.define(:version => 20121125121832) do
   end
 
   add_index "lost_items", ["user_id"], :name => "index_lost_items_on_user_id"
+
+  create_table "principles", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "time_slots", :force => true do |t|
     t.string   "title"
@@ -86,6 +102,48 @@ ActiveRecord::Schema.define(:version => 20121125121832) do
 
   add_index "time_slots", ["event_type_id"], :name => "index_time_slots_on_event_type_id"
   add_index "time_slots", ["user_id"], :name => "index_time_slots_on_user_id"
+
+  create_table "trip_days", :force => true do |t|
+    t.date     "day_date"
+    t.string   "lodging"
+    t.string   "lodging_link"
+    t.string   "notes"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "trip_id"
+    t.integer  "location_id"
+    t.string   "goal"
+  end
+
+  add_index "trip_days", ["location_id"], :name => "index_trip_days_on_location_id"
+  add_index "trip_days", ["trip_id"], :name => "index_trip_days_on_trip_id"
+
+  create_table "trip_meals", :force => true do |t|
+    t.integer  "meal"
+    t.string   "location"
+    t.string   "link"
+    t.integer  "budget"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "trip_day_id"
+    t.integer  "location_id"
+    t.string   "place"
+    t.text     "description"
+  end
+
+  add_index "trip_meals", ["location_id"], :name => "index_trip_meals_on_location_id"
+  add_index "trip_meals", ["trip_day_id"], :name => "index_trip_meals_on_trip_day_id"
+
+  create_table "trips", :force => true do |t|
+    t.string   "title"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.text     "description"
+    t.integer  "budget"
+    t.integer  "total_cost"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

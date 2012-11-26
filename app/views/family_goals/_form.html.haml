@@ -1,0 +1,9 @@
+= simple_form_for @family_goal, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :priority
+  = f.input :above_cut
+  = f.input :description
+  = f.input :justification
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), family_goals_path, :class => 'btn'

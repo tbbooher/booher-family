@@ -25,13 +25,11 @@ class CalendarController < ApplicationController
     month = @inspection_date.month
     year = @inspection_date.year
     TimeSlot.where(user_id: @user_id).each do |ts|
-      hour, min = ts.starts_at.hour, ts.starts_at.min
       (@inspection_date.beginning_of_month.day..@inspection_date.end_of_month.day).to_a.each do |day|
-        starts_at = Time.local(year,month,day,hour,min,0)   #=> Sat Jan 01 20:15:01 CST 2000
         if Event.date_match(ts,starts_at.strftime('%A')) && Event.does_not_exist(ts.id,starts_at)
           e = Event.new
-          e.starts_at = starts_at
-          e.ends_at = Time.local(year,month,day,hour+1,min,0)   #=> Sat Jan 01 20:15:01 CST 2000
+          e.starts_at = Time.local(year,month,day, ts.starts_at.hour, ts.starts_at.min)
+          e.ends_at = Time.local(year,month,day, ts.ends_at.hour, ts.ends_at.min)
           e.time_slot_id = ts.id
           e.user_id = @user_id
           e.event_type = ts.event_type
