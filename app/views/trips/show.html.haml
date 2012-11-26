@@ -19,6 +19,9 @@
   - @trip.trip_days.each do |day|
     %li= link_to day.title, trip_trip_day_path(@trip, day)
 
+%p
+  = link_to "New Day", new_trip_trip_day_path(@trip)
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), trips_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_path(@trip), :class => 'btn'

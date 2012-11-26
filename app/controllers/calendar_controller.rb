@@ -26,6 +26,7 @@ class CalendarController < ApplicationController
     year = @inspection_date.year
     TimeSlot.where(user_id: @user_id).each do |ts|
       (@inspection_date.beginning_of_month.day..@inspection_date.end_of_month.day).to_a.each do |day|
+        starts_at = Time.local(year,month,day,ts.starts_at.hour,ts.starts_at.min,0)
         if Event.date_match(ts,starts_at.strftime('%A')) && Event.does_not_exist(ts.id,starts_at)
           e = Event.new
           e.starts_at = Time.local(year,month,day, ts.starts_at.hour, ts.starts_at.min)
