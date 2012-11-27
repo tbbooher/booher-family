@@ -4,7 +4,8 @@
     = f.input :day_date
     = f.input :lodging
     = f.input :lodging_link
-    = f.input :notes, input_html: {style: "height:100%;" }
+    =# f.input :notes, input_html: {style: "height:100%;" }
+    = f.input :notes, :input_html => { :toolbar => 'Easy' }
     = f.association :location
     %span.help-block= link_to "add location", new_location_path
   .form-actions

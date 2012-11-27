@@ -74,3 +74,7 @@ gem 'kaminari'
 #gem "combined_time_select", "~> 0.0.1"
 gem 'geocoder'
 gem 'gmaps4rails'
+gem "ckeditor", "3.7.3"
+gem "carrierwave"
+gem "mini_magick"
+

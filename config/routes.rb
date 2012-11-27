@@ -1,7 +1,8 @@
 BooherFamily::Application.routes.draw do
 
-  resources :locations
+  mount Ckeditor::Engine => '/ckeditor'
 
+  resources :locations
 
   resources :trips do
     resources :trip_days do
