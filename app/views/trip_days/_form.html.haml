@@ -1,7 +1,7 @@
 = simple_form_for [@trip, @trip_day], :html => { :class => 'form-horizontal' } do |f|
   %fieldset
     = f.input :goal
-    = f.input :day_date
+    = f.input :day_date, as: :string, :input_html => { :data => {:behaviour => :datepicker} }
     = f.input :lodging
     = f.input :lodging_link
     =# f.input :notes, input_html: {style: "height:100%;" }

@@ -77,4 +77,5 @@ gem 'gmaps4rails'
 gem "ckeditor", "3.7.3"
 gem "carrierwave"
 gem "mini_magick"
-
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+    :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
