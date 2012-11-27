@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126012237) do
+ActiveRecord::Schema.define(:version => 20121126220157) do
 
   create_table "event_types", :force => true do |t|
     t.string   "name"
@@ -107,12 +107,12 @@ ActiveRecord::Schema.define(:version => 20121126012237) do
     t.date     "day_date"
     t.string   "lodging"
     t.string   "lodging_link"
-    t.string   "notes"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "trip_id"
     t.integer  "location_id"
     t.string   "goal"
+    t.text     "notes"
   end
 
   add_index "trip_days", ["location_id"], :name => "index_trip_days_on_location_id"
