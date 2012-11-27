@@ -1,8 +1,10 @@
 = simple_form_for @location, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :name
-  = f.input :loc_lat
-  = f.input :loc_lon
-  = f.input :description
+  %fieldset
+    = f.input :name
+    = f.input :address
+    = f.input :latitude
+    = f.input :longitude
+    = f.input :description
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), locations_path, :class => 'btn'

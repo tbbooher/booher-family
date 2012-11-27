@@ -1,7 +1,10 @@
 class Location < ActiveRecord::Base
-  attr_accessible :description, :loc_lat, :loc_lon, :name
+  attr_accessible :description, :latitude, :longitude, :name, :address
   has_many :trips
   has_many :trip_days
   has_many :trip_meals
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
 end
