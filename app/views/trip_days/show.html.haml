@@ -10,8 +10,8 @@
   = link_to @trip_day.lodging, @trip_day.lodging_link
 %p
   %strong Notes:
-  %br
-  = @trip_day.notes.html_safe
+  .well
+    = @trip_day.notes.html_safe
 %p
   %strong Location
   %br
