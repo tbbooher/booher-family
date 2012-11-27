@@ -12,7 +12,6 @@
       %th Goal
       %th Date
       %th Lodging
-      %th Notes
       %th Location
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -21,7 +20,6 @@
         %td= link_to trip_day.goal, trip_trip_day_path(@trip, trip_day)
         %td= trip_day.day_date
         %td= link_to trip_day.lodging, trip_day.lodging_link
-        %td= trip_day.notes
         %td= trip_day.location.name unless trip_day.location.nil?
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_trip_day_path(@trip, trip_day), :class => 'btn btn-mini'

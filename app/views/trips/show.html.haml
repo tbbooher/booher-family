@@ -16,7 +16,7 @@
   = @trip.total_cost
 
 %ul
-  - @trip.trip_days.each do |day|
+  - @trip.trip_days.order('day_date').each do |day|
     %li= link_to day.title, trip_trip_day_path(@trip, day)
 
 %p
