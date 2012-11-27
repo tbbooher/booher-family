@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127003211) do
+ActiveRecord::Schema.define(:version => 20121127014619) do
 
   create_table "event_types", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20121127003211) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.boolean  "gmaps"
   end
 
   create_table "lost_items", :force => true do |t|

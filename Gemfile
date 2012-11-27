@@ -73,4 +73,4 @@ gem "twitter-bootstrap-rails"
 gem 'kaminari'
 #gem "combined_time_select", "~> 0.0.1"
 gem 'geocoder'
-
+gem 'gmaps4rails'

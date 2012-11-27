@@ -1,32 +1,25 @@
-- model_class = TripDay
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
-
+- title "Trip Day #{@trip_day.day_date}"
 %p
-  %strong= model_class.human_attribute_name(:day_date) + ':'
-  %br
-  = @trip_day.day_date
-%p
-  %strong= model_class.human_attribute_name(:lodging) + ':'
-  %br
-  = @trip_day.lodging
-%p
-  %strong= model_class.human_attribute_name(:lodging_link) + ':'
-  %br
-  = @trip_day.lodging_link
-%p
-  %strong= model_class.human_attribute_name(:notes) + ':'
-  %br
-  = @trip_day.notes
-%p
-  %strong= model_class.human_attribute_name(:location_id) + ':'
-  %br
-  = @trip_day.location_id
-%p
-  %strong= model_class.human_attribute_name(:goal) + ':'
+  %strong Goal:
   %br
   = @trip_day.goal
 
+%p
+  %strong Lodging:
+  %br
+  = link_to @trip_day.lodging, @trip_day.lodging_link
+%p
+  %strong Notes:
+  %br
+  = @trip_day.notes
+%p
+  %strong Location
+  %br
+  = @trip_day.location.name if @trip_day.location
+
+= gmaps4rails(@trip_day.location.to_gmaps4rails) if @trip_day.location
+=# gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "zoom" => 10},"markers" => { "data" => @trip_day.location.to_gmaps4rails }) if @trip_day.location
+=# gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_zoom" => false, "zoom" => 16},"markers" => { "data" => @json })
 %p= link_to "Trip Meals", trip_trip_day_trip_meals_path(@trip, @trip_day)
 
 .form-actions

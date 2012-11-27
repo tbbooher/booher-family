@@ -1,6 +1,6 @@
 - model_class = Location
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
+
+- title 'Location'
 
 %p
   %strong= model_class.human_attribute_name(:name) + ':'
@@ -18,6 +18,8 @@
   %strong= model_class.human_attribute_name(:description) + ':'
   %br
   = @location.description
+
+= gmaps4rails(@location.to_gmaps4rails) if @location.address
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), locations_path, :class => 'btn'
