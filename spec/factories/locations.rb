@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :location do
     name "MyString"
-    loc_lat "9.99"
-    loc_lon "9.99"
+    latitude "9.99"
+    longitude "9.99"
     description "MyText"
   end
 end

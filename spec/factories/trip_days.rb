@@ -6,8 +6,8 @@ FactoryGirl.define do
     lodging "MyString"
     lodging_link "MyString"
     location "MyString"
-    loc_lat "9.99"
-    loc_lon "9.99"
+    latitude "9.99"
+    longitude "9.99"
     notes "MyString"
   end
 end

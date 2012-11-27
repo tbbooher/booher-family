@@ -6,8 +6,8 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:loc_lat)
-      %th= model_class.human_attribute_name(:loc_lon)
+      %th= model_class.human_attribute_name(:latitude)
+      %th= model_class.human_attribute_name(:longitude)
       %th= model_class.human_attribute_name(:description)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -16,8 +16,8 @@
       %tr
         %td= link_to location.id, location_path(location)
         %td= location.name
-        %td= location.loc_lat
-        %td= location.loc_lon
+        %td= location.latitude
+        %td= location.longitude
         %td= location.description
         %td=l location.created_at
         %td
