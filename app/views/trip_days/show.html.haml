@@ -17,10 +17,19 @@
   %br
   = @trip_day.location.name if @trip_day.location
 
-= gmaps4rails(@trip_day.location.to_gmaps4rails) if @trip_day.location
-=# gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "zoom" => 10},"markers" => { "data" => @trip_day.location.to_gmaps4rails }) if @trip_day.location
-=# gmaps("map_options" => { "detect_location" => true, "center_on_user" => true, "auto_zoom" => false, "zoom" => 16},"markers" => { "data" => @json })
 %p= link_to "Trip Meals", trip_trip_day_trip_meals_path(@trip, @trip_day)
+%table.table.table-striped
+  %tr
+    %th Meal
+    %th Place
+    %th Budget
+  - @trip_day.meals.each do |meal|
+    %tr
+      %td= meal.meal
+      %td= meal.location
+      %td= meal.budget
+
+= gmaps4rails(@trip_day.location.to_gmaps4rails) if @trip_day.location
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), trip_trip_days_path(@trip), :class => 'btn'
