@@ -17,7 +17,7 @@
 
 %ul
   - @trip.trip_days.order('day_date').each do |day|
-    %li= link_to day.title, trip_trip_day_path(@trip, day)
+    %li= link_to day.description, trip_trip_day_path(@trip, day)
 
 %p
   = link_to "New Day", new_trip_trip_day_path(@trip)

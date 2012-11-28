@@ -6,7 +6,19 @@ class TripDay < ActiveRecord::Base
 
   has_many :trip_meals
 
+  validates :day_date, presence: true
+  validates :goal, presence: true
+  validates :location_id, presence: true
+
   def title
     self.day_date.to_s(:shorty)
+  end
+
+  def description
+    if self.goal && self.location
+      "#{self.title}: #{self.goal} at #{self.location.name}"
+    else
+      "#{self.title}"
+    end
   end
 end

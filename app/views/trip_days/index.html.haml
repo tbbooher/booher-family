@@ -15,7 +15,7 @@
       %th Location
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
-    - @trip_days.each do |trip_day|
+    - @trip_days.order('day_date').each do |trip_day|
       %tr
         %td= link_to trip_day.goal, trip_trip_day_path(@trip, trip_day)
         %td= trip_day.day_date
