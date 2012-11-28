@@ -23,7 +23,7 @@
     %th Meal
     %th Place
     %th Budget
-  - @trip_day.meals.each do |meal|
+  - @trip_day.trip_meals.each do |meal|
     %tr
       %td= meal.meal
       %td= meal.location
