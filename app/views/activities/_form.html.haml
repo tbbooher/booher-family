@@ -1,11 +1,11 @@
-= simple_form_for(@activity) do |f|
+= simple_form_for [@trip, @trip_day, @activity] do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :name
-    = f.input :location_id
-    = f.input :description
-    = f.input :trip_day_id
+    = f.association :location
+    = f.input :description, :input_html => { :toolbar => 'Easy' }
+    = f.input :trip_day_id, as: :hidden
 
   .form-actions
     = f.button :submit

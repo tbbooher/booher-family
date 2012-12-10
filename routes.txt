@@ -1,3 +1,4 @@
+                    ckeditor        /ckeditor                                                            Ckeditor::Engine
                    locations GET    /locations(.:format)                                                 locations#index
                              POST   /locations(.:format)                                                 locations#create
                 new_location GET    /locations/new(.:format)                                             locations#new
@@ -12,6 +13,13 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
      trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)      trip_meals#show
                              PUT    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)      trip_meals#update
                              DELETE /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)      trip_meals#destroy
+    trip_trip_day_activities GET    /trips/:trip_id/trip_days/:trip_day_id/activities(.:format)          activities#index
+                             POST   /trips/:trip_id/trip_days/:trip_day_id/activities(.:format)          activities#create
+  new_trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/new(.:format)      activities#new
+ edit_trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/:id/edit(.:format) activities#edit
+      trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)      activities#show
+                             PUT    /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)      activities#update
+                             DELETE /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)      activities#destroy
               trip_trip_days GET    /trips/:trip_id/trip_days(.:format)                                  trip_days#index
                              POST   /trips/:trip_id/trip_days(.:format)                                  trip_days#create
            new_trip_trip_day GET    /trips/:trip_id/trip_days/new(.:format)                              trip_days#new
@@ -102,3 +110,11 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
                                     /calendar/empty_out_month/:month_string/user/:user_id(.:format)      calendar#empty_out_month
                                     /calendar/serve_events/:user_id(.:format)                            calendar#serve_events
                         root        /                                                                    home#index
+
+Routes for Ckeditor::Engine:
+        pictures GET    /pictures(.:format)             ckeditor/pictures#index
+                 POST   /pictures(.:format)             ckeditor/pictures#create
+         picture DELETE /pictures/:id(.:format)         ckeditor/pictures#destroy
+attachment_files GET    /attachment_files(.:format)     ckeditor/attachment_files#index
+                 POST   /attachment_files(.:format)     ckeditor/attachment_files#create
+ attachment_file DELETE /attachment_files/:id(.:format) ckeditor/attachment_files#destroy

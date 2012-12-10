@@ -25,4 +25,13 @@ class TripDay < ActiveRecord::Base
       "#{self.title}"
     end
   end
+
+  def the_location
+    if self.location
+      self.location.name
+    else
+      "no location specified"
+    end
+  end
+
 end

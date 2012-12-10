@@ -20,4 +20,4 @@
           = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_trip_day_trip_meal_path(@trip, @trip_day, trip_meal), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
 = link_to t('.new', :default => t("helpers.links.new")), new_trip_trip_day_trip_meal_path(@trip, @trip_day), :class => 'btn btn-primary'
-= link_to "Back to #{@trip_day.day_date.to_s(:shorty)}", trip_trip_day_path(@trip, @trip_day)
+= link_to "Back to #{@trip_day.day_date.to_s(:shorty)}", trip_trip_day_path(@trip, @trip_day), class: 'btn'

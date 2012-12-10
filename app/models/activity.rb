@@ -3,4 +3,12 @@ class Activity < ActiveRecord::Base
 
   belongs_to :trip_day
   belongs_to :location
+
+  def the_location
+    if self.location
+      self.location.name
+    else
+      "no location specified"
+    end
+  end
 end

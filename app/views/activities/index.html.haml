@@ -1,25 +1,20 @@
-%h1 Listing activities
+- title "Activities for #{@trip_day.day_date.to_s(:shorty)} in #{@trip_day.the_location}"
 
-%table
+%table.table.table-striped
   %tr
     %th Name
     %th Location
-    %th Description
-    %th Trip day
-    %th
-    %th
     %th
 
   - @activities.each do |activity|
     %tr
-      %td= activity.name
-      %td= activity.location_id
-      %td= activity.description
-      %td= activity.trip_day_id
-      %td= link_to 'Show', activity
-      %td= link_to 'Edit', edit_activity_path(activity)
-      %td= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to activity.name, trip_trip_day_activity_path(@trip, @trip_day, activity)
+      %td= activity.the_location
+      %td
+        = link_to 'Edit', edit_trip_trip_day_activity_path(@trip, @trip_day, activity), class: 'btn btn-mini'
+        = link_to 'Destroy', trip_trip_day_activity_path(@trip, @trip_day, activity), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Activity', new_activity_path
+= link_to 'New Activity', new_trip_trip_day_activity_path(@trip, @trip_day), :class => 'btn btn-primary'
+= link_to "Back to #{@trip_day.day_date.to_s(:shorty)}", trip_trip_day_path(@trip, @trip_day), class: 'btn'

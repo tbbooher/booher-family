@@ -1,18 +1,13 @@
-%p#notice= notice
+- title "#{@activity.name} on #{@trip_day.day_date.to_s(:shorty)} in #{@activity.the_location}"
 
-%p
-  %b Name:
-  = @activity.name
-%p
-  %b Location:
-  = @activity.location_id
 %p
   %b Description:
-  = @activity.description
-%p
-  %b Trip day:
-  = @activity.trip_day_id
 
-= link_to 'Edit', edit_activity_path(@activity)
-\|
-= link_to 'Back', activities_path
+%div#description
+= @activity.description.html_safe
+
+.form_actions
+  = link_to 'Edit', edit_trip_trip_day_activity_path(@trip, @trip_day, @activity), class: 'btn'
+  = link_to 'Back', trip_trip_day_activities_path(@trip, @trip_day), class: 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_trip_day_activity_path(@trip, @trip_day, @activity), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+

@@ -1,7 +1,7 @@
-%h1 Editing activity
+- title "Editing #{@activity.name}"
 
 = render 'form'
 
-= link_to 'Show', @activity
+= link_to 'Show', [@trip, @trip_day, @activity]
 \|
-= link_to 'Back', activities_path
+= link_to 'Back', trip_trip_day_activities_path(@trip, @trip_day)

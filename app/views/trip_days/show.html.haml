@@ -10,33 +10,48 @@
 
 %p
   %strong Goal:
-  %br
   = @trip_day.goal
 
 %p
   %strong Lodging:
-  %br
   = link_to @trip_day.lodging, @trip_day.lodging_link
+
+%p
+  %strong Location:
+  = link_to(@trip_day.location.name, location_path(@trip_day.location)) if @trip_day.location
+
 %p
   %strong Notes:
   .well
     = @trip_day.notes.html_safe
-%p
-  %strong Location
-  %br
-  = link_to(@trip_day.location.name, location_path(@trip_day.location)) if @trip_day.location
 
-%p= link_to "Trip Meals", trip_trip_day_trip_meals_path(@trip, @trip_day)
+%h4 Meals
+
 %table.table.table-striped
   %tr
-    %th Meal
-    %th Place
+    %th{style: "width:30%"} Meal
+    %th Location
     %th Budget
   - @trip_day.trip_meals.each do |meal|
     %tr
       %td= link_to meal.meal_name, trip_trip_day_trip_meal_path(@trip, @trip_day, meal)
-      %td= meal.location
+      %td= link_to meal.the_location, location_path(meal.location.id) if meal.location
       %td= meal.budget
+
+%h4 Activities
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th{style: "width:30%"} Activity
+      %th Location
+      %th Budget
+  %tbody
+    - @trip_day.activities.each do |activity|
+      %tr
+        %td= link_to activity.name, trip_trip_day_activity_path(@trip, @trip_day, activity)
+        %td= link_to activity.the_location, location_path(activity.location.id) if activity.location
+        %td pending
 
 = gmaps4rails(@trip_day.location.to_gmaps4rails) if @trip_day.location
 
