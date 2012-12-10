@@ -13,4 +13,12 @@ class TripMeal < ActiveRecord::Base
   def meal_name
     MEALS[self.meal].to_s
   end
+
+  def the_location
+    if self.location
+      self.location.name
+    else
+      "no location identified"
+    end
+  end
 end
