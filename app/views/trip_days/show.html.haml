@@ -24,7 +24,7 @@
 %p
   %strong Location
   %br
-  = @trip_day.location.name if @trip_day.location
+  = link_to(@trip_day.location.name, location_path(@trip_day.location)) if @trip_day.location
 
 %p= link_to "Trip Meals", trip_trip_day_trip_meals_path(@trip, @trip_day)
 %table.table.table-striped
