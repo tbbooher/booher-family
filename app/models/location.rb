@@ -3,6 +3,7 @@ class Location < ActiveRecord::Base
   has_many :trips
   has_many :trip_days
   has_many :trip_meals
+  has_many :activities
 
   geocoded_by :address
   after_validation :geocode, if: -> { self.address_changed? }

@@ -7,6 +7,7 @@ BooherFamily::Application.routes.draw do
   resources :trips do
     resources :trip_days do
       resources :trip_meals
+      resources :activities
     end
   end
 

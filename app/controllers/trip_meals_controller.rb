@@ -5,4 +5,8 @@ class TripMealsController < InheritedResources::Base
   def create
     create! { trip_trip_day_trip_meals_path(@trip, @trip_day) }
   end
+
+  def update
+    update! { trip_trip_day_trip_meals_path(@trip, @trip_day) }
+  end
 end

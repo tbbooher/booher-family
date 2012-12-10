@@ -5,6 +5,7 @@ class TripDay < ActiveRecord::Base
   belongs_to :location
 
   has_many :trip_meals
+  has_many :activities
 
   validates :day_date, presence: true
   validates :goal, presence: true
