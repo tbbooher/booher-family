@@ -34,4 +34,9 @@ class TripDay < ActiveRecord::Base
     end
   end
 
+  def total_spent
+    self.trip_meals.map(&:budget_cents).sum +
+    self.activities.map(&:budget_cents).sum
+  end
+
 end

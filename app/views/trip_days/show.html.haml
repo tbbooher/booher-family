@@ -21,6 +21,10 @@
   = link_to(@trip_day.location.name, location_path(@trip_day.location)) if @trip_day.location
 
 %p
+  %strong Total Spent:
+  = number_to_currency(@trip_day.total_spent/100)
+
+%p
   %strong Notes:
   .well
     = @trip_day.notes.html_safe
@@ -36,7 +40,7 @@
     %tr
       %td= link_to meal.meal_name, trip_trip_day_trip_meal_path(@trip, @trip_day, meal)
       %td= link_to meal.the_location, location_path(meal.location.id) if meal.location
-      %td= meal.budget
+      %td= humanized_money_with_symbol meal.budget
 
 %h4 Activities
 
@@ -51,7 +55,7 @@
       %tr
         %td= link_to activity.name, trip_trip_day_activity_path(@trip, @trip_day, activity)
         %td= link_to activity.the_location, location_path(activity.location.id) if activity.location
-        %td pending
+        %td= humanized_money_with_symbol activity.budget
 
 = gmaps4rails(@trip_day.location.to_gmaps4rails) if @trip_day.location
 
