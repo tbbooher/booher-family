@@ -10,7 +10,7 @@ class TripDay < ActiveRecord::Base
   validates :goal, presence: true
   validates :location_id, presence: true
 
-  default_scope sort_by(&:day_date)
+  #default_scope
 
   def title
     self.day_date.to_s(:shorty)
