@@ -1,6 +1,6 @@
 class TripMeal < ActiveRecord::Base
 
-  attr_accessible :budget, :link, :location, :meal
+  attr_accessible :budget, :link, :location, :meal, :place, :trip_day_id, :location_id, :description
   belongs_to :trip_day
   belongs_to :location
 
