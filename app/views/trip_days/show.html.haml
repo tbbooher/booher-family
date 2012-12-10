@@ -1,4 +1,13 @@
 - title "Trip Day: #{@trip_day.day_date.to_s(:shorty)}"
+
+%ul.breadcrumb
+  - @trip.trip_days.each do |day|
+    - unless day == @trip_day
+      %li= link_to day.day_date.to_s(:day_only), trip_trip_day_path(@trip, day)
+    - else
+      %li{class: 'active'}= day.day_date.to_s(:day_only)
+    %span.divider /
+
 %p
   %strong Goal:
   %br
