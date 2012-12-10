@@ -1,11 +1,11 @@
-= simple_form_for [@trip, @trip_day, @activity] do |f|
-  = f.error_notification
-
+= simple_form_for [@trip, @trip_day, @activity], :html => { :class => 'form-horizontal' } do |f|
   .form-inputs
     = f.input :name
     = f.association :location
     = f.input :description, :input_html => { :toolbar => 'Easy' }
+    = f.input :budget
     = f.input :trip_day_id, as: :hidden
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, class: 'btn-primary'
+    = link_to "cancel", trip_trip_day_activities_path(@trip, @trip_day), :class => 'btn'

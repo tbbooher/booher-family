@@ -4,12 +4,14 @@
   %tr
     %th Name
     %th Location
+    %th Budget
     %th
 
   - @activities.each do |activity|
     %tr
       %td= link_to activity.name, trip_trip_day_activity_path(@trip, @trip_day, activity)
       %td= activity.the_location
+      %td= humanized_money_with_symbol activity.budget
       %td
         = link_to 'Edit', edit_trip_trip_day_activity_path(@trip, @trip_day, activity), class: 'btn btn-mini'
         = link_to 'Destroy', trip_trip_day_activity_path(@trip, @trip_day, activity), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
