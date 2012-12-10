@@ -1,31 +1,14 @@
-- model_class = TripMeal
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
+- title "#{@trip_meal.meal_name.titlecase} on #{@trip_day.day_date.to_s(:shorty)}"
 
 %p
-  %strong= model_class.human_attribute_name(:meal) + ':'
-  %br
-  = @trip_meal.meal
+  %strong Location:
+  = @trip_meal.location.name if @trip_meal.location
 %p
-  %strong= model_class.human_attribute_name(:location) + ':'
-  %br
-  = @trip_meal.location
+  %strong Link:
+  = link_to @trip_meal.link, @trip_meal.link
 %p
-  %strong= model_class.human_attribute_name(:link) + ':'
-  %br
-  = @trip_meal.link
-%p
-  %strong= model_class.human_attribute_name(:budget) + ':'
-  %br
+  %strong Budget:
   = @trip_meal.budget
-%p
-  %strong= model_class.human_attribute_name(:trip_day_id) + ':'
-  %br
-  = @trip_meal.trip_day_id
-%p
-  %strong= model_class.human_attribute_name(:location_id) + ':'
-  %br
-  = @trip_meal.location_id
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), trip_trip_day_trip_meals_path(@trip, @trip_day), :class => 'btn'
