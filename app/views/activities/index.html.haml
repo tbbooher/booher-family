@@ -3,6 +3,7 @@
 %table.table.table-striped
   %tr
     %th Name
+    %th Type
     %th Location
     %th Budget
     %th
@@ -10,6 +11,7 @@
   - @activities.each do |activity|
     %tr
       %td= link_to activity.name, trip_trip_day_activity_path(@trip, @trip_day, activity)
+      %td= activity.type_name
       %td= activity.the_location
       %td= humanized_money_with_symbol activity.budget
       %td

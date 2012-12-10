@@ -1,6 +1,7 @@
 = simple_form_for [@trip, @trip_day, @activity], :html => { :class => 'form-horizontal' } do |f|
   .form-inputs
     = f.input :name
+    = f.input :activity_type, collection: Activity::TYPE.sort.map {|k,v| [v,k]}, include_blank: false
     = f.association :location
     = f.input :description, :input_html => { :toolbar => 'Easy' }
     = f.input :budget

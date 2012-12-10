@@ -29,7 +29,9 @@
   .well
     = @trip_day.notes.html_safe
 
-%h4 Meals
+%h4
+  Meals
+  = link_to "(new)", new_trip_trip_day_trip_meal_path(@trip, @trip_day)
 
 %table.table.table-striped
   %tr
@@ -42,19 +44,23 @@
       %td= link_to meal.the_location, location_path(meal.location.id) if meal.location
       %td= humanized_money_with_symbol meal.budget
 
-%h4 Activities
+%h4
+  Activities
+  = link_to "(new)", new_trip_trip_day_activity_path(@trip, @trip_day)
 
 %table.table.table-striped
   %thead
     %tr
       %th{style: "width:30%"} Activity
       %th Location
+      %th Type
       %th Budget
   %tbody
     - @trip_day.activities.each do |activity|
       %tr
         %td= link_to activity.name, trip_trip_day_activity_path(@trip, @trip_day, activity)
         %td= link_to activity.the_location, location_path(activity.location.id) if activity.location
+        %td= activity.type_name
         %td= humanized_money_with_symbol activity.budget
 
 = gmaps4rails(@trip_day.location.to_gmaps4rails) if @trip_day.location
