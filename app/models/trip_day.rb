@@ -35,8 +35,8 @@ class TripDay < ActiveRecord::Base
   end
 
   def total_budget
-    (self.trip_meals.map{|tm| tm.budget.exchange_to('USD') }.sum +
-    self.activities.map{|tm| tm.budget.exchange_to('USD') }.sum).to_money
+    (self.trip_meals.map{|tm| tm.budget.exchange_to('USD') }.sum.to_money +
+     self.activities.map{|a| a.budget.exchange_to('USD') }.sum.to_money).to_money
   end
 
 end
