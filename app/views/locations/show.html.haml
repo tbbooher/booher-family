@@ -7,6 +7,9 @@
   %br
   = @location.name
 %p
+  %strong Address:
+  = @location.address
+%p
   %strong= model_class.human_attribute_name(:latitude) + ':'
   %br
   = @location.latitude
