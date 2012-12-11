@@ -22,7 +22,7 @@
 
 %p
   %strong Total Spent:
-  = number_to_currency(@trip_day.total_budget/100)
+  = humanized_money_with_symbol @trip_day.total_budget
 
 %p
   %strong Notes:
