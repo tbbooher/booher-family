@@ -38,7 +38,7 @@
     %th{style: "width:30%"} Meal
     %th Location
     %th Budget
-  - @trip_day.trip_meals.each do |meal|
+  - @trip_day.trip_meals.order('meal ASC').each do |meal|
     %tr
       %td= link_to meal.meal_name, edit_trip_trip_day_trip_meal_path(@trip, @trip_day, meal)
       %td= link_to meal.the_location, location_path(meal.location.id) if meal.location
