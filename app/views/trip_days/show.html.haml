@@ -40,7 +40,7 @@
     %th Budget
   - @trip_day.trip_meals.each do |meal|
     %tr
-      %td= link_to meal.meal_name, trip_trip_day_trip_meal_path(@trip, @trip_day, meal)
+      %td= link_to meal.meal_name, edit_trip_trip_day_trip_meal_path(@trip, @trip_day, meal)
       %td= link_to meal.the_location, location_path(meal.location.id) if meal.location
       %td= humanized_money_with_symbol meal.budget
 
