@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210224141) do
+ActiveRecord::Schema.define(:version => 20121211182332) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20121210224141) do
     t.integer  "budget_cents",    :default => 0,     :null => false
     t.string   "budget_currency", :default => "USD", :null => false
     t.integer  "activity_type"
+    t.string   "currency"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -160,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20121210224141) do
     t.text     "description"
     t.integer  "budget_cents",    :default => 0,     :null => false
     t.string   "budget_currency", :default => "USD", :null => false
+    t.string   "currency"
   end
 
   add_index "trip_meals", ["location_id"], :name => "index_trip_meals_on_location_id"

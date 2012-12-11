@@ -5,6 +5,7 @@
     = f.association :location
     = f.input :description, :input_html => { :toolbar => 'Easy' }
     = f.input :budget
+    = f.input :currency, collection: [:USD, :EUR], include_blank: false
     = f.input :trip_day_id, as: :hidden
 
   .form-actions

@@ -1,5 +1,5 @@
 class Activity < ActiveRecord::Base
-  attr_accessible :description, :location_id, :name, :trip_day_id, :budget, :budget_cents, :activity_type
+  attr_accessible :description, :location_id, :name, :trip_day_id, :budget, :activity_type, :currency
 
   belongs_to :trip_day
   belongs_to :location

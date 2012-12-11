@@ -13,8 +13,8 @@
       %tr
         %td= link_to trip_meal.meal_name, trip_trip_day_trip_meal_path(@trip, @trip_day, trip_meal)
         %td= link_to trip_meal.place, trip_meal.link
-        %td= trip_meal.location_id
-        %td= trip_meal.budget
+        %td= trip_meal.the_location
+        %td= humanized_money_with_symbol trip_meal.budget.exchange_to(:USD)
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_trip_day_trip_meal_path(@trip, @trip_day, trip_meal), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_trip_day_trip_meal_path(@trip, @trip_day, trip_meal), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'

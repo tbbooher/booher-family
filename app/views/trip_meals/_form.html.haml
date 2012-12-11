@@ -3,6 +3,7 @@
   = f.input :place
   = f.input :link
   = f.input :budget
+  = f.input :currency, collection: [:USD, :EUR], include_blank: false
   = f.input :trip_day_id, as: :hidden
   = f.association :location
   = f.input :description

@@ -1,6 +1,6 @@
 class TripMeal < ActiveRecord::Base
 
-  attr_accessible :budget, :link, :location, :meal, :place, :trip_day_id, :location_id, :description, :budget_cents
+  attr_accessible :budget, :link, :location, :meal, :place, :trip_day_id, :location_id, :description, :currency
   belongs_to :trip_day
   belongs_to :location
 
@@ -21,4 +21,5 @@ class TripMeal < ActiveRecord::Base
       "no location identified"
     end
   end
+
 end
