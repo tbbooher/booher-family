@@ -10,7 +10,7 @@
   = @trip.budget
 %p
   %strong Total Cost:
-  = number_to_currency(@trip.total_spent/100)
+  = number_to_currency(@trip.total_budget/100)
 
 %ul
   - @trip.trip_days.order('day_date').each do |day|

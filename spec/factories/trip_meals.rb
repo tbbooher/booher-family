@@ -2,10 +2,13 @@
 
 FactoryGirl.define do
   factory :trip_meal do
-    meal ""
-    location "MyString"
-    link "MyString"
-    budget 1
-    user nil
+    meal 1
+    link "http://mcdonalds.com/"
+    trip_day
+    location
+    place "McDonalds"
+    description "quick bite"
+    budget_cents 1000
+    budget_currency :USD
   end
 end

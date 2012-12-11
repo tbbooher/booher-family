@@ -2,11 +2,11 @@
 
 FactoryGirl.define do
   factory :trip do
-    title "MyString"
+    title "Trip to Italy"
     start_date "2012-11-25"
     end_date "2012-11-25"
-    description "MyText"
-    budget 1
-    total_cost 1
+    description "The coolest trip ever"
+    budget 100000 # in cents
+    total_cost ''
   end
 end

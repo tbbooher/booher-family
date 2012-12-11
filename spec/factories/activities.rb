@@ -2,9 +2,12 @@
 
 FactoryGirl.define do
   factory :activity do
-    name "MyString"
-    location_id 1
-    description "MyText"
-    trip_day_id 1
+    name "Play Golf"
+    location
+    description "18 holes"
+    trip_day
+    budget_cents 10000
+    budget_currency :USD
+    activity_type 1
   end
 end

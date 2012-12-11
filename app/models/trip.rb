@@ -8,8 +8,8 @@ class Trip < ActiveRecord::Base
     "From #{self.start_date.to_s(:day_only)} to #{self.end_date.to_s(:day_only)} #{self.end_date.to_s(:month)}"
   end
 
-  def total_spent
-    self.trip_days.map(&:total_spent).sum
+  def total_budget
+    self.trip_days.map(&:total_budget).sum
   end
 
 end
