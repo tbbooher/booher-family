@@ -18,14 +18,14 @@ BooherFamily::Application.routes.draw do
   get "home/index"
   get "calendar/work_history"
 
+  devise_for :users
+
   resources :users do
     resources :goals
     resources :lost_items
     resources :events
     resources :time_slots
   end
-
-  devise_for :users
 
   resources :event_types
 
