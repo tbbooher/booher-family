@@ -20,9 +20,10 @@
   %strong Location:
   = link_to(@trip_day.location.name, location_path(@trip_day.location)) if @trip_day.location
 
-%p
-  %strong Total Spent:
-  = humanized_money_with_symbol @trip_day.total_budget
+- if user_signed_in?
+  %p
+    %strong Total Spent:
+    = humanized_money_with_symbol @trip_day.total_budget
 
 %p
   %strong Notes:
@@ -31,22 +32,24 @@
 
 %h4
   Meals
-  = link_to "(new)", new_trip_trip_day_trip_meal_path(@trip, @trip_day)
+  = link_to "(new)", new_trip_trip_day_trip_meal_path(@trip, @trip_day) if user_signed_in?
 
 %table.table.table-striped
   %tr
     %th{style: "width:30%"} Meal
     %th Location
-    %th Budget
+    - if user_signed_in?
+      %th Budget
   - @trip_day.trip_meals.order('meal ASC').each do |meal|
     %tr
       %td= link_to meal.meal_name, edit_trip_trip_day_trip_meal_path(@trip, @trip_day, meal)
       %td= link_to meal.the_location, location_path(meal.location.id) if meal.location
-      %td= humanized_money_with_symbol meal.budget
+      - if user_signed_in?
+        %td= humanized_money_with_symbol meal.budget
 
 %h4
   Activities
-  = link_to "(new)", new_trip_trip_day_activity_path(@trip, @trip_day)
+  = link_to "(new)", new_trip_trip_day_activity_path(@trip, @trip_day) if user_signed_in?
 
 %table.table.table-striped
   %thead
@@ -54,18 +57,21 @@
       %th{style: "width:30%"} Activity
       %th Location
       %th Type
-      %th Budget
+      - if user_signed_in?
+        %th Budget
   %tbody
     - @trip_day.activities.each do |activity|
       %tr
         %td= link_to activity.name, trip_trip_day_activity_path(@trip, @trip_day, activity)
         %td= link_to activity.the_location, location_path(activity.location.id) if activity.location
         %td= activity.type_name
-        %td= humanized_money_with_symbol activity.budget
+        - if user_signed_in?
+          %td= humanized_money_with_symbol activity.budget
 
 = gmaps4rails(@trip_day.location.to_gmaps4rails) if @trip_day.location
 
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), trip_trip_days_path(@trip), :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_trip_day_path(@trip, @trip_day), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_trip_day_path(@trip, @trip_day), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+- if user_signed_in?
+  .form-actions
+    = link_to t('.back', :default => t("helpers.links.back")), trip_trip_days_path(@trip), :class => 'btn'
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_trip_day_path(@trip, @trip_day), :class => 'btn'
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_trip_day_path(@trip, @trip_day), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

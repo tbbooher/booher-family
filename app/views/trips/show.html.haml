@@ -5,21 +5,25 @@
 %p
   %strong Description:
   = @trip.description
-%p
-  %strong Budget:
-  = @trip.budget
-%p
-  %strong Total Cost:
-  = humanized_money_with_symbol @trip.total_budget
+
+- if user_signed_in?
+  %p
+    %strong Budget:
+    = @trip.budget
+  %p
+    %strong Total Cost:
+    = humanized_money_with_symbol @trip.total_budget
 
 %ul
   - @trip.trip_days.order('day_date').each do |day|
     %li= link_to day.description, trip_trip_day_path(@trip, day)
 
-%p
-  = link_to "New Day", new_trip_trip_day_path(@trip)
+- if user_signed_in?
 
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), trips_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_path(@trip), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_path(@trip), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+  %p
+    = link_to "New Day", new_trip_trip_day_path(@trip)
+
+  .form-actions
+    = link_to t('.back', :default => t("helpers.links.back")), trips_path, :class => 'btn'
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_trip_path(@trip), :class => 'btn'
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), trip_path(@trip), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

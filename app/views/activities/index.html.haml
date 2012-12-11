@@ -6,7 +6,8 @@
     %th Type
     %th Location
     %th Budget
-    %th
+    - if user_signed_in?
+      %th Actions
 
   - @activities.each do |activity|
     %tr
@@ -14,11 +15,12 @@
       %td= activity.type_name
       %td= activity.the_location
       %td= humanized_money_with_symbol activity.budget
-      %td
-        = link_to 'Edit', edit_trip_trip_day_activity_path(@trip, @trip_day, activity), class: 'btn btn-mini'
-        = link_to 'Destroy', trip_trip_day_activity_path(@trip, @trip_day, activity), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+      - if user_signed_in?
+        %td
+          = link_to 'Edit', edit_trip_trip_day_activity_path(@trip, @trip_day, activity), class: 'btn btn-mini'
+          = link_to 'Destroy', trip_trip_day_activity_path(@trip, @trip_day, activity), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 
 %br
-
-= link_to 'New Activity', new_trip_trip_day_activity_path(@trip, @trip_day), :class => 'btn btn-primary'
-= link_to "Back to #{@trip_day.day_date.to_s(:shorty)}", trip_trip_day_path(@trip, @trip_day), class: 'btn'
+- if user_signed_in?
+  = link_to 'New Activity', new_trip_trip_day_activity_path(@trip, @trip_day), :class => 'btn btn-primary'
+  = link_to "Back to #{@trip_day.day_date.to_s(:shorty)}", trip_trip_day_path(@trip, @trip_day), class: 'btn'
