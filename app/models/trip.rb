@@ -9,7 +9,7 @@ class Trip < ActiveRecord::Base
   end
 
   def total_budget
-    self.trip_days.map(&:total_budget).sum
+    self.trip_days.map(&:total_budget).sum.to_money
   end
 
 end
