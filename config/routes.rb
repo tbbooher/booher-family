@@ -18,7 +18,7 @@ BooherFamily::Application.routes.draw do
   get "home/index"
   get "calendar/work_history"
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
   resources :users do
     resources :goals
