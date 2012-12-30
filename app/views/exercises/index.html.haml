@@ -1,0 +1,30 @@
+- title "Exercises"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %td Name
+      %td Type
+      %td BW Total Weight Moved 1
+      %td BW Total Weight Moved 2
+      %td BW Distance Moved 1
+      %td BW Distance Moved 2
+      %td Weight Distance Moved
+      %td BW Work Done Per Rep
+      %td Actions
+  %tbody
+    - @exercises.each do |exercise|
+      %tr
+        %td= link_to exercise.name, exercise_path(exercise)
+        %td= exercise.type_name
+        %td= exercise.bw_total_weight_moved_1
+        %td= exercise.bw_total_weight_moved_2
+        %td= exercise.bw_distance_moved_1
+        %td= exercise.bw_distance_moved_2
+        %td= exercise.weight_distance_moved
+        %td= exercise.bw_work_done_per_rep
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_exercise_path(exercise), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), exercise_path(exercise), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_exercise_path, :class => 'btn btn-primary'

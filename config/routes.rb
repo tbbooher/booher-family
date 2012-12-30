@@ -1,5 +1,19 @@
 BooherFamily::Application.routes.draw do
 
+  resources :journal_entries
+
+
+  resources :components
+
+
+  resources :reps
+
+
+  resources :exercises
+
+
+  resources :crossfit_workouts
+
   mount Ckeditor::Engine => '/ckeditor'
 
   resources :locations
@@ -25,6 +39,7 @@ BooherFamily::Application.routes.draw do
     resources :lost_items
     resources :events
     resources :time_slots
+    resources :workouts
   end
 
   resources :event_types

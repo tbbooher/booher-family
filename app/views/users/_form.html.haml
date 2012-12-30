@@ -2,6 +2,28 @@
   = f.input :name
   = f.input :email
   = f.input :admin
+  = f.input :height_in_inches
+  = f.input :weight
+  = f.input :neck_weight
+  = f.input :torso_weight
+  = f.input :pelvis_weight
+  = f.input :femur_weight
+  = f.input :tibia_weight
+  = f.input :ankle_weight
+  = f.input :foot_weight
+  = f.input :humerus_weight
+  = f.input :forearm_weight
+  = f.input :hand_weight
+  = f.input :neck
+  = f.input :torso
+  = f.input :pelvis
+  = f.input :femur
+  = f.input :tibia
+  = f.input :ankle
+  = f.input :foot
+  = f.input :humerus
+  = f.input :forearm
+  = f.input :hand
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn'

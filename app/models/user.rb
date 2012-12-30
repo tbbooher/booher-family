@@ -6,13 +6,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :admin, :email, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :height_in_inches, :weight, :admin, :name, :neck, :torso, :pelvis, :femur, :tibia, :ankle, :foot, :humerus, :forearm, :hand, :neck_weight, :torso_weight, :pelvis_weight, :femur_weight, :tibia_weight, :ankle_weight, :foot_weight, :humerus_weight, :forearm_weight, :hand_weight
 
   has_many :goals
   has_many :lost_items
   has_many :events
   has_many :time_slots
+  has_many :workouts
 
   def worked_in_week(date_in_week)
     self.seconds_worked(date_in_week.beginning_of_week, date_in_week.end_of_week)

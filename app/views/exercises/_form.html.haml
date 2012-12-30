@@ -1,0 +1,12 @@
+= simple_form_for @exercise, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :bw_total_weight_moved_1
+  = f.input :bw_total_weight_moved_2
+  = f.input :bw_distance_moved_1
+  = f.input :bw_distance_moved_2
+  = f.input :weight_distance_moved
+  = f.input :bw_work_done_per_rep
+  = f.input :exercise_type, collection: Exercise::TYPE.sort.map {|k,v| [v,k]}, include_blank: false
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), exercises_path, :class => 'btn'

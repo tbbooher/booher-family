@@ -1,0 +1,29 @@
+
+- title "#{@exercise.name}"  
+
+%p
+  %strong type:
+  = @exercise.type_name
+%p
+  %strong bw_total_weight_moved_1:
+  = @exercise.bw_total_weight_moved_1
+%p
+  %strong bw_total_weight_moved_2:
+  = @exercise.bw_total_weight_moved_2
+%p
+  %strong bw_distance_moved_1:
+  = @exercise.bw_distance_moved_1
+%p
+  %strong bw_distance_moved_2:
+  = @exercise.bw_distance_moved_2
+%p
+  %strong weight_distance_moved:
+  = @exercise.weight_distance_moved
+%p
+  %strong bw work done per rep:
+  = @exercise.bw_work_done_per_rep
+
+.form-actions
+  = link_to 'back', exercises_path, :class => 'btn'
+  = link_to 'edit', edit_exercise_path(@exercise), :class => 'btn'
+  = link_to 'destroy', exercise_path(@exercise), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

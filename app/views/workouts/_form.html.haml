@@ -1,0 +1,9 @@
+= simple_form_for [@user, @workout], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :workout_date
+  = f.input :description
+  = f.input :power
+  = f.association :crossfit_workout
+  = f.input :mileage
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), user_workouts_path(@user), :class => 'btn'

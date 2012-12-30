@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211190305) do
+ActiveRecord::Schema.define(:version => 20121228222753) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(:version => 20121211190305) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "components", :force => true do |t|
+    t.decimal  "length_in_inches"
+    t.decimal  "weight_per_inch"
+    t.decimal  "component_weight"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "crossfit_workouts", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "event_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -65,6 +80,19 @@ ActiveRecord::Schema.define(:version => 20121211190305) do
   add_index "events", ["time_slot_id"], :name => "index_events_on_time_slot_id"
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
+  create_table "exercises", :force => true do |t|
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "name"
+    t.integer  "exercise_type"
+    t.string   "bw_total_weight_moved_1"
+    t.string   "bw_total_weight_moved_2"
+    t.string   "bw_distance_moved_1"
+    t.string   "bw_distance_moved_2"
+    t.string   "weight_distance_moved"
+    t.string   "bw_work_done_per_rep"
+  end
+
   create_table "family_goals", :force => true do |t|
     t.string   "name"
     t.integer  "priority"
@@ -82,6 +110,32 @@ ActiveRecord::Schema.define(:version => 20121211190305) do
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "journal_entries", :force => true do |t|
+    t.date     "entry_date"
+    t.string   "description"
+    t.integer  "purity"
+    t.boolean  "lack_of_discipline"
+    t.integer  "fitness"
+    t.integer  "devotional"
+    t.integer  "chrissy"
+    t.integer  "relational"
+    t.integer  "discipline"
+    t.integer  "facepicking"
+    t.integer  "stress"
+    t.boolean  "sick"
+    t.boolean  "flossed"
+    t.boolean  "workout"
+    t.string   "health_statement"
+    t.string   "to_do"
+    t.string   "memory_verse"
+    t.string   "friends_in_focus"
+    t.string   "problem_of_the_day"
+    t.boolean  "problem_attempted"
+    t.boolean  "problem_solved"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "locations", :force => true do |t|
@@ -112,6 +166,18 @@ ActiveRecord::Schema.define(:version => 20121211190305) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "reps", :force => true do |t|
+    t.integer  "exercise_id"
+    t.integer  "workout_id"
+    t.integer  "count"
+    t.float    "seconds"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.float    "distance"
+    t.float    "weight"
+    t.integer  "exercise_type"
   end
 
   create_table "time_slots", :force => true do |t|
@@ -192,9 +258,43 @@ ActiveRecord::Schema.define(:version => 20121211190305) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.decimal  "height_in_inches"
+    t.decimal  "weight"
+    t.decimal  "neck_weight"
+    t.decimal  "torso_weight"
+    t.decimal  "pelvis_weight"
+    t.decimal  "femur_weight"
+    t.decimal  "tibia_weight"
+    t.decimal  "ankle_weight"
+    t.decimal  "foot_weight"
+    t.decimal  "humerus_weight"
+    t.decimal  "forearm_weight"
+    t.decimal  "hand_weight"
+    t.decimal  "neck"
+    t.decimal  "torso"
+    t.decimal  "pelvis"
+    t.decimal  "femur"
+    t.decimal  "tibia"
+    t.decimal  "ankle"
+    t.decimal  "foot"
+    t.decimal  "humerus"
+    t.decimal  "forearm"
+    t.decimal  "hand"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "workouts", :force => true do |t|
+    t.date     "workout_date"
+    t.string   "description"
+    t.float    "power"
+    t.integer  "crossfit_workout_id"
+    t.float    "mileage"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "user_id"
+    t.decimal  "total_time"
+  end
 
 end

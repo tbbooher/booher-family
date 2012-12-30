@@ -1,3 +1,24 @@
+                        reps GET    /reps(.:format)                                                      reps#index
+                             POST   /reps(.:format)                                                      reps#create
+                     new_rep GET    /reps/new(.:format)                                                  reps#new
+                    edit_rep GET    /reps/:id/edit(.:format)                                             reps#edit
+                         rep GET    /reps/:id(.:format)                                                  reps#show
+                             PUT    /reps/:id(.:format)                                                  reps#update
+                             DELETE /reps/:id(.:format)                                                  reps#destroy
+                   exercises GET    /exercises(.:format)                                                 exercises#index
+                             POST   /exercises(.:format)                                                 exercises#create
+                new_exercise GET    /exercises/new(.:format)                                             exercises#new
+               edit_exercise GET    /exercises/:id/edit(.:format)                                        exercises#edit
+                    exercise GET    /exercises/:id(.:format)                                             exercises#show
+                             PUT    /exercises/:id(.:format)                                             exercises#update
+                             DELETE /exercises/:id(.:format)                                             exercises#destroy
+           crossfit_workouts GET    /crossfit_workouts(.:format)                                         crossfit_workouts#index
+                             POST   /crossfit_workouts(.:format)                                         crossfit_workouts#create
+        new_crossfit_workout GET    /crossfit_workouts/new(.:format)                                     crossfit_workouts#new
+       edit_crossfit_workout GET    /crossfit_workouts/:id/edit(.:format)                                crossfit_workouts#edit
+            crossfit_workout GET    /crossfit_workouts/:id(.:format)                                     crossfit_workouts#show
+                             PUT    /crossfit_workouts/:id(.:format)                                     crossfit_workouts#update
+                             DELETE /crossfit_workouts/:id(.:format)                                     crossfit_workouts#destroy
                     ckeditor        /ckeditor                                                            Ckeditor::Engine
                    locations GET    /locations(.:format)                                                 locations#index
                              POST   /locations(.:format)                                                 locations#create
@@ -57,12 +78,12 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
            new_user_password GET    /users/password/new(.:format)                                        devise/passwords#new
           edit_user_password GET    /users/password/edit(.:format)                                       devise/passwords#edit
                              PUT    /users/password(.:format)                                            devise/passwords#update
-    cancel_user_registration GET    /users/cancel(.:format)                                              devise/registrations#cancel
-           user_registration POST   /users(.:format)                                                     devise/registrations#create
-       new_user_registration GET    /users/sign_up(.:format)                                             devise/registrations#new
-      edit_user_registration GET    /users/edit(.:format)                                                devise/registrations#edit
-                             PUT    /users(.:format)                                                     devise/registrations#update
-                             DELETE /users(.:format)                                                     devise/registrations#destroy
+    cancel_user_registration GET    /users/cancel(.:format)                                              registrations#cancel
+           user_registration POST   /users(.:format)                                                     registrations#create
+       new_user_registration GET    /users/sign_up(.:format)                                             registrations#new
+      edit_user_registration GET    /users/edit(.:format)                                                registrations#edit
+                             PUT    /users(.:format)                                                     registrations#update
+                             DELETE /users(.:format)                                                     registrations#destroy
                   user_goals GET    /users/:user_id/goals(.:format)                                      goals#index
                              POST   /users/:user_id/goals(.:format)                                      goals#create
                new_user_goal GET    /users/:user_id/goals/new(.:format)                                  goals#new
@@ -91,6 +112,13 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
               user_time_slot GET    /users/:user_id/time_slots/:id(.:format)                             time_slots#show
                              PUT    /users/:user_id/time_slots/:id(.:format)                             time_slots#update
                              DELETE /users/:user_id/time_slots/:id(.:format)                             time_slots#destroy
+               user_workouts GET    /users/:user_id/workouts(.:format)                                   workouts#index
+                             POST   /users/:user_id/workouts(.:format)                                   workouts#create
+            new_user_workout GET    /users/:user_id/workouts/new(.:format)                               workouts#new
+           edit_user_workout GET    /users/:user_id/workouts/:id/edit(.:format)                          workouts#edit
+                user_workout GET    /users/:user_id/workouts/:id(.:format)                               workouts#show
+                             PUT    /users/:user_id/workouts/:id(.:format)                               workouts#update
+                             DELETE /users/:user_id/workouts/:id(.:format)                               workouts#destroy
                        users GET    /users(.:format)                                                     users#index
                              POST   /users(.:format)                                                     users#create
                     new_user GET    /users/new(.:format)                                                 users#new

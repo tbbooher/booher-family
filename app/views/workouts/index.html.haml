@@ -1,0 +1,28 @@
+- title "Workouts"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Workout Date
+      %th Description
+      %th Power
+      %th CrossFit Workout
+      %th Mileage
+      - if user_signed_in?
+        %th Actions
+  %tbody
+    - @workouts.each do |workout|
+      %tr
+        %td= link_to workout.workout_date, user_workout_path(@user, workout)
+        %td= workout.description
+        %td= workout.power
+        - if workout.crossfit_workout
+          %td= workout.crossfit_workout.name
+        %td= workout.mileage
+        - if user_signed_in?
+          %td
+            = link_to 'Edit', edit_user_workout_path(@user, workout), :class => 'btn btn-mini'
+            = link_to 'Destroy', user_workout_path(@user, workout), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+- if user_signed_in?
+  = link_to "New Workout", new_user_workout_path(@user), :class => 'btn btn-primary'
