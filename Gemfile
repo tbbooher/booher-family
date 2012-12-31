@@ -84,3 +84,4 @@ gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
 gem 'money-rails', git: 'git://github.com/RubyMoney/money-rails.git'
 gem 'mongo', :require => 'mongo'
 gem 'bson_ext'
+gem 'taps'
