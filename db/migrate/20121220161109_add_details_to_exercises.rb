@@ -12,7 +12,7 @@ class AddDetailsToExercises < ActiveRecord::Migration
     add_column :users, :weight, :decimal
 
     # now to clean up
-    remove_column :exercises, :rom
+    #remove_column :exercises, :rom
     remove_column :exercises, :weight
     remove_column :exercises, :distance
   end

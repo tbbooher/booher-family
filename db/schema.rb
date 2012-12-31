@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228222753) do
+ActiveRecord::Schema.define(:version => 20121231022226) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(:version => 20121228222753) do
 
   create_table "journal_entries", :force => true do |t|
     t.date     "entry_date"
-    t.string   "description"
+    t.text     "description"
     t.integer  "purity"
     t.boolean  "lack_of_discipline"
     t.integer  "fitness"
@@ -128,10 +128,10 @@ ActiveRecord::Schema.define(:version => 20121228222753) do
     t.boolean  "flossed"
     t.boolean  "workout"
     t.string   "health_statement"
-    t.string   "to_do"
-    t.string   "memory_verse"
+    t.text     "to_do"
+    t.text     "memory_verse"
     t.string   "friends_in_focus"
-    t.string   "problem_of_the_day"
+    t.text     "problem_of_the_day"
     t.boolean  "problem_attempted"
     t.boolean  "problem_solved"
     t.datetime "created_at",         :null => false
