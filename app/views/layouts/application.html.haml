@@ -34,14 +34,10 @@
               - else
                 %li= link_to "Calendar", calendar_display_path(current_user.id, Date.today.to_s(:for_cal))
                 %li= link_to "Goals", user_goals_path(current_user)
-                %li= link_to "Trips", trips_path
-                %li= link_to "Locations", locations_path
-                %li= link_to "Time Slots", user_time_slots_path(current_user)
                 %li= link_to "Lost Items", user_lost_items_path(current_user)
-                %li= link_to "Family Goals", family_goals_path
                 %li= link_to "Principles", principles_path
-                %li= link_to "Sign out", destroy_user_session_path, method: :delete
                 %li= link_to current_user.name, edit_user_registration_path
+                %li= link_to "Sign out", destroy_user_session_path, method: :delete
 
     .container-fluid
 
@@ -50,7 +46,7 @@
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header Members
-              - @users.each do |user|
+              - @users.sort_by{|u| u.id}.each do |user|
                 %li= link_to user.name, user_path(user)
         .span9
           = bootstrap_flash

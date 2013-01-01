@@ -82,9 +82,16 @@ namespace :data do
     db     = client['booher_life_development']
     coll   = db['journal_entries']
 
+    JournalEntry.destroy_all
+
     coll.find.each do |j|
       je = JournalEntry.new
-      je.entry_date = j["entry_date"]
+      date_string = j["entry_date"].to_s
+      puts "Parsing #{date_string} with id #{j["_id"]}"
+      if date_string.empty?
+        date_string = Date.today.to_s
+      end
+      je.entry_date = Date.parse(date_string)
       je.description = j["description"]
       je.purity = j["purity"]
       je.lack_of_discipline = j["lack_of_discipline"]
@@ -105,8 +112,30 @@ namespace :data do
       je.problem_of_the_day = j["problem_of_the_day"]
       je.problem_attempted = j["problem_attempted"]
       je.problem_solved = j["problem_solved"]
-      je.save rescue "#{j["entry_date"]} can not be saved"
-      puts "#{j["entry_date"]} saved"
+      #je.created_at = Date.parse(j["created_at"])
+      je.save!
+      puts "#{j["entry_date"]} saved #{je.id}"
+    end
+
+  end
+
+  desc "examine journal entries in the mongo db"
+  task :describe_mongo_data => :environment do
+
+    include Mongo
+
+    client = MongoClient.new('localhost', 27017)
+    db     = client['booher_life_development']
+    coll   = db['journal_entries']
+
+    JournalEntry.destroy_all
+
+    coll.find.each do |j|
+      #je = JournalEntry.new
+      date_string = j["entry_date"].to_s
+      puts "Examining #{date_string}"
+      puts "health: #{j["health_statement"].to_s.size}"
+      puts "friends: #{j["friends_in_focus"].to_s.size}"
     end
 
   end
