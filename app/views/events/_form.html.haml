@@ -1,8 +1,8 @@
-= simple_form_for [@user, @event], :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @event, :html => { :class => 'form-horizontal' } do |f|
   %fieldset
     = f.input :title
-    = f.input :starts_at
-    = f.input :ends_at
+    = f.input :starts_at, as: :string,  input_html: {data: {'datepicker-format' => "dd/mm/yyyy hh:ii:ss"}}
+    = f.input :ends_at, as: :string,  input_html: {data: {'datepicker-format' => "dd/mm/yyyy hh:ii:ss"}}
     = f.input :all_day
     = f.input :description
     = f.input :time_slot_id
@@ -10,4 +10,4 @@
     = f.input :user_id, as: :hidden
   .form-actions
     = f.button :submit, :class => 'btn-primary btn'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), user_events_path(@user), :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), events_path, :class => 'btn'

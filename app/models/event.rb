@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :time_slot
   belongs_to :event_type
-  belongs_to :user
+  #belongs_to :user
   attr_accessible :all_day, :description, :ends_at, :starts_at, :title, :time_slot_id, :event_type_id, :user_id
 
   validates :title, presence: true
@@ -36,7 +36,7 @@ class Event < ActiveRecord::Base
         :end => ends_at.rfc822,
         :allDay => self.all_day,
         :recurring => false,
-        :url => Rails.application.routes.url_helpers.user_event_path(self.user, id),
+        :url => Rails.application.routes.url_helpers.event_path(id),
         :className => self.event_type ? self.event_type.name : ""
     }
   end

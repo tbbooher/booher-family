@@ -1,3 +1,17 @@
+             journal_entries GET    /journal_entries(.:format)                                           journal_entries#index
+                             POST   /journal_entries(.:format)                                           journal_entries#create
+           new_journal_entry GET    /journal_entries/new(.:format)                                       journal_entries#new
+          edit_journal_entry GET    /journal_entries/:id/edit(.:format)                                  journal_entries#edit
+               journal_entry GET    /journal_entries/:id(.:format)                                       journal_entries#show
+                             PUT    /journal_entries/:id(.:format)                                       journal_entries#update
+                             DELETE /journal_entries/:id(.:format)                                       journal_entries#destroy
+                  components GET    /components(.:format)                                                components#index
+                             POST   /components(.:format)                                                components#create
+               new_component GET    /components/new(.:format)                                            components#new
+              edit_component GET    /components/:id/edit(.:format)                                       components#edit
+                   component GET    /components/:id(.:format)                                            components#show
+                             PUT    /components/:id(.:format)                                            components#update
+                             DELETE /components/:id(.:format)                                            components#destroy
                         reps GET    /reps(.:format)                                                      reps#index
                              POST   /reps(.:format)                                                      reps#create
                      new_rep GET    /reps/new(.:format)                                                  reps#new
@@ -84,6 +98,13 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
       edit_user_registration GET    /users/edit(.:format)                                                registrations#edit
                              PUT    /users(.:format)                                                     registrations#update
                              DELETE /users(.:format)                                                     registrations#destroy
+                      events GET    /events(.:format)                                                    events#index
+                             POST   /events(.:format)                                                    events#create
+                   new_event GET    /events/new(.:format)                                                events#new
+                  edit_event GET    /events/:id/edit(.:format)                                           events#edit
+                       event GET    /events/:id(.:format)                                                events#show
+                             PUT    /events/:id(.:format)                                                events#update
+                             DELETE /events/:id(.:format)                                                events#destroy
                   user_goals GET    /users/:user_id/goals(.:format)                                      goals#index
                              POST   /users/:user_id/goals(.:format)                                      goals#create
                new_user_goal GET    /users/:user_id/goals/new(.:format)                                  goals#new
@@ -98,13 +119,6 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
               user_lost_item GET    /users/:user_id/lost_items/:id(.:format)                             lost_items#show
                              PUT    /users/:user_id/lost_items/:id(.:format)                             lost_items#update
                              DELETE /users/:user_id/lost_items/:id(.:format)                             lost_items#destroy
-                 user_events GET    /users/:user_id/events(.:format)                                     events#index
-                             POST   /users/:user_id/events(.:format)                                     events#create
-              new_user_event GET    /users/:user_id/events/new(.:format)                                 events#new
-             edit_user_event GET    /users/:user_id/events/:id/edit(.:format)                            events#edit
-                  user_event GET    /users/:user_id/events/:id(.:format)                                 events#show
-                             PUT    /users/:user_id/events/:id(.:format)                                 events#update
-                             DELETE /users/:user_id/events/:id(.:format)                                 events#destroy
              user_time_slots GET    /users/:user_id/time_slots(.:format)                                 time_slots#index
                              POST   /users/:user_id/time_slots(.:format)                                 time_slots#create
           new_user_time_slot GET    /users/:user_id/time_slots/new(.:format)                             time_slots#new

@@ -34,10 +34,11 @@ BooherFamily::Application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }
 
+  resources :events
+
   resources :users do
     resources :goals
     resources :lost_items
-    resources :events
     resources :time_slots
     resources :workouts
   end
