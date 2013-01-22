@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121231022226) do
+ActiveRecord::Schema.define(:version => 20130121215253) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -91,6 +91,14 @@ ActiveRecord::Schema.define(:version => 20121231022226) do
     t.string   "bw_distance_moved_2"
     t.string   "weight_distance_moved"
     t.string   "bw_work_done_per_rep"
+  end
+
+  create_table "expenses", :force => true do |t|
+    t.integer  "amount"
+    t.datetime "date"
+    t.integer  "category"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "family_goals", :force => true do |t|

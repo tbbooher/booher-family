@@ -1,5 +1,5 @@
 class TimeSlot < ActiveRecord::Base
-  belongs_to :event_type
+
   belongs_to :user
   has_many :events
 
@@ -9,5 +9,13 @@ class TimeSlot < ActiveRecord::Base
   validates :ends_at, presence: true
 
   validates :title, presence: true
+
+  def event_type_name
+    unless self.event_type_id.nil?
+      Event::TYPES[self.event_type_id]
+    else
+      "none"
+    end
+  end
 
 end

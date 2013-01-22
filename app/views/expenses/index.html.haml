@@ -1,0 +1,22 @@
+- title "Expenses"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Amount
+      %th Date
+      %th Category
+      %th Created At
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @expenses.each do |expense|
+      %tr
+        %td= link_to expense.amount, user_expense_path(@user, expense)
+        %td= expense.date
+        %td= expense.category
+        %td=l expense.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_expense_path(@user, expense), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), user_expense_path(@user, expense), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_expense_path, :class => 'btn btn-primary'

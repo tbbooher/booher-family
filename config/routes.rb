@@ -2,15 +2,11 @@ BooherFamily::Application.routes.draw do
 
   resources :journal_entries
 
-
   resources :components
-
 
   resources :reps
 
-
   resources :exercises
-
 
   resources :crossfit_workouts
 
@@ -28,83 +24,28 @@ BooherFamily::Application.routes.draw do
   resources :principles
   resources :family_goals
 
-
   get "home/index"
   get "calendar/work_history"
 
   devise_for :users, controllers: { registrations: "registrations" }
 
   resources :events
+  resources :time_slots
 
   resources :users do
     resources :goals
     resources :lost_items
-    resources :time_slots
     resources :workouts
+    resources :expenses
   end
 
-  resources :event_types
-
   # calendar views
-  match "calendar/index(/:user_id/month/:month_string)", to: "calendar#index", as: :calendar_display
-  match "calendar/populate/:month_string/user/:user_id", to: "calendar#populate"
-  match "calendar/empty_out_month/:month_string/user/:user_id", to: "calendar#empty_out_month"
-  match "calendar/serve_events/:user_id", to: "calendar#serve_events"
+  match "calendar/index(/month/:month_string)", to: "calendar#index", as: :calendar_display
+  match "calendar/populate/:month_string", to: "calendar#populate"
+  match "calendar/empty_out_month/:month_string", to: "calendar#empty_out_month"
+  match "calendar/serve_events/", to: "calendar#serve_events"
+  match "calendar/weekly_hours/:week_start", to: "calendar#weekly_hours"
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
   root :to => 'home#index'
 
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end

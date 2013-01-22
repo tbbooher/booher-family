@@ -3,7 +3,7 @@
 %p
   %strong
     Total work time in week:
-  = distance_of_time_in_words @user.total_duration_for_time_slots
+  = distance_of_time_in_words Event.total_duration_for_time_slots
 
 %table.table.table-striped
   %thead
@@ -23,8 +23,8 @@
   %tbody
     - @time_slots.each do |time_slot|
       %tr
-        %td= link_to time_slot.title, user_time_slot_path(@user, time_slot)
-        %td= time_slot.event_type.name unless time_slot.event_type.nil?
+        %td= link_to time_slot.title, time_slot_path(time_slot)
+        %td= time_slot.event_type_name
         %td{class: "#{s time_slot.monday}"}
         %td{class: "#{s time_slot.tuesday}"}
         %td{class: "#{s time_slot.wednesday}"}
@@ -35,7 +35,7 @@
         %td= time_slot.starts_at.to_s(:time)
         %td= time_slot.ends_at.to_s(:time)
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_time_slot_path(@user, time_slot), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), user_time_slot_path(@user, time_slot), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_time_slot_path(time_slot), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), time_slot_path(time_slot), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_user_time_slot_path(@user), :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_time_slot_path, :class => 'btn btn-primary'

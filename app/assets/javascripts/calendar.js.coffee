@@ -7,6 +7,8 @@
 # http://arshaw.com/fullcalendar/docs/event_ui/eventResize/
 # http://arshaw.com/fullcalendar/docs/mouse/eventClick/
 # would like a lightbox here.
+
+
 updateEvent = (the_event) ->
   $.update "/events/" + the_event.id,
     event:
@@ -16,11 +18,14 @@ updateEvent = (the_event) ->
       description: the_event.description
   , (response) ->
     # maybe put an alert on the page that the update has happened
+    $.get('/calendar/weekly_hours/' + encodeURIComponent(the_event.start)
+    , (data) ->
+      $("#time").html(Math.round(data.hours*100)/100 + ' hours for week starting ' + data.week_start )
+    )
     return false
 
 $(document).ready ->
   months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
-  user_id = $("#calendar").data('user')
   $("#calendar").fullCalendar
     editable: true
     header:
@@ -38,20 +43,18 @@ $(document).ready ->
       d = $("#calendar").fullCalendar("getDate")
       month_string = months[d.getMonth()] + "-" + d.getFullYear()
       $("#populate").html "Populate " + month_string
-      # match "calendar/populate/:month_string/user/:user_id"
-      $("#populate").attr "href", "/calendar/populate/" + month_string + "/user/" + user_id
-      $("#empty").attr "href", "/calendar/empty_out_month/" + month_string + "/user/" + user_id
+      $("#populate").attr "href", "/calendar/populate/" + month_string
+      $("#empty").attr "href", "/calendar/empty_out_month/" + month_string
       $("#empty").html "Delete events for " + month_string
-      $("#timeslots").attr "href", "/users/" + user_id + "/time_slots/"
+      $("#timeslots").attr "href", "/time_slots/"
       $("#timeslots").html "Time Slots"
     eventSources: [
-      url: "/calendar/serve_events/" + user_id
+      url: "/calendar/serve_events/"
       textColor: "black"
       ignoreTimezone: false
     ]
     timeFormat: "h:mm "
     dragOpacity: "0.5"
-
 
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
       updateEvent event

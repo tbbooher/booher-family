@@ -105,6 +105,13 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
                        event GET    /events/:id(.:format)                                                events#show
                              PUT    /events/:id(.:format)                                                events#update
                              DELETE /events/:id(.:format)                                                events#destroy
+                  time_slots GET    /time_slots(.:format)                                                time_slots#index
+                             POST   /time_slots(.:format)                                                time_slots#create
+               new_time_slot GET    /time_slots/new(.:format)                                            time_slots#new
+              edit_time_slot GET    /time_slots/:id/edit(.:format)                                       time_slots#edit
+                   time_slot GET    /time_slots/:id(.:format)                                            time_slots#show
+                             PUT    /time_slots/:id(.:format)                                            time_slots#update
+                             DELETE /time_slots/:id(.:format)                                            time_slots#destroy
                   user_goals GET    /users/:user_id/goals(.:format)                                      goals#index
                              POST   /users/:user_id/goals(.:format)                                      goals#create
                new_user_goal GET    /users/:user_id/goals/new(.:format)                                  goals#new
@@ -119,13 +126,6 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
               user_lost_item GET    /users/:user_id/lost_items/:id(.:format)                             lost_items#show
                              PUT    /users/:user_id/lost_items/:id(.:format)                             lost_items#update
                              DELETE /users/:user_id/lost_items/:id(.:format)                             lost_items#destroy
-             user_time_slots GET    /users/:user_id/time_slots(.:format)                                 time_slots#index
-                             POST   /users/:user_id/time_slots(.:format)                                 time_slots#create
-          new_user_time_slot GET    /users/:user_id/time_slots/new(.:format)                             time_slots#new
-         edit_user_time_slot GET    /users/:user_id/time_slots/:id/edit(.:format)                        time_slots#edit
-              user_time_slot GET    /users/:user_id/time_slots/:id(.:format)                             time_slots#show
-                             PUT    /users/:user_id/time_slots/:id(.:format)                             time_slots#update
-                             DELETE /users/:user_id/time_slots/:id(.:format)                             time_slots#destroy
                user_workouts GET    /users/:user_id/workouts(.:format)                                   workouts#index
                              POST   /users/:user_id/workouts(.:format)                                   workouts#create
             new_user_workout GET    /users/:user_id/workouts/new(.:format)                               workouts#new
@@ -133,6 +133,13 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
                 user_workout GET    /users/:user_id/workouts/:id(.:format)                               workouts#show
                              PUT    /users/:user_id/workouts/:id(.:format)                               workouts#update
                              DELETE /users/:user_id/workouts/:id(.:format)                               workouts#destroy
+               user_expenses GET    /users/:user_id/expenses(.:format)                                   expenses#index
+                             POST   /users/:user_id/expenses(.:format)                                   expenses#create
+            new_user_expense GET    /users/:user_id/expenses/new(.:format)                               expenses#new
+           edit_user_expense GET    /users/:user_id/expenses/:id/edit(.:format)                          expenses#edit
+                user_expense GET    /users/:user_id/expenses/:id(.:format)                               expenses#show
+                             PUT    /users/:user_id/expenses/:id(.:format)                               expenses#update
+                             DELETE /users/:user_id/expenses/:id(.:format)                               expenses#destroy
                        users GET    /users(.:format)                                                     users#index
                              POST   /users(.:format)                                                     users#create
                     new_user GET    /users/new(.:format)                                                 users#new
@@ -147,10 +154,10 @@ edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_
                   event_type GET    /event_types/:id(.:format)                                           event_types#show
                              PUT    /event_types/:id(.:format)                                           event_types#update
                              DELETE /event_types/:id(.:format)                                           event_types#destroy
-            calendar_display        /calendar/index(/:user_id/month/:month_string)(.:format)             calendar#index
-                                    /calendar/populate/:month_string/user/:user_id(.:format)             calendar#populate
-                                    /calendar/empty_out_month/:month_string/user/:user_id(.:format)      calendar#empty_out_month
-                                    /calendar/serve_events/:user_id(.:format)                            calendar#serve_events
+            calendar_display        /calendar/index(/month/:month_string)(.:format)                      calendar#index
+                                    /calendar/populate/:month_string(.:format)                           calendar#populate
+                                    /calendar/empty_out_month/:month_string(.:format)                    calendar#empty_out_month
+       calendar_serve_events        /calendar/serve_events(.:format)                                     calendar#serve_events
                         root        /                                                                    home#index
 
 Routes for Ckeditor::Engine:

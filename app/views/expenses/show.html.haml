@@ -1,0 +1,22 @@
+
+- title "Expense"
+
+%p
+  %strong Amount
+  %br
+  = @expense.amount
+
+%p
+  %strong Date
+  %br
+  = @expense.date
+
+%p
+  %strong Category
+  %br
+  = @expense.category_name
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), expenses_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_expense_path(@expense), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), expense_path(@expense), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

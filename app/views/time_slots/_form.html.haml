@@ -1,7 +1,7 @@
-= simple_form_for [@user, @time_slot], :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for @time_slot, :html => { :class => 'form-horizontal' } do |f|
   = f.input :user_id, as: :hidden
   = f.input :title
-  = f.association :event_type #, label_method: :name
+  = f.input :event_type, collection: Event::TYPES.map{|k,v| [v,k]}, include_blank: false
   = f.input :monday
   = f.input :tuesday
   = f.input :wednesday
@@ -9,8 +9,12 @@
   = f.input :friday
   = f.input :saturday
   = f.input :sunday
-  = f.input :starts_at, as: :string
-  = f.input :ends_at, as: :string
+  = f.input :starts_at, as: :string,  input_html: {data: {'datepicker-format' => "mm/dd/yyyy hh:ii"}}
+  = f.input :ends_at, as: :string,  input_html: {data: {'datepicker-format' => "mm/dd/yyyy hh:ii"}}
+  .control-group.string#duration_area{style: "display: none;"}
+    %label.string.control-label{for:"duration"} Duration
+    .controls
+      %input#duration{disabled: true}
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), user_time_slots_path(@user), :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), time_slots_path, :class => 'btn'
