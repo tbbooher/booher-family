@@ -30,7 +30,6 @@ BooherFamily::Application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   resources :events
-  resources :time_slots
 
   resources :users do
     resources :goals
@@ -45,6 +44,8 @@ BooherFamily::Application.routes.draw do
   match "calendar/empty_out_month/:month_string", to: "calendar#empty_out_month"
   match "calendar/serve_events/", to: "calendar#serve_events"
   match "calendar/weekly_hours/:week_start", to: "calendar#weekly_hours"
+  get "calendar/build_week"
+  post "calendar/add_week"
 
   root :to => 'home#index'
 

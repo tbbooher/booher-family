@@ -9,7 +9,6 @@
         %input#duration{disabled: true}
     = f.input :all_day
     = f.input :description
-    = f.input :time_slot_id
     = f.input :event_type_id, collection: Event::TYPES.map{|k,v| [v,k]}, include_blank: false
   .form-actions
     = f.button :submit, :class => 'btn-primary btn'

@@ -6,19 +6,18 @@
   Loading . . .
 </div>
 
-<div id="time">
-
-</div>
-
 <div class="navbar">
   <div class="navbar-inner">
     <ul class="nav">
       <li><%=link_to 'New Event', new_event_path  %></li>
-      <li><%=link_to "loading . . . ", "",{:id => "populate"} %></li>
       <li><%=link_to "loading . . . ", "",  {:confirm => "You are about to delete all events for this month, are you sure?", :id => "empty"} %></li>
-      <li><%=link_to "loading . . . ", "", {:id => "timeslots"} %></li>
+      <li><%=link_to "Build Week", "/calendar/build_week/" %></li>
     </ul>
   </div>
+</div>
+
+<div id="time" style="padding:10px 0;">
+  <%= @time_worked %>
 </div>
 
 <div id='calendar' data-year="<%= @year %>" data-month="<%= @month %>"></div>

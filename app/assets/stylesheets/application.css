@@ -29,7 +29,7 @@ footer {
 }
 
 /* EVENT COLORS */
-.Important, .fc-agenda .Important .fc-event-time, .Important a {
+.aupair, .fc-agenda .Important .fc-event-time, .Important a {
     background-color:burlywood !important; /* background color */
     border-color: black;     /* border color */
     color: black;           /* text color */

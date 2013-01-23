@@ -8,7 +8,6 @@
       %th ends at
       %th all day
       %th description
-      %th time slot
       %th event type
       %th created at
       %th=t '.actions', :default => t("helpers.actions")
@@ -20,7 +19,6 @@
         %td= event.ends_at
         %td= event.all_day
         %td= event.description
-        %td= event.time_slot_id
         %td= event.event_type_id
         %td=l event.created_at
         %td

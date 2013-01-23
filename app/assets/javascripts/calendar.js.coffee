@@ -25,6 +25,7 @@ updateEvent = (the_event) ->
     return false
 
 $(document).ready ->
+
   months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
   $("#calendar").fullCalendar
     editable: true
@@ -42,16 +43,12 @@ $(document).ready ->
         $("#loading").hide()
       d = $("#calendar").fullCalendar("getDate")
       month_string = months[d.getMonth()] + "-" + d.getFullYear()
-      $("#populate").html "Populate " + month_string
-      $("#populate").attr "href", "/calendar/populate/" + month_string
       $("#empty").attr "href", "/calendar/empty_out_month/" + month_string
       $("#empty").html "Delete events for " + month_string
-      $("#timeslots").attr "href", "/time_slots/"
-      $("#timeslots").html "Time Slots"
     eventSources: [
       url: "/calendar/serve_events/"
       textColor: "black"
-      ignoreTimezone: false
+      ignoreTimezone: true
     ]
     timeFormat: "h:mm "
     dragOpacity: "0.5"

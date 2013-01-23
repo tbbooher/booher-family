@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
-  belongs_to :time_slot
 
-  attr_accessible :all_day, :description, :ends_at, :starts_at, :title, :time_slot_id, :event_type_id
+  attr_accessible :all_day, :description, :ends_at, :starts_at, :title, :event_type_id
 
   validates :title, presence: true
   validates :starts_at, presence: true
@@ -25,8 +24,8 @@ class Event < ActiveRecord::Base
         :id => self.id,
         :title => self.title,
         :description => self.description || "",
-        :start => starts_at.rfc822,
-        :end => ends_at.rfc822,
+        :start => starts_at.iso8601,
+        :end => ends_at.iso8601,
         :allDay => self.all_day,
         :recurring => false,
         :url => Rails.application.routes.url_helpers.event_path(id),
@@ -70,63 +69,8 @@ class Event < ActiveRecord::Base
       duration
     end
 
-    def populate_next_two_weeks
-      start_day = Date.today.beginning_of_week(:sunday)
-      end_day = start_day.end_of_week(:sunday)+7
-      TimeSlot.all.each do |ts|
-        (start_day..end_day).to_a.each do |day|
-          starts_at = Time.local(day.year,day.month,day.day,ts.starts_at.hour,ts.starts_at.min,0)
-          if Event.date_match(ts,starts_at.strftime('%A')) && Event.does_not_exist(ts.id,starts_at)
-            e = Event.new
-            e.starts_at = Time.local(day.year,day.month,day.day, ts.starts_at.hour, ts.starts_at.min)
-            e.ends_at = Time.local(day.year,day.month,day.day, ts.ends_at.hour, ts.ends_at.min)
-            e.time_slot_id = ts.id
-            e.event_type_id = 1
-            e.title = ts.title.blank? ? "no title" : ts.title
-            e.save!
-          end
-        end
-      end
-    end
-
-    # /* special code */
-
-    def date_match(ts, day_name)
-      Date::DAYNAMES.each do |weekday|
-        return true if (ts.send(weekday.downcase) && (weekday == day_name))
-      end
-      return false
-    end
-
-    def does_not_exist(ts_id, the_date)
-      # we want to make sure the event exists on 'day'
-      !Event.find_existing_time_slots_in_date(the_date).include?(ts_id)
-    end
-
-    # /* from controller */
-
     def format_date(date_time)
       Time.at(date_time.to_i).to_formatted_s(:db)
-    end
-
-    def months_available
-      dates = Event.all.map{|e| e.starts_at.to_date}
-      if dates.empty?
-        # we have an error
-        return []
-      else
-        my_month = dates.min
-        months = [my_month]
-        while my_month.beginning_of_month < dates.max.beginning_of_month
-          my_month = my_month.next_month
-          months << my_month
-        end
-        return months
-      end
-    end
-
-    def find_existing_time_slots_in_date(dt)
-      Event.where(["starts_at >= '#{dt.beginning_of_day.to_s(:db)}' and ends_at <= '#{dt.end_of_day.to_s(:db)}'"] ).map(&:time_slot_id)
     end
 
   end

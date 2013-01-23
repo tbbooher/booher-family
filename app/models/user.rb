@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :goals
   has_many :lost_items
   has_many :events
-  has_many :time_slots
   has_many :workouts
 
 end
