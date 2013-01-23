@@ -4,7 +4,7 @@
 %p
   %strong Amount
   %br
-  = @expense.amount
+  = humanized_money_with_symbol @expense.amount
 
 %p
   %strong Date

@@ -1,0 +1,46 @@
+- title "Settlement"
+
+%p
+  Go to
+  = link_to "all expenses", expenses_path
+
+- if @expenses.size == 0
+  %h3 All settled up!
+  %p{style: "margin-left: auto; margin-right: auto; width: 380px"}
+    = image_tag "settled_up.gif"
+- else
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Date
+        %th Category
+        %th Payer
+        %th Description
+        %th Amount
+
+    - @expenses.each do |e|
+      %tr
+        %td= e.date.strftime("%a, %e %b")
+        %td= e.category_name
+        %td= e.payer_name
+        %td= truncate(e.description)
+        %td= humanized_money_with_symbol e.amount
+
+  -if @owed < 0
+    %p
+      Tim and Chrissy owe Vivi:
+      %strong
+        = @owed
+  - else
+    %p
+      Vivi owes Tim and Chrissy
+      %strong
+        = @owed
+
+  .well
+    = simple_form_for :settlement, {:html => { :class => 'form-horizontal' }, url: "/expenses/settle_up"} do |f|
+      = f.input :amount
+      .form-actions
+        = f.button :submit, 'settle up', class: 'btn btn-primary'
+
+

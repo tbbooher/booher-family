@@ -31,6 +31,8 @@ BooherFamily::Application.routes.draw do
 
   resources :events
 
+  get "expenses/settlement"
+  post "expenses/settle_up"
   resources :expenses
 
   resources :users do

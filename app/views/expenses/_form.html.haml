@@ -4,6 +4,7 @@
   = f.input :description
   = f.input :category, collection: Expense::CATEGORIES.map{|k,v| [v, k]}, include_blank: false
   = f.input :payer, collection: Expense::PAYERS.map{|k,v| [v.to_s.humanize, k]}, include_blank: false
+  = f.input :paid
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), expenses_path, :class => 'btn'

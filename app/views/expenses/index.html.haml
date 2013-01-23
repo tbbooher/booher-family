@@ -6,17 +6,22 @@
       %th Amount
       %th Date
       %th Category
-      %th Created At
-      %th=t '.actions', :default => t("helpers.actions")
+      %th Paid
+      %th Created On
+      %th Actions
   %tbody
     - @expenses.each do |expense|
       %tr
-        %td= link_to expense.amount, user_expense_path(@user, expense)
-        %td= expense.date
-        %td= expense.category
-        %td=l expense.created_at
+        %td= link_to expense.amount, edit_expense_path(expense)
+        %td= expense.date.strftime("%a, %e %b")
+        %td= expense.category_name
+        %td= expense.paid ? "true" : "false"
+        %td= expense.created_at.strftime("%a, %e %b")
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_user_expense_path(@user, expense), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), user_expense_path(@user, expense), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to 'destroy', expense_path(expense), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_expense_path, :class => 'btn btn-primary'
+%p
+  = link_to 'New expense', new_expense_path, :class => 'btn btn-primary'
+  = link_to "Settle up", "/expenses/settlement", class: "btn"
+
+
