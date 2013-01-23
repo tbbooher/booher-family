@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121215253) do
+ActiveRecord::Schema.define(:version => 20130123025118) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -57,28 +57,18 @@ ActiveRecord::Schema.define(:version => 20130121215253) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "event_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.boolean  "all_day"
     t.text     "description"
-    t.integer  "time_slot_id"
     t.integer  "event_type_id"
-    t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
   add_index "events", ["event_type_id"], :name => "index_events_on_event_type_id"
-  add_index "events", ["time_slot_id"], :name => "index_events_on_time_slot_id"
-  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "exercises", :force => true do |t|
     t.datetime "created_at",              :null => false
@@ -187,26 +177,6 @@ ActiveRecord::Schema.define(:version => 20130121215253) do
     t.float    "weight"
     t.integer  "exercise_type"
   end
-
-  create_table "time_slots", :force => true do |t|
-    t.string   "title"
-    t.integer  "event_type_id"
-    t.boolean  "monday"
-    t.boolean  "tuesday"
-    t.boolean  "wednesday"
-    t.boolean  "thursday"
-    t.boolean  "friday"
-    t.boolean  "saturday"
-    t.boolean  "sunday"
-    t.integer  "user_id"
-    t.time     "starts_at"
-    t.time     "ends_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "time_slots", ["event_type_id"], :name => "index_time_slots_on_event_type_id"
-  add_index "time_slots", ["user_id"], :name => "index_time_slots_on_user_id"
 
   create_table "trip_days", :force => true do |t|
     t.date     "day_date"
