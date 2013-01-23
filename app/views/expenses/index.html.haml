@@ -4,6 +4,7 @@
   %thead
     %tr
       %th Amount
+      %th Payee
       %th Date
       %th Category
       %th Paid
@@ -13,6 +14,7 @@
     - @expenses.each do |expense|
       %tr
         %td= link_to expense.amount, edit_expense_path(expense)
+        %td= expense.payer_name.humanize
         %td= expense.date.strftime("%a, %e %b")
         %td= expense.category_name
         %td= expense.paid ? "true" : "false"
