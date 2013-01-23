@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123025118) do
+ActiveRecord::Schema.define(:version => 20130123031804) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -87,8 +87,10 @@ ActiveRecord::Schema.define(:version => 20130123025118) do
     t.integer  "amount"
     t.datetime "date"
     t.integer  "category"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "payer"
+    t.text     "description"
   end
 
   create_table "family_goals", :force => true do |t|

@@ -31,11 +31,12 @@ BooherFamily::Application.routes.draw do
 
   resources :events
 
+  resources :expenses
+
   resources :users do
     resources :goals
     resources :lost_items
     resources :workouts
-    resources :expenses
   end
 
   # calendar views
