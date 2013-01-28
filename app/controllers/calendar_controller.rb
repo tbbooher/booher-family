@@ -70,7 +70,7 @@ class CalendarController < ApplicationController
 
   def weekly_hours
     week_start = Date.parse(params[:week_start]).beginning_of_week(start_day = :sunday)
-    week_end = week_start.next_week.beginning_of_week(start_day = :sunday)
+    week_end = week_start.next_week(day = :sunday).beginning_of_week(start_day = :sunday)
     render json: {hours: Event.seconds_worked(week_start, week_end)/(60*60), week_start: week_start, week_end: week_end}
   end
 
