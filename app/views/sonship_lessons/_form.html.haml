@@ -1,0 +1,9 @@
+= simple_form_for [@sonship_class, @sonship_lesson], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :start_date
+  = f.input :title
+  = f.input :goals
+  = f.input :impact
+  = f.input :memory_verse
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), sonship_class_sonship_class_sonship_lessons_path(@sonship_class), :class => 'btn'

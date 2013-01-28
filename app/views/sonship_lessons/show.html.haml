@@ -1,0 +1,37 @@
+- model_class = SonshipLesson
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:start_date) + ':'
+  %br
+  = @sonship_lesson.start_date
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  = @sonship_lesson.title
+%p
+  %strong= model_class.human_attribute_name(:goals) + ':'
+  %br
+  = @sonship_lesson.goals
+%p
+  %strong= model_class.human_attribute_name(:impact) + ':'
+  %br
+  = @sonship_lesson.impact
+%p
+  %strong= model_class.human_attribute_name(:memory_verse) + ':'
+  %br
+  = @sonship_lesson.memory_verse
+
+%p
+  %strong Questions
+  %dl
+    - @sonship_lesson.sonship_questions.each do |question|
+      %dt= link_to question.question, sonship_lesson_sonship_question_path(@sonship_lesson, question)
+      %dd= question.answer
+
+.form-actions
+  = link_to "New Question", new_sonship_lesson_sonship_question_path(@sonship_class), class: 'btn'
+  = link_to t('.back', :default => t("helpers.links.back")), sonship_class_sonship_lessons_path(@sonship_class), :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_sonship_class_sonship_lesson_path(@sonship_class, @sonship_lesson), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), sonship_class_sonship_lesson_path(@sonship_class, @sonship_lesson), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

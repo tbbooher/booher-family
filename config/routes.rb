@@ -1,5 +1,6 @@
 BooherFamily::Application.routes.draw do
 
+
   resources :journal_entries
 
   resources :components
@@ -39,6 +40,15 @@ BooherFamily::Application.routes.draw do
     resources :goals
     resources :lost_items
     resources :workouts
+    resources :sonship_classes
+  end
+
+  resources :sonship_classes do
+    resources :sonship_lessons
+  end
+
+  resources :sonship_lessons do
+    resources :sonship_questions
   end
 
   # calendar views

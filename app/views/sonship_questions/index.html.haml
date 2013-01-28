@@ -1,0 +1,22 @@
+- model_class = SonshipQuestion
+.page-header
+  %h1= "Questions for #{@sonship_lesson.title}"
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:question)
+      %th= model_class.human_attribute_name(:sonship_lesson_id)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @sonship_questions.each do |sonship_question|
+      %tr
+        %td= link_to sonship_question.question, sonship_lesson_sonship_question_path(@sonship_lesson,sonship_question)
+        %td= sonship_question.sonship_lesson.title
+        %td=l sonship_question.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_sonship_lesson_sonship_question_path(@sonship_lesson,sonship_question), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), sonship_lesson_sonship_question_path(@sonship_lesson,sonship_question), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+
+= link_to t('.new', :default => t("helpers.links.new")), new_sonship_lesson_sonship_question_path(@sonship_lesson), :class => 'btn btn-primary'

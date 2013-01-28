@@ -12,5 +12,6 @@ class User < ActiveRecord::Base
   has_many :lost_items
   has_many :events
   has_many :workouts
+  has_many :sonship_classes
 
 end

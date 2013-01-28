@@ -1,0 +1,21 @@
+- model_class = SonshipQuestion
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:sonship_lesson_id) + ':'
+  %br
+  = @sonship_question.sonship_lesson_id
+%p
+  %strong= model_class.human_attribute_name(:question) + ':'
+  %br
+  = @sonship_question.question
+%p
+  %strong= model_class.human_attribute_name(:answer) + ':'
+  %br
+  = @sonship_question.answer
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), sonship_lesson_sonship_questions_path(@sonship_lesson), :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_sonship_lesson_sonship_question_path(@sonship_lesson,@sonship_question), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), sonship_lesson_sonship_question_path(@sonship_lesson,@sonship_question), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

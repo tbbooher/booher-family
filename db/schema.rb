@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130123041804) do
+ActiveRecord::Schema.define(:version => 20130128114816) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -55,12 +55,6 @@ ActiveRecord::Schema.define(:version => 20130123041804) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "event_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -188,25 +182,31 @@ ActiveRecord::Schema.define(:version => 20130123041804) do
     t.integer  "exercise_type"
   end
 
-  create_table "time_slots", :force => true do |t|
-    t.string   "title"
-    t.integer  "event_type_id"
-    t.boolean  "monday"
-    t.boolean  "tuesday"
-    t.boolean  "wednesday"
-    t.boolean  "thursday"
-    t.boolean  "friday"
-    t.boolean  "saturday"
-    t.boolean  "sunday"
+  create_table "sonship_classes", :force => true do |t|
+    t.date     "start_date"
     t.integer  "user_id"
-    t.time     "starts_at"
-    t.time     "ends_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "time_slots", ["event_type_id"], :name => "index_time_slots_on_event_type_id"
-  add_index "time_slots", ["user_id"], :name => "index_time_slots_on_user_id"
+  create_table "sonship_lessons", :force => true do |t|
+    t.date     "start_date"
+    t.string   "title"
+    t.text     "goals"
+    t.text     "impact"
+    t.text     "memory_verse"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "sonship_class_id"
+  end
+
+  create_table "sonship_questions", :force => true do |t|
+    t.integer  "sonship_lesson_id"
+    t.text     "question"
+    t.text     "answer"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "trip_days", :force => true do |t|
     t.date     "day_date"
