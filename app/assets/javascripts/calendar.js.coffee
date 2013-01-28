@@ -50,7 +50,7 @@ $(document).ready ->
       textColor: "black"
       ignoreTimezone: true
     ]
-    timeFormat: "h:mm "
+    timeFormat: 'h:mm{ - h:mm}'
     dragOpacity: "0.5"
 
     eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
