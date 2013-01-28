@@ -3,6 +3,7 @@
 %p= link_to "#{@user.name}'s Goals", user_goals_path(@user), class: 'btn'
 %p= link_to "#{@user.lost_items.size} Lost Items", user_lost_items_path(@user), class: 'btn'
 %p= link_to "Calendar", calendar_display_path(@user.id, Date.today.to_s(:for_cal)), class: 'btn'
+%p= link_to "SonShip", user_sonship_classes_path(@user), class: 'btn'
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'
