@@ -7,7 +7,7 @@ class CalendarController < ApplicationController
     @year = @inspection_date.year
     @month = @inspection_date.month - 1
     week_start = Date.today.beginning_of_week(start_day = :sunday)
-    week_end = Date.today.next_week.beginning_of_week(start_day = :sunday)
+    week_end = Date.today.next_week(day = :sunday).beginning_of_week(start_day = :sunday)
     worked = Event.seconds_worked(week_start, week_end)/(60*60)
     @time_worked = "#{worked} hours for week starting #{week_start.to_s}"
   end

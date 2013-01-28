@@ -7,7 +7,6 @@ FactoryGirl.define do
     ends_at "2012-11-30 22:00:00 Z"
     all_day false
     description "Good time to get work done"
-    event_type_id 2
-    user_id 3
+    event_type_id 1
   end
 end
