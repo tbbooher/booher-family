@@ -14,7 +14,7 @@
   %strong Lessons
   %ul
     - @sonship_class.sonship_lessons.each do |lesson|
-      %li= link_to lesson.title, lesson
+      %li= link_to lesson.title, sonship_class_sonship_lesson_path(@sonship_class)
 
 
 .form-actions
