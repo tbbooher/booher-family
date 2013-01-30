@@ -3,9 +3,9 @@
   %h1=t '.title', :default => model_class.model_name.human
 
 %p
-  %strong= model_class.human_attribute_name(:sonship_lesson_id) + ':'
+  %strong= model_class.human_attribute_name(:sonship_lesson) + ':'
   %br
-  = @sonship_question.sonship_lesson_id
+  = @sonship_question.sonship_lesson.title
 %p
   %strong= model_class.human_attribute_name(:question) + ':'
   %br
