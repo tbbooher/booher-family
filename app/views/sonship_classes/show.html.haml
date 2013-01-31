@@ -16,7 +16,6 @@
     - @sonship_class.sonship_lessons.each do |lesson|
       %li= link_to lesson.title, sonship_class_sonship_lesson_path(@sonship_class)
 
-
 .form-actions
   = link_to "Add new lesson", new_sonship_class_sonship_lesson_path(@sonship_class), class: 'btn'
   = link_to t('.back', :default => t("helpers.links.back")), user_sonship_classes_path, :class => 'btn'
