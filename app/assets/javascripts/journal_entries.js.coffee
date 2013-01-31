@@ -7,8 +7,9 @@ save_form = (that) ->
 
 $("#update-button").click ->
   save_form this
-  console.log "aved"
 
 $("#journal_entry_description").live "blur", ->
   save_form this
-  console.log "form saved!!"
+
+$("#journal_entry_to_do").live "blur", ->
+  save_form this
