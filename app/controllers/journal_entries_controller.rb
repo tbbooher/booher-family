@@ -1,6 +1,7 @@
 class JournalEntriesController < InheritedResources::Base
 
   before_filter :only_tim
+  respond_to :js, :html, :json
 
   def new
     @journal_entry = JournalEntry.new
@@ -15,7 +16,10 @@ class JournalEntriesController < InheritedResources::Base
   end
 
   def create
-    create! { journal_entries_path }
+    create! do |format|
+      format.html { redirect_to journal_entries_path }
+      format.js { render :json => @journal_entry.map(&:attributes) }
+    end
   end
 
   def update
