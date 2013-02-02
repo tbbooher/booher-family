@@ -27,18 +27,28 @@
           %a.brand(href="#") BooherFamily
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Users", users_path
+              %li= link_to "Blog", blog_posts_path
               - unless user_signed_in?
                 %li= link_to "Sign in", new_user_session_path
                 -# %li= link_to "Create Account", new_user_registration_path
               - else
                 %li= link_to "Calendar", calendar_display_path(Date.today.to_s(:for_cal))
-                %li= link_to "Goals", user_goals_path(current_user)
-                %li= link_to "Lost Items", user_lost_items_path(current_user)
                 %li= link_to "Principles", principles_path
                 %li= link_to "Expenses", expenses_path
-                %li= link_to current_user.name, edit_user_registration_path
-                %li= link_to "Sign out", destroy_user_session_path, method: :delete
+                %ul.nav.pull-right
+                  %li= link_to current_user.name, edit_user_registration_path
+                  %li.divider-vertical
+                  %li.dropdown
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                      User
+                      %b.caret
+                    %ul.dropdown-menu
+                      %li= link_to "Workouts", ""
+                      %li= link_to "Sonship", user_sonship_classes_path(current_user)
+                      %li= link_to "Lost Items", user_lost_items_path(current_user)
+                      %li= link_to "Goals", user_goals_path(current_user)
+                      %li.divider
+                      %li= link_to "Sign out", destroy_user_session_path, method: :delete
 
     .container-fluid
 

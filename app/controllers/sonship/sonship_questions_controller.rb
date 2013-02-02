@@ -1,4 +1,4 @@
-class SonshipQuestionsController < InheritedResources::Base
+class Sonship::SonshipQuestionsController < InheritedResources::Base
   belongs_to :sonship_lesson
 
   def update

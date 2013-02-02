@@ -1,0 +1,19 @@
+- title @post.title
+
+%p
+  %strong Tags:
+  %br
+  = @post.tags.to_sentence if @post.tags
+%p
+  %strong User:
+  %br
+  = @post.user.name if @post.user
+%p
+  %strong Body:
+  %br
+  = @post.body
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), blog_posts_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_post_path(@post), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), blog_post_path(@post), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

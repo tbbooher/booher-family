@@ -13,5 +13,6 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :workouts
   has_many :sonship_classes
+  has_many :posts
 
 end

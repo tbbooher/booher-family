@@ -1,3 +1,17 @@
+                           blog_tags GET    /blog/tags(.:format)                                                     blog/tags#index
+                                     POST   /blog/tags(.:format)                                                     blog/tags#create
+                        new_blog_tag GET    /blog/tags/new(.:format)                                                 blog/tags#new
+                       edit_blog_tag GET    /blog/tags/:id/edit(.:format)                                            blog/tags#edit
+                            blog_tag GET    /blog/tags/:id(.:format)                                                 blog/tags#show
+                                     PUT    /blog/tags/:id(.:format)                                                 blog/tags#update
+                                     DELETE /blog/tags/:id(.:format)                                                 blog/tags#destroy
+                          blog_posts GET    /blog/posts(.:format)                                                    blog/posts#index
+                                     POST   /blog/posts(.:format)                                                    blog/posts#create
+                       new_blog_post GET    /blog/posts/new(.:format)                                                blog/posts#new
+                      edit_blog_post GET    /blog/posts/:id/edit(.:format)                                           blog/posts#edit
+                           blog_post GET    /blog/posts/:id(.:format)                                                blog/posts#show
+                                     PUT    /blog/posts/:id(.:format)                                                blog/posts#update
+                                     DELETE /blog/posts/:id(.:format)                                                blog/posts#destroy
                      journal_entries GET    /journal_entries(.:format)                                               journal_entries#index
                                      POST   /journal_entries(.:format)                                               journal_entries#create
                    new_journal_entry GET    /journal_entries/new(.:format)                                           journal_entries#new
@@ -34,41 +48,41 @@
                                      PUT    /crossfit_workouts/:id(.:format)                                         crossfit_workouts#update
                                      DELETE /crossfit_workouts/:id(.:format)                                         crossfit_workouts#destroy
                             ckeditor        /ckeditor                                                                Ckeditor::Engine
-                           locations GET    /locations(.:format)                                                     locations#index
-                                     POST   /locations(.:format)                                                     locations#create
-                        new_location GET    /locations/new(.:format)                                                 locations#new
-                       edit_location GET    /locations/:id/edit(.:format)                                            locations#edit
-                            location GET    /locations/:id(.:format)                                                 locations#show
-                                     PUT    /locations/:id(.:format)                                                 locations#update
-                                     DELETE /locations/:id(.:format)                                                 locations#destroy
-            trip_trip_day_trip_meals GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals(.:format)              trip_meals#index
-                                     POST   /trips/:trip_id/trip_days/:trip_day_id/trip_meals(.:format)              trip_meals#create
-         new_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/new(.:format)          trip_meals#new
-        edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id/edit(.:format)     trip_meals#edit
-             trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)          trip_meals#show
-                                     PUT    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)          trip_meals#update
-                                     DELETE /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)          trip_meals#destroy
-            trip_trip_day_activities GET    /trips/:trip_id/trip_days/:trip_day_id/activities(.:format)              activities#index
-                                     POST   /trips/:trip_id/trip_days/:trip_day_id/activities(.:format)              activities#create
-          new_trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/new(.:format)          activities#new
-         edit_trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/:id/edit(.:format)     activities#edit
-              trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)          activities#show
-                                     PUT    /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)          activities#update
-                                     DELETE /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)          activities#destroy
-                      trip_trip_days GET    /trips/:trip_id/trip_days(.:format)                                      trip_days#index
-                                     POST   /trips/:trip_id/trip_days(.:format)                                      trip_days#create
-                   new_trip_trip_day GET    /trips/:trip_id/trip_days/new(.:format)                                  trip_days#new
-                  edit_trip_trip_day GET    /trips/:trip_id/trip_days/:id/edit(.:format)                             trip_days#edit
-                       trip_trip_day GET    /trips/:trip_id/trip_days/:id(.:format)                                  trip_days#show
-                                     PUT    /trips/:trip_id/trip_days/:id(.:format)                                  trip_days#update
-                                     DELETE /trips/:trip_id/trip_days/:id(.:format)                                  trip_days#destroy
-                               trips GET    /trips(.:format)                                                         trips#index
-                                     POST   /trips(.:format)                                                         trips#create
-                            new_trip GET    /trips/new(.:format)                                                     trips#new
-                           edit_trip GET    /trips/:id/edit(.:format)                                                trips#edit
-                                trip GET    /trips/:id(.:format)                                                     trips#show
-                                     PUT    /trips/:id(.:format)                                                     trips#update
-                                     DELETE /trips/:id(.:format)                                                     trips#destroy
+                           locations GET    /locations(.:format)                                                     trip_planning/locations#index
+                                     POST   /locations(.:format)                                                     trip_planning/locations#create
+                        new_location GET    /locations/new(.:format)                                                 trip_planning/locations#new
+                       edit_location GET    /locations/:id/edit(.:format)                                            trip_planning/locations#edit
+                            location GET    /locations/:id(.:format)                                                 trip_planning/locations#show
+                                     PUT    /locations/:id(.:format)                                                 trip_planning/locations#update
+                                     DELETE /locations/:id(.:format)                                                 trip_planning/locations#destroy
+            trip_trip_day_trip_meals GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals(.:format)              trip_planning/trip_meals#index
+                                     POST   /trips/:trip_id/trip_days/:trip_day_id/trip_meals(.:format)              trip_planning/trip_meals#create
+         new_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/new(.:format)          trip_planning/trip_meals#new
+        edit_trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id/edit(.:format)     trip_planning/trip_meals#edit
+             trip_trip_day_trip_meal GET    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)          trip_planning/trip_meals#show
+                                     PUT    /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)          trip_planning/trip_meals#update
+                                     DELETE /trips/:trip_id/trip_days/:trip_day_id/trip_meals/:id(.:format)          trip_planning/trip_meals#destroy
+            trip_trip_day_activities GET    /trips/:trip_id/trip_days/:trip_day_id/activities(.:format)              trip_planning/activities#index
+                                     POST   /trips/:trip_id/trip_days/:trip_day_id/activities(.:format)              trip_planning/activities#create
+          new_trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/new(.:format)          trip_planning/activities#new
+         edit_trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/:id/edit(.:format)     trip_planning/activities#edit
+              trip_trip_day_activity GET    /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)          trip_planning/activities#show
+                                     PUT    /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)          trip_planning/activities#update
+                                     DELETE /trips/:trip_id/trip_days/:trip_day_id/activities/:id(.:format)          trip_planning/activities#destroy
+                      trip_trip_days GET    /trips/:trip_id/trip_days(.:format)                                      trip_planning/trip_days#index
+                                     POST   /trips/:trip_id/trip_days(.:format)                                      trip_planning/trip_days#create
+                   new_trip_trip_day GET    /trips/:trip_id/trip_days/new(.:format)                                  trip_planning/trip_days#new
+                  edit_trip_trip_day GET    /trips/:trip_id/trip_days/:id/edit(.:format)                             trip_planning/trip_days#edit
+                       trip_trip_day GET    /trips/:trip_id/trip_days/:id(.:format)                                  trip_planning/trip_days#show
+                                     PUT    /trips/:trip_id/trip_days/:id(.:format)                                  trip_planning/trip_days#update
+                                     DELETE /trips/:trip_id/trip_days/:id(.:format)                                  trip_planning/trip_days#destroy
+                               trips GET    /trips(.:format)                                                         trip_planning/trips#index
+                                     POST   /trips(.:format)                                                         trip_planning/trips#create
+                            new_trip GET    /trips/new(.:format)                                                     trip_planning/trips#new
+                           edit_trip GET    /trips/:id/edit(.:format)                                                trip_planning/trips#edit
+                                trip GET    /trips/:id(.:format)                                                     trip_planning/trips#show
+                                     PUT    /trips/:id(.:format)                                                     trip_planning/trips#update
+                                     DELETE /trips/:id(.:format)                                                     trip_planning/trips#destroy
                           principles GET    /principles(.:format)                                                    principles#index
                                      POST   /principles(.:format)                                                    principles#create
                        new_principle GET    /principles/new(.:format)                                                principles#new
@@ -114,34 +128,34 @@
                              expense GET    /expenses/:id(.:format)                                                  expenses#show
                                      PUT    /expenses/:id(.:format)                                                  expenses#update
                                      DELETE /expenses/:id(.:format)                                                  expenses#destroy
-                          user_goals GET    /users/:user_id/goals(.:format)                                          goals#index
-                                     POST   /users/:user_id/goals(.:format)                                          goals#create
-                       new_user_goal GET    /users/:user_id/goals/new(.:format)                                      goals#new
-                      edit_user_goal GET    /users/:user_id/goals/:id/edit(.:format)                                 goals#edit
-                           user_goal GET    /users/:user_id/goals/:id(.:format)                                      goals#show
-                                     PUT    /users/:user_id/goals/:id(.:format)                                      goals#update
-                                     DELETE /users/:user_id/goals/:id(.:format)                                      goals#destroy
-                     user_lost_items GET    /users/:user_id/lost_items(.:format)                                     lost_items#index
-                                     POST   /users/:user_id/lost_items(.:format)                                     lost_items#create
-                  new_user_lost_item GET    /users/:user_id/lost_items/new(.:format)                                 lost_items#new
-                 edit_user_lost_item GET    /users/:user_id/lost_items/:id/edit(.:format)                            lost_items#edit
-                      user_lost_item GET    /users/:user_id/lost_items/:id(.:format)                                 lost_items#show
-                                     PUT    /users/:user_id/lost_items/:id(.:format)                                 lost_items#update
-                                     DELETE /users/:user_id/lost_items/:id(.:format)                                 lost_items#destroy
-                       user_workouts GET    /users/:user_id/workouts(.:format)                                       workouts#index
-                                     POST   /users/:user_id/workouts(.:format)                                       workouts#create
-                    new_user_workout GET    /users/:user_id/workouts/new(.:format)                                   workouts#new
-                   edit_user_workout GET    /users/:user_id/workouts/:id/edit(.:format)                              workouts#edit
-                        user_workout GET    /users/:user_id/workouts/:id(.:format)                                   workouts#show
-                                     PUT    /users/:user_id/workouts/:id(.:format)                                   workouts#update
-                                     DELETE /users/:user_id/workouts/:id(.:format)                                   workouts#destroy
-                user_sonship_classes GET    /users/:user_id/sonship_classes(.:format)                                sonship_classes#index
-                                     POST   /users/:user_id/sonship_classes(.:format)                                sonship_classes#create
-              new_user_sonship_class GET    /users/:user_id/sonship_classes/new(.:format)                            sonship_classes#new
-             edit_user_sonship_class GET    /users/:user_id/sonship_classes/:id/edit(.:format)                       sonship_classes#edit
-                  user_sonship_class GET    /users/:user_id/sonship_classes/:id(.:format)                            sonship_classes#show
-                                     PUT    /users/:user_id/sonship_classes/:id(.:format)                            sonship_classes#update
-                                     DELETE /users/:user_id/sonship_classes/:id(.:format)                            sonship_classes#destroy
+                user_sonship_classes GET    /users/:user_id/sonship_classes(.:format)                                sonship/sonship_classes#index
+                                     POST   /users/:user_id/sonship_classes(.:format)                                sonship/sonship_classes#create
+              new_user_sonship_class GET    /users/:user_id/sonship_classes/new(.:format)                            sonship/sonship_classes#new
+             edit_user_sonship_class GET    /users/:user_id/sonship_classes/:id/edit(.:format)                       sonship/sonship_classes#edit
+                  user_sonship_class GET    /users/:user_id/sonship_classes/:id(.:format)                            sonship/sonship_classes#show
+                                     PUT    /users/:user_id/sonship_classes/:id(.:format)                            sonship/sonship_classes#update
+                                     DELETE /users/:user_id/sonship_classes/:id(.:format)                            sonship/sonship_classes#destroy
+                          user_goals GET    /users/:user_id/goals(.:format)                                          properties/goals#index
+                                     POST   /users/:user_id/goals(.:format)                                          properties/goals#create
+                       new_user_goal GET    /users/:user_id/goals/new(.:format)                                      properties/goals#new
+                      edit_user_goal GET    /users/:user_id/goals/:id/edit(.:format)                                 properties/goals#edit
+                           user_goal GET    /users/:user_id/goals/:id(.:format)                                      properties/goals#show
+                                     PUT    /users/:user_id/goals/:id(.:format)                                      properties/goals#update
+                                     DELETE /users/:user_id/goals/:id(.:format)                                      properties/goals#destroy
+                     user_lost_items GET    /users/:user_id/lost_items(.:format)                                     properties/lost_items#index
+                                     POST   /users/:user_id/lost_items(.:format)                                     properties/lost_items#create
+                  new_user_lost_item GET    /users/:user_id/lost_items/new(.:format)                                 properties/lost_items#new
+                 edit_user_lost_item GET    /users/:user_id/lost_items/:id/edit(.:format)                            properties/lost_items#edit
+                      user_lost_item GET    /users/:user_id/lost_items/:id(.:format)                                 properties/lost_items#show
+                                     PUT    /users/:user_id/lost_items/:id(.:format)                                 properties/lost_items#update
+                                     DELETE /users/:user_id/lost_items/:id(.:format)                                 properties/lost_items#destroy
+                       user_workouts GET    /users/:user_id/workouts(.:format)                                       properties/workouts#index
+                                     POST   /users/:user_id/workouts(.:format)                                       properties/workouts#create
+                    new_user_workout GET    /users/:user_id/workouts/new(.:format)                                   properties/workouts#new
+                   edit_user_workout GET    /users/:user_id/workouts/:id/edit(.:format)                              properties/workouts#edit
+                        user_workout GET    /users/:user_id/workouts/:id(.:format)                                   properties/workouts#show
+                                     PUT    /users/:user_id/workouts/:id(.:format)                                   properties/workouts#update
+                                     DELETE /users/:user_id/workouts/:id(.:format)                                   properties/workouts#destroy
                                users GET    /users(.:format)                                                         users#index
                                      POST   /users(.:format)                                                         users#create
                             new_user GET    /users/new(.:format)                                                     users#new

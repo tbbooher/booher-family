@@ -1,4 +1,4 @@
-class ActivitiesController < InheritedResources::Base
+class TripPlanning::ActivitiesController < InheritedResources::Base
   nested_belongs_to :trip, :trip_day
 
   def create

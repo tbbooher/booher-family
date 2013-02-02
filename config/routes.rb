@@ -1,5 +1,9 @@
 BooherFamily::Application.routes.draw do
 
+  namespace :blog do
+    resources :tags
+    resources :posts
+  end
 
   resources :journal_entries
 
@@ -13,12 +17,13 @@ BooherFamily::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
 
-  resources :locations
-
-  resources :trips do
-    resources :trip_days do
-      resources :trip_meals
-      resources :activities
+  scope module: "trip_planning" do
+    resources :locations
+    resources :trips do
+      resources :trip_days do
+        resources :trip_meals
+        resources :activities
+      end
     end
   end
 
@@ -37,10 +42,14 @@ BooherFamily::Application.routes.draw do
   resources :expenses
 
   resources :users do
-    resources :goals
-    resources :lost_items
-    resources :workouts
-    resources :sonship_classes
+    scope module: "sonship" do
+      resources :sonship_classes
+    end
+    scope module: "properties" do
+      resources :goals
+      resources :lost_items
+      resources :workouts
+    end
   end
 
   resources :sonship_classes do

@@ -1,4 +1,5 @@
 class ExpensesController < InheritedResources::Base
+  before_filter :authenticate_user!
 
   def update
     update!{ expenses_path }

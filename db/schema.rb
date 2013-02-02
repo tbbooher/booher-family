@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128114816) do
+ActiveRecord::Schema.define(:version => 20130202001123) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20130128114816) do
     t.string   "budget_currency", :default => "USD", :null => false
     t.integer  "activity_type"
     t.string   "currency"
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.integer  "post_count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -163,6 +169,21 @@ ActiveRecord::Schema.define(:version => 20130128114816) do
 
   add_index "lost_items", ["user_id"], :name => "index_lost_items_on_user_id"
 
+  create_table "posts", :force => true do |t|
+    t.text     "body"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "posts_tags", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+  end
+
+  add_index "posts_tags", ["post_id", "tag_id"], :name => "index_posts_tags_on_post_id_and_tag_id"
+
   create_table "principles", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -206,6 +227,12 @@ ActiveRecord::Schema.define(:version => 20130128114816) do
     t.text     "answer"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "trip_days", :force => true do |t|

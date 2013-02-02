@@ -1,4 +1,4 @@
-class GoalsController < InheritedResources::Base
+class Properties::GoalsController < InheritedResources::Base
   belongs_to :user
   before_filter :authenticate_user!
 

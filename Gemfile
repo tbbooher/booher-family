@@ -56,3 +56,7 @@ gem 'mongo', :require => 'mongo'
 gem 'bson_ext'
 gem 'taps'
 gem 'awesome_print'
+
+# money experiment (mint sucks!)
+gem 'chronic'
+gem 'chosen-rails'

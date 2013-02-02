@@ -1,4 +1,4 @@
-class LostItemsController < InheritedResources::Base
+class Properties::LostItemsController < InheritedResources::Base
   belongs_to :user
   before_filter :authenticate_user!
 
