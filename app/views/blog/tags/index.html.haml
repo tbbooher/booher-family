@@ -1,18 +1,15 @@
-- model_class = Tag
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+- title "Tags"
+
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:title)
-      %th= model_class.human_attribute_name(:created_at)
+      %th Title
+      %th Created At
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @tags.each do |tag|
       %tr
-        %td= link_to tag.id, blog_tag_path(tag)
-        %td= tag.title
+        %td= link_to tag.title, edit_blog_tag_path(tag)
         %td=l tag.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_tag_path(tag), :class => 'btn btn-mini'
