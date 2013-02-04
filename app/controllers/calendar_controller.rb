@@ -81,7 +81,18 @@ class CalendarController < ApplicationController
   def find_duration
     start_time = Chronic.parse(params[:start_time])
     end_time = Chronic.parse(params[:end_time])
-    render json: {duration: ChronicDuration.output(end_time - start_time, format: :short)}
+    st = start_time.hour*60*60 + start_time.min*60
+    ed = end_time.hour*60*60 + end_time.min*60
+    if ed < st
+      message = "The end time must be after the start time"
+    elsif (ed - st) > (10*60*60)
+      message = "Au pairs can not work more than 10 hours"
+      duration = ChronicDuration.output(ed - st, format: :short)
+    else
+      duration = ChronicDuration.output(ed - st, format: :short)
+      message = nil
+    end
+    render json: {duration: duration, message: message}
   end
 
 end
