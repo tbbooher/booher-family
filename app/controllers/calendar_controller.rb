@@ -81,6 +81,7 @@ class CalendarController < ApplicationController
   def find_duration
     start_time = Chronic.parse(params[:start_time])
     end_time = Chronic.parse(params[:end_time])
+    # if either of these are nil, we have an error we should deal with
     st = start_time.hour*60*60 + start_time.min*60
     ed = end_time.hour*60*60 + end_time.min*60
     if ed < st
@@ -90,9 +91,10 @@ class CalendarController < ApplicationController
       duration = ChronicDuration.output(ed - st, format: :short)
     else
       duration = ChronicDuration.output(ed - st, format: :short)
+      hours = (ed-st)/3600.0
       message = nil
     end
-    render json: {duration: duration, message: message}
+    render json: {duration: duration, message: message, hours: hours}
   end
 
 end

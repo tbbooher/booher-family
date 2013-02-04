@@ -1,5 +1,7 @@
 - title "Build Week for Vivi"
 
+#time
+
 = simple_form_for :week_build, { url: '/calendar/add_week' , html: { :class => 'form-horizontal' }} do |f|
   %fieldset
     = f.input :week_start, collection: (0..4).map{|i| d = Date.today.beginning_of_week(start_day = :sunday) + i.weeks; [d.strftime('%a, %b %e'), d]}, include_blank: false
@@ -8,43 +10,50 @@
       .controls
         %input#week_build_sunday_start.string.optional.input-small{:name => "week_build[sunday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_sunday_stop.sp.string.optional.input-small{:name => "week_build[sunday_stop]", :placeholder => "end", :size => "20", :type => "text"}
-        %input#sunday_duration.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input#sunday_duration.duration.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
     .control-group.string.optional
       %label.string.optional.control-label{:for => "week_build_monday"} Monday
       .controls
         %input#week_build_monday_start.string.optional.input-small{:name => "week_build[monday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_monday_stop.sp.string.optional.input-small{:name => "week_build[monday_stop]", :placeholder => "end", :size => "20", :type => "text"}
-        %input#monday_duration.string.optional.input-small{:name => "monday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input#monday_duration.duration.string.optional.input-small{:name => "monday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "hidden", :disabled => true, value: ""}
     .control-group.string.optional
       %label.string.optional.control-label{:for => "week_build_tuesday"} Tuesday
       .controls
         %input#week_build_tuesday_start.string.optional.input-small{:name => "week_build[tuesday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_tuesday_stop.sp.string.optional.input-small{:name => "week_build[tuesday_stop]", :placeholder => "end", :size => "20", :type => "text"}
-        %input#tuesday_duration.string.optional.input-small{:name => "tuesday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input#tuesday_duration.duration.string.optional.input-small{:name => "tuesday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "hidden", :disabled => true, value: ""}
     .control-group.string.optional
       %label.string.optional.control-label{:for => "week_build_wednesday"} Wednesday
       .controls
         %input#week_build_wednesday_start.string.optional.input-small{:name => "week_build[wednesday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_wednesday_stop.sp.string.optional.input-small{:name => "week_build[wednesday_stop]", :placeholder => "end", :size => "20", :type => "text"}
-        %input#wednesday_duration.string.optional.input-small{:name => "wednesday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input#wednesday_duration.duration.string.optional.input-small{:name => "wednesday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "hidden", :disabled => true, value: ""}
     .control-group.string.optional
       %label.string.optional.control-label{:for => "week_build_thursday"} Thursday
       .controls
         %input#week_build_thursday_start.string.optional.input-small{:name => "week_build[thursday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_thursday_stop.sp.string.optional.input-small{:name => "week_build[thursday_stop]", :placeholder => "end", :size => "20", :type => "text"}
-        %input#thursday_duration.string.optional.input-small{:name => "thursday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input#thursday_duration.duration.string.optional.input-small{:name => "thursday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "hidden", :disabled => true, value: ""}
     .control-group.string.optional
       %label.string.optional.control-label{:for => "week_build_friday"} Friday
       .controls
         %input#week_build_friday_start.string.optional.input-small{:name => "week_build[friday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_friday_stop.sp.string.optional.input-small{:name => "week_build[friday_stop]", :placeholder => "end", :size => "20", :type => "text"}
-        %input#friday_duration.string.optional.input-small{:name => "friday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input#friday_duration.duration.string.optional.input-small{:name => "friday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "hidden", :disabled => true, value: ""}
     .control-group.string.optional
       %label.string.optional.control-label{:for => "week_build_saturday"} Saturday
       .controls
         %input#week_build_saturday_start.string.optional.input-small{:name => "week_build[saturday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_saturday_stop.sp.string.optional.input-small{:name => "week_build[saturday_stop]", :placeholder => "end", :size => "20", :type => "text"}
-        %input#saturday_duration.string.optional.input-small{:name => "saturday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input#saturday_duration.duration.string.optional.input-small{:name => "saturday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "hidden", :disabled => true, value: ""}
   .form-actions
     = f.button :submit, 'Build the Week', :class => 'btn-primary btn'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), calendar_display_path, :class => 'btn'
