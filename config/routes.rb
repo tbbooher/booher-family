@@ -66,6 +66,7 @@ BooherFamily::Application.routes.draw do
   match "calendar/empty_out_month/:month_string", to: "calendar#empty_out_month"
   match "calendar/serve_events/", to: "calendar#serve_events"
   match "calendar/weekly_hours/:week_start", to: "calendar#weekly_hours"
+  match "calendar/find_duration/:start_time/:end_time", to: "calendar#find_duration"
   get "calendar/build_week"
   post "calendar/add_week"
 

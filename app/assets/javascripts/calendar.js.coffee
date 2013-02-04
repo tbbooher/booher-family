@@ -25,7 +25,6 @@ updateEvent = (the_event) ->
     return false
 
 $(document).ready ->
-
   months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
   $("#calendar").fullCalendar
     editable: true

@@ -37,8 +37,8 @@ class CalendarController < ApplicationController
       e = w["#{weekday}_stop"]
       unless s.nil? || e.nil? || s.empty? || e.empty?
         #begin
-          start = Time.parse(s)
-          stop = Time.parse(e)
+          start = Chronic.parse(s)
+          stop = Chronic.parse(e)
           st = Date.parse(w['week_start']) + index.days
           starts_at = DateTime.new(st.year, st.month, st.day, start.hour, start.min)
           ends_at = DateTime.new(st.year, st.month, st.day, stop.hour, stop.min)
@@ -76,6 +76,12 @@ class CalendarController < ApplicationController
 
   def build_week
 
+  end
+
+  def find_duration
+    start_time = Chronic.parse(params[:start_time])
+    end_time = Chronic.parse(params[:end_time])
+    render json: {duration: ChronicDuration.output(end_time - start_time, format: :short)}
   end
 
 end
