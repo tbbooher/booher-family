@@ -2,7 +2,7 @@ BooherFamily::Application.routes.draw do
 
   namespace :blog do
     resources :tags
-    resources :posts
+    resources :posts, :has_many => :comments
   end
 
   resources :journal_entries

@@ -13,6 +13,12 @@
   %br
   = @post.body
 
+%h1== Comments for #{@post.title}:
+%ul
+  - comments.each do |comment|
+    %h3= comment.title
+    %p= comment.comment
+
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), blog_posts_path, :class => 'btn'
   = link_to t('.edit', :default => t("helpers.links.edit")), edit_blog_post_path(@post), :class => 'btn'
