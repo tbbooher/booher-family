@@ -5,13 +5,13 @@
                             blog_tag GET    /blog/tags/:id(.:format)                                                 blog/tags#show
                                      PUT    /blog/tags/:id(.:format)                                                 blog/tags#update
                                      DELETE /blog/tags/:id(.:format)                                                 blog/tags#destroy
-                          blog_posts GET    /blog/posts(.:format)                                                    blog/posts#index
-                                     POST   /blog/posts(.:format)                                                    blog/posts#create
-                       new_blog_post GET    /blog/posts/new(.:format)                                                blog/posts#new
-                      edit_blog_post GET    /blog/posts/:id/edit(.:format)                                           blog/posts#edit
-                           blog_post GET    /blog/posts/:id(.:format)                                                blog/posts#show
-                                     PUT    /blog/posts/:id(.:format)                                                blog/posts#update
-                                     DELETE /blog/posts/:id(.:format)                                                blog/posts#destroy
+                          blog_posts GET    /blog/posts(.:format)                                                    blog/posts#index {:has_many=>:comments}
+                                     POST   /blog/posts(.:format)                                                    blog/posts#create {:has_many=>:comments}
+                       new_blog_post GET    /blog/posts/new(.:format)                                                blog/posts#new {:has_many=>:comments}
+                      edit_blog_post GET    /blog/posts/:id/edit(.:format)                                           blog/posts#edit {:has_many=>:comments}
+                           blog_post GET    /blog/posts/:id(.:format)                                                blog/posts#show {:has_many=>:comments}
+                                     PUT    /blog/posts/:id(.:format)                                                blog/posts#update {:has_many=>:comments}
+                                     DELETE /blog/posts/:id(.:format)                                                blog/posts#destroy {:has_many=>:comments}
                      journal_entries GET    /journal_entries(.:format)                                               journal_entries#index
                                      POST   /journal_entries(.:format)                                               journal_entries#create
                    new_journal_entry GET    /journal_entries/new(.:format)                                           journal_entries#new
@@ -196,6 +196,7 @@ edit_sonship_lesson_sonship_question GET    /sonship_lessons/:sonship_lesson_id/
                                             /calendar/empty_out_month/:month_string(.:format)                        calendar#empty_out_month
                calendar_serve_events        /calendar/serve_events(.:format)                                         calendar#serve_events
                                             /calendar/weekly_hours/:week_start(.:format)                             calendar#weekly_hours
+                                            /calendar/find_duration/:start_time/:end_time(.:format)                  calendar#find_duration
                  calendar_build_week GET    /calendar/build_week(.:format)                                           calendar#build_week
                    calendar_add_week POST   /calendar/add_week(.:format)                                             calendar#add_week
                                 root        /                                                                        home#index

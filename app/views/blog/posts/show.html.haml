@@ -15,7 +15,7 @@
 
 %h1== Comments for #{@post.title}:
 %ul
-  - comments.each do |comment|
+  - @post.comment_threads.each do |comment|
     %h3= comment.title
     %p= comment.comment
 

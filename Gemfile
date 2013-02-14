@@ -60,5 +60,6 @@ gem 'awesome_print'
 # money experiment (mint sucks!)
 gem 'chronic'
 gem 'chosen-rails'
-gem 'acts_as_commentable_with_threading'
+#gem 'acts_as_commentable_with_threading'
+#gem 'acts_as_votable'
 gem 'chronic_duration'

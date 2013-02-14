@@ -2,7 +2,7 @@ BooherFamily::Application.routes.draw do
 
   namespace :blog do
     resources :tags
-    resources :posts, :has_many => :comments
+    resources :posts
   end
 
   resources :journal_entries
@@ -52,8 +52,10 @@ BooherFamily::Application.routes.draw do
     end
   end
 
-  resources :sonship_classes do
-    resources :sonship_lessons
+  scope module: "sonship" do
+    resources :sonship_classes do
+      resources :sonship_lessons
+    end
   end
 
   resources :sonship_lessons do
