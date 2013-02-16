@@ -7,8 +7,7 @@ class CalendarController < ApplicationController
     @year = @inspection_date.year
     @month = @inspection_date.month - 1
     week_start = Date.today.beginning_of_week(start_day = :sunday)
-    week_end = Date.today.next_week(day = :sunday).beginning_of_week(start_day = :sunday)
-    worked = Event.seconds_worked(week_start, week_end)/(60*60)
+    worked = Event.weekly_hours(week_start)
     @time_worked = "#{worked} hours for week starting #{week_start.to_s}"
   end
 
@@ -59,7 +58,7 @@ class CalendarController < ApplicationController
 
   def work_history
     @start_date = Event.aupair.first.starts_at
-    @date = @start_date.beginning_of_week
+    @date = @start_date.beginning_of_week(start_day = :sunday)
     @today = Date.today()
   end
 
@@ -71,11 +70,12 @@ class CalendarController < ApplicationController
   def weekly_hours
     week_start = Date.parse(params[:week_start]).beginning_of_week(start_day = :sunday)
     week_end = week_start.next_week(day = :sunday).beginning_of_week(start_day = :sunday)
-    render json: {hours: Event.seconds_worked(week_start, week_end)/(60*60), week_start: week_start, week_end: week_end}
+    @weekly_hours = Event.weekly_hours(week_start)
+    render json: {hours: @weekly_hours, week_start: week_start, week_end: week_end}
   end
 
   def build_week
-
+    @weekly_hours = Event.weekly_hours(Date.today)
   end
 
   def find_duration

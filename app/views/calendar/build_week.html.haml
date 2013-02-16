@@ -1,6 +1,12 @@
 - title "Build Week for Vivi"
 
-#time
+.well.well-small
+  #time
+    You currently have
+    = @weekly_hours
+    hours scheduled for Vivi this week. (You have
+    = 45-@weekly_hours
+    hours left.)
 
 = simple_form_for :week_build, { url: '/calendar/add_week' , html: { :class => 'form-horizontal' }} do |f|
   %fieldset
@@ -11,7 +17,7 @@
         %input#week_build_sunday_start.string.optional.input-small{:name => "week_build[sunday_start]", :placeholder => "start", :size => "20", :type => "text"}
         %input#week_build_sunday_stop.sp.string.optional.input-small{:name => "week_build[sunday_stop]", :placeholder => "end", :size => "20", :type => "text"}
         %input#sunday_duration.duration.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
-        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "text", :disabled => true, value: ""}
+        %input.hours.string.optional.input-small{:name => "sunday_duration", :size => "20", :type => "hidden", :disabled => true, value: ""}
     .control-group.string.optional
       %label.string.optional.control-label{:for => "week_build_monday"} Monday
       .controls

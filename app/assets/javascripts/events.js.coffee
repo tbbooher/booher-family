@@ -1,3 +1,17 @@
+get_and_update_hours = (date) ->
+  $.get('/calendar/weekly_hours/' + encodeURIComponent(date), (data) ->
+    prev_hours = Math.round(data.hours*100)/100
+    new_hours = 0
+    for duration in $(".hours")
+      new_hours += parseFloat(duration.value) unless duration.value == ""
+    total_hours = prev_hours + new_hours
+    $("#time").html("Proposed total hours for this week: <strong>" + Math.round(total_hours*100)/100 + "</strong>")
+  )
+
+$("#week_build_week_start").change ->
+  console.log this.value
+  get_and_update_hours(this.value)
+
 $("#event_ends_at").change ->
   end = this.value
   start = $("#event_starts_at").val()
@@ -25,16 +39,7 @@ $(".sp").blur ->
       if $("#" + id).length > 0
         $("#" + id).remove()
       # now update the weekly hour count
-      week_start = $("#week_build_week_start").val()
-      $.get('/calendar/weekly_hours/' + encodeURIComponent(week_start)
-      , (data) ->
-        prev_hours = Math.round(data.hours*100)/100
-        new_hours = 0
-        for duration in $(".hours")
-          new_hours += parseFloat(duration.value) unless duration.value == ""
-        total_hours = prev_hours + new_hours
-        $("#time").html("Current total hours:" + Math.round(total_hours*100)/100)
-      )
+      get_and_update_hours($("#week_build_week_start").val())
     else
       # uncomment if you want to clear the values
       #input_stop.value = ""
