@@ -79,10 +79,6 @@ class Event < ActiveRecord::Base
 
   class << self
 
-    #def worked_in_week(date_in_week)
-    #  seconds_worked(date_in_week.beginning_of_week, date_in_week.end_of_week)
-    #end
-
     def all_in_week(date_in_week)
       st = date_in_week.beginning_of_week(start_day = :sunday).beginning_of_day
       ed = date_in_week.beginning_of_week(start_day = :sunday).next_week(day = :sunday).beginning_of_day
@@ -98,23 +94,6 @@ class Event < ActiveRecord::Base
       date = Date.parse("1-#{month_string}")
       Event.destroy_all(["starts_at >= ? and starts_at < ?", date.beginning_of_month, date.next_month.beginning_of_month])
     end
-
-    #def seconds_worked(start_date, end_date)
-    #  # given an arbitrary time line three cases must be considered
-    #  duration = 0
-    #  Event.aupair.started_or_finished(start_date, end_date).each do |e|
-    #    duration = duration + (e.ends_at - e.starts_at)
-    #  end
-    #  duration
-    #end
-
-    #def total_duration_for_time_slots
-    #  duration = 0
-    #  [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday].each do |day|
-    #    duration = duration + TimeSlot.where(day => true).inject(0) {|result, ts| result + (ts.ends_at - ts.starts_at)}
-    #  end
-    #  duration
-    #end
 
     def format_date(date_time)
       Time.at(date_time.to_i).to_formatted_s(:db)
