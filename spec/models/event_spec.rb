@@ -50,9 +50,7 @@ describe Event do
         FactoryGirl.create(:event, event_type_id: 2, starts_at: st, ends_at: ed)
         Event.weekly_hours(Date.parse("2013-02-04")).should eq(40.0)
       end
-
     end
-
   end
 
   it "should have a duration" do
@@ -88,6 +86,11 @@ describe Event do
     e.event_type_id = 1
     e.should_not be_valid
     e.errors[:ends_at].last.should eq("au pair events can not go past mid night")
+  end
+
+  it "should find the sundays in a month" do
+    d = Date.parse("1-Feb-2013")
+    Event.weeks_in_month(d).size.should eq(6)
   end
 
 end

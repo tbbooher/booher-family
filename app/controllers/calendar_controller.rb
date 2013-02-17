@@ -6,9 +6,7 @@ class CalendarController < ApplicationController
   def index
     @year = @inspection_date.year
     @month = @inspection_date.month - 1
-    week_start = Date.today.beginning_of_week(start_day = :sunday)
-    worked = Event.weekly_hours(week_start)
-    @time_worked = "#{worked} hours for week starting #{week_start.to_s}"
+    #@sundays = Event.weeks_in_month(@inspection_date)
   end
 
   def serve_events
@@ -58,8 +56,8 @@ class CalendarController < ApplicationController
 
   def work_history
     @start_date = Event.aupair.first.starts_at
+    @end_date = Event.aupair.last.starts_at
     @date = @start_date.beginning_of_week(start_day = :sunday)
-    @today = Date.today()
   end
 
   def find_month

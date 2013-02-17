@@ -79,6 +79,17 @@ class Event < ActiveRecord::Base
 
   class << self
 
+    def weeks_in_month(date)
+      first_day = date.beginning_of_month.beginning_of_week(start_day = :sunday)
+      sundays = [first_day]
+      day = first_day
+      while day < date.end_of_month
+        day = day.next_week(day = :sunday)
+        sundays.push(day)
+      end
+      sundays
+    end
+
     def all_in_week(date_in_week)
       st = date_in_week.beginning_of_week(start_day = :sunday).beginning_of_day
       ed = date_in_week.beginning_of_week(start_day = :sunday).next_week(day = :sunday).beginning_of_day
@@ -87,7 +98,7 @@ class Event < ActiveRecord::Base
 
     def weekly_hours(date_in_week)
       # this assumes no au pair events go past midnight (can easily change)
-      all_in_week(date_in_week).inject(0) {|sum, e| sum + e.duration(:hours)}
+      (all_in_week(date_in_week).inject(0) {|sum, e| sum + e.duration(:hours)}).round(2)
     end
 
     def destroy_all_in_month(month_string)
