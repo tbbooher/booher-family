@@ -15,7 +15,7 @@ class ExpensesController < InheritedResources::Base
   end
 
   def settle_up
-    s = params[:settlement]
+    s = params[:settlement] # delete!!
     Expense.unpaid.each do |e|
       e.paid = true
       e.save!

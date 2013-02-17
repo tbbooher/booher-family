@@ -1,3 +1,24 @@
+      expense_tracker_daily_expenses GET    /expense_tracker/daily_expenses(.:format)                                expense_tracker/daily_expenses#index
+                                     POST   /expense_tracker/daily_expenses(.:format)                                expense_tracker/daily_expenses#create
+   new_expense_tracker_daily_expense GET    /expense_tracker/daily_expenses/new(.:format)                            expense_tracker/daily_expenses#new
+  edit_expense_tracker_daily_expense GET    /expense_tracker/daily_expenses/:id/edit(.:format)                       expense_tracker/daily_expenses#edit
+       expense_tracker_daily_expense GET    /expense_tracker/daily_expenses/:id(.:format)                            expense_tracker/daily_expenses#show
+                                     PUT    /expense_tracker/daily_expenses/:id(.:format)                            expense_tracker/daily_expenses#update
+                                     DELETE /expense_tracker/daily_expenses/:id(.:format)                            expense_tracker/daily_expenses#destroy
+             expense_tracker_vendors GET    /expense_tracker/vendors(.:format)                                       expense_tracker/vendors#index
+                                     POST   /expense_tracker/vendors(.:format)                                       expense_tracker/vendors#create
+          new_expense_tracker_vendor GET    /expense_tracker/vendors/new(.:format)                                   expense_tracker/vendors#new
+         edit_expense_tracker_vendor GET    /expense_tracker/vendors/:id/edit(.:format)                              expense_tracker/vendors#edit
+              expense_tracker_vendor GET    /expense_tracker/vendors/:id(.:format)                                   expense_tracker/vendors#show
+                                     PUT    /expense_tracker/vendors/:id(.:format)                                   expense_tracker/vendors#update
+                                     DELETE /expense_tracker/vendors/:id(.:format)                                   expense_tracker/vendors#destroy
+          expense_tracker_categories GET    /expense_tracker/categories(.:format)                                    expense_tracker/categories#index
+                                     POST   /expense_tracker/categories(.:format)                                    expense_tracker/categories#create
+        new_expense_tracker_category GET    /expense_tracker/categories/new(.:format)                                expense_tracker/categories#new
+       edit_expense_tracker_category GET    /expense_tracker/categories/:id/edit(.:format)                           expense_tracker/categories#edit
+            expense_tracker_category GET    /expense_tracker/categories/:id(.:format)                                expense_tracker/categories#show
+                                     PUT    /expense_tracker/categories/:id(.:format)                                expense_tracker/categories#update
+                                     DELETE /expense_tracker/categories/:id(.:format)                                expense_tracker/categories#destroy
                            blog_tags GET    /blog/tags(.:format)                                                     blog/tags#index
                                      POST   /blog/tags(.:format)                                                     blog/tags#create
                         new_blog_tag GET    /blog/tags/new(.:format)                                                 blog/tags#new
@@ -5,13 +26,13 @@
                             blog_tag GET    /blog/tags/:id(.:format)                                                 blog/tags#show
                                      PUT    /blog/tags/:id(.:format)                                                 blog/tags#update
                                      DELETE /blog/tags/:id(.:format)                                                 blog/tags#destroy
-                          blog_posts GET    /blog/posts(.:format)                                                    blog/posts#index {:has_many=>:comments}
-                                     POST   /blog/posts(.:format)                                                    blog/posts#create {:has_many=>:comments}
-                       new_blog_post GET    /blog/posts/new(.:format)                                                blog/posts#new {:has_many=>:comments}
-                      edit_blog_post GET    /blog/posts/:id/edit(.:format)                                           blog/posts#edit {:has_many=>:comments}
-                           blog_post GET    /blog/posts/:id(.:format)                                                blog/posts#show {:has_many=>:comments}
-                                     PUT    /blog/posts/:id(.:format)                                                blog/posts#update {:has_many=>:comments}
-                                     DELETE /blog/posts/:id(.:format)                                                blog/posts#destroy {:has_many=>:comments}
+                          blog_posts GET    /blog/posts(.:format)                                                    blog/posts#index
+                                     POST   /blog/posts(.:format)                                                    blog/posts#create
+                       new_blog_post GET    /blog/posts/new(.:format)                                                blog/posts#new
+                      edit_blog_post GET    /blog/posts/:id/edit(.:format)                                           blog/posts#edit
+                           blog_post GET    /blog/posts/:id(.:format)                                                blog/posts#show
+                                     PUT    /blog/posts/:id(.:format)                                                blog/posts#update
+                                     DELETE /blog/posts/:id(.:format)                                                blog/posts#destroy
                      journal_entries GET    /journal_entries(.:format)                                               journal_entries#index
                                      POST   /journal_entries(.:format)                                               journal_entries#create
                    new_journal_entry GET    /journal_entries/new(.:format)                                           journal_entries#new
@@ -163,20 +184,20 @@
                                 user GET    /users/:id(.:format)                                                     users#show
                                      PUT    /users/:id(.:format)                                                     users#update
                                      DELETE /users/:id(.:format)                                                     users#destroy
-       sonship_class_sonship_lessons GET    /sonship_classes/:sonship_class_id/sonship_lessons(.:format)             sonship_lessons#index
-                                     POST   /sonship_classes/:sonship_class_id/sonship_lessons(.:format)             sonship_lessons#create
-    new_sonship_class_sonship_lesson GET    /sonship_classes/:sonship_class_id/sonship_lessons/new(.:format)         sonship_lessons#new
-   edit_sonship_class_sonship_lesson GET    /sonship_classes/:sonship_class_id/sonship_lessons/:id/edit(.:format)    sonship_lessons#edit
-        sonship_class_sonship_lesson GET    /sonship_classes/:sonship_class_id/sonship_lessons/:id(.:format)         sonship_lessons#show
-                                     PUT    /sonship_classes/:sonship_class_id/sonship_lessons/:id(.:format)         sonship_lessons#update
-                                     DELETE /sonship_classes/:sonship_class_id/sonship_lessons/:id(.:format)         sonship_lessons#destroy
-                     sonship_classes GET    /sonship_classes(.:format)                                               sonship_classes#index
-                                     POST   /sonship_classes(.:format)                                               sonship_classes#create
-                   new_sonship_class GET    /sonship_classes/new(.:format)                                           sonship_classes#new
-                  edit_sonship_class GET    /sonship_classes/:id/edit(.:format)                                      sonship_classes#edit
-                       sonship_class GET    /sonship_classes/:id(.:format)                                           sonship_classes#show
-                                     PUT    /sonship_classes/:id(.:format)                                           sonship_classes#update
-                                     DELETE /sonship_classes/:id(.:format)                                           sonship_classes#destroy
+       sonship_class_sonship_lessons GET    /sonship_classes/:sonship_class_id/sonship_lessons(.:format)             sonship/sonship_lessons#index
+                                     POST   /sonship_classes/:sonship_class_id/sonship_lessons(.:format)             sonship/sonship_lessons#create
+    new_sonship_class_sonship_lesson GET    /sonship_classes/:sonship_class_id/sonship_lessons/new(.:format)         sonship/sonship_lessons#new
+   edit_sonship_class_sonship_lesson GET    /sonship_classes/:sonship_class_id/sonship_lessons/:id/edit(.:format)    sonship/sonship_lessons#edit
+        sonship_class_sonship_lesson GET    /sonship_classes/:sonship_class_id/sonship_lessons/:id(.:format)         sonship/sonship_lessons#show
+                                     PUT    /sonship_classes/:sonship_class_id/sonship_lessons/:id(.:format)         sonship/sonship_lessons#update
+                                     DELETE /sonship_classes/:sonship_class_id/sonship_lessons/:id(.:format)         sonship/sonship_lessons#destroy
+                     sonship_classes GET    /sonship_classes(.:format)                                               sonship/sonship_classes#index
+                                     POST   /sonship_classes(.:format)                                               sonship/sonship_classes#create
+                   new_sonship_class GET    /sonship_classes/new(.:format)                                           sonship/sonship_classes#new
+                  edit_sonship_class GET    /sonship_classes/:id/edit(.:format)                                      sonship/sonship_classes#edit
+                       sonship_class GET    /sonship_classes/:id(.:format)                                           sonship/sonship_classes#show
+                                     PUT    /sonship_classes/:id(.:format)                                           sonship/sonship_classes#update
+                                     DELETE /sonship_classes/:id(.:format)                                           sonship/sonship_classes#destroy
     sonship_lesson_sonship_questions GET    /sonship_lessons/:sonship_lesson_id/sonship_questions(.:format)          sonship_questions#index
                                      POST   /sonship_lessons/:sonship_lesson_id/sonship_questions(.:format)          sonship_questions#create
  new_sonship_lesson_sonship_question GET    /sonship_lessons/:sonship_lesson_id/sonship_questions/new(.:format)      sonship_questions#new

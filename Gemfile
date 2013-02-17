@@ -34,6 +34,8 @@ gem "cancan", ">= 1.6.8"
 gem "simple_form", ">= 2.0.4"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "hub", ">= 1.10.2", :group => [:development], :require => nil
+gem "better_errors", group: [:development]
+gem "binding_of_caller", group: [:development]
 
 #tim's gems
 gem 'inherited_resources'

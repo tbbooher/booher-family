@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202121149) do
+ActiveRecord::Schema.define(:version => 20130217201149) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -104,6 +104,31 @@ ActiveRecord::Schema.define(:version => 20130202121149) do
     t.string   "bw_distance_moved_2"
     t.string   "weight_distance_moved"
     t.string   "bw_work_done_per_rep"
+  end
+
+  create_table "expense_tracker_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "expense_tracker_daily_expenses", :force => true do |t|
+    t.date     "date"
+    t.integer  "vendor_id"
+    t.integer  "category_id"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "amount_cents",    :default => 0,     :null => false
+    t.string   "amount_currency", :default => "USD", :null => false
+  end
+
+  add_index "expense_tracker_daily_expenses", ["category_id"], :name => "index_expense_tracker_daily_expenses_on_category_id"
+  add_index "expense_tracker_daily_expenses", ["vendor_id"], :name => "index_expense_tracker_daily_expenses_on_vendor_id"
+
+  create_table "expense_tracker_vendors", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "expenses", :force => true do |t|
