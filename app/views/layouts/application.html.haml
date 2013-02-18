@@ -50,17 +50,18 @@
                       %li= link_to "Goals", user_goals_path(current_user)
                       %li.divider
                       %li= link_to "Sign out", destroy_user_session_path, method: :delete
+                  %li.dropdown
+                    %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                      Members
+                      %b.caret
+                    %ul.dropdown-menu
+                      - @users.sort_by{|u| u.id}.each do |user|
+                        %li= link_to user.name, user_path(user)
 
     .container-fluid
 
       .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Members
-              - @users.sort_by{|u| u.id}.each do |user|
-                %li= link_to user.name, user_path(user)
-        .span9
+        .span12
           = bootstrap_flash
           - if content_for?(:title)
             %section{id: yield(:title)}
