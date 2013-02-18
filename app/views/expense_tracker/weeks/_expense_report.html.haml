@@ -1,0 +1,28 @@
+%p
+  = link_to "add expense", new_expense_tracker_week_daily_expense_path(@week), class: "btn btn-primary"
+  = link_to "expenses", expense_tracker_week_daily_expenses_path(@week), class: "btn btn-warning"
+
+#expense_projection{data: {week: @week.id}}
+
+%h3 Summary Table
+
+%table.table.table-striped
+  %tr
+    %th Date
+    %th Spent
+    %th Cumulative
+    %th Day
+    %th Ideal
+    %th Surplus
+    %th Remaining
+  - expense_report.each do |e|
+    %tr
+      - #         {date: date, day: idx, ideal: ideal, spent: spent, cumulative: cumulative}
+      %th= e[:date]
+      %th= e[:spent]
+      %th= e[:cumulative]
+      %th= e[:day]
+      %th= e[:ideal]
+      %th= e[:surplus]
+      %th= e[:remaining]
+

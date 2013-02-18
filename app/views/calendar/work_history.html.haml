@@ -1,6 +1,6 @@
 - title 'Work report'
 
 %ul
-  - while @date < @today.end_of_week
+  - while @date < @end_date.end_of_week
     %li= "Week of #{@date.strftime('%e %b')}: #{Event.weekly_hours(@date)} hours"
     - @date = 1.week.since(@date)

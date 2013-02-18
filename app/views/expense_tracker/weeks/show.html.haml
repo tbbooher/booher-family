@@ -1,0 +1,13 @@
+- title "Week of #{@week.start_date}"
+
+- # add total spent here eventually ...
+
+= render 'expense_tracker/daily_expenses/display_expenses', daily_expenses: @week.daily_expenses
+
+= render 'expense_report', expense_report: @expense_report
+
+.form-actions
+  = link_to 'New Expense', new_expense_tracker_week_daily_expense_path(@week), class: 'btn btn-primary'
+  = link_to t('.back', :default => t("helpers.links.back")), expense_tracker_weeks_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_expense_tracker_week_path(@week), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), expense_tracker_week_path(@week), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

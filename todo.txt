@@ -1,0 +1,2 @@
+- add category and vendor fields to autocomplete, require vendor and category, create new category that is typed in
+  -- look at http://railscasts.com/episodes/102-auto-complete-association-revised?view=asciicast to do this  . . .

@@ -1,0 +1,18 @@
+- title "Weeks"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Start Date
+      %th Total Spent
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @weeks.sort_by(&:start_date).each do |week|
+      %tr
+        %td= link_to week.start_date, expense_tracker_week_path(week)
+        %td= week.total_spent
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_expense_tracker_week_path(week), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), expense_tracker_week_path(week), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_expense_tracker_week_path, :class => 'btn btn-primary'

@@ -1,5 +1,13 @@
 BooherFamily::Application.routes.draw do
 
+  namespace :expense_tracker do
+    resources :vendors
+    resources :categories
+    resources :weeks do
+      resources :daily_expenses
+    end
+  end
+
   namespace :blog do
     resources :tags
     resources :posts
