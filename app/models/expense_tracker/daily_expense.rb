@@ -12,6 +12,10 @@ class ExpenseTracker::DailyExpense < ActiveRecord::Base
     where("date BETWEEN ? AND ?", st, 1.week.since(st))
   }
 
+  #def category_name=(name)
+  #  self.category = Category.find_or_create_by_name(name) if name.present?
+  #end
+
   class << self
     def weekly_expenses(stdt = Date.today)
       # first group by day, sum up amounts by that day
