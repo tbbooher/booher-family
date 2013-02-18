@@ -1,6 +1,8 @@
 - model_class = ExpenseTracker::DailyExpense
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+- title "Expenses"
+
+= link_to "Expense Report", expense_tracker_daily_expenses_expense_report_path, class: "btn btn-primary"
+
 %table.table.table-striped
   %thead
     %tr

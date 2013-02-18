@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.string   "currency"
   end
 
-  create_table "blogs", :force => true do |t|
-    t.integer  "post_count"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
     t.string   "data_content_type"
@@ -78,6 +72,12 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "event_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -276,6 +276,26 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "time_slots", :force => true do |t|
+    t.string   "title"
+    t.integer  "event_type_id"
+    t.boolean  "monday"
+    t.boolean  "tuesday"
+    t.boolean  "wednesday"
+    t.boolean  "thursday"
+    t.boolean  "friday"
+    t.boolean  "saturday"
+    t.boolean  "sunday"
+    t.integer  "user_id"
+    t.time     "starts_at"
+    t.time     "ends_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "time_slots", ["event_type_id"], :name => "index_time_slots_on_event_type_id"
+  add_index "time_slots", ["user_id"], :name => "index_time_slots_on_user_id"
 
   create_table "trip_days", :force => true do |t|
     t.date     "day_date"

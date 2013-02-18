@@ -3,6 +3,7 @@ BooherFamily::Application.routes.draw do
   namespace :expense_tracker do
     resources :vendors
     resources :categories
+    get "daily_expenses/expense_report"
     resources :daily_expenses
   end
 

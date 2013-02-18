@@ -15,4 +15,6 @@
 //= require twitter/bootstrap
 //= require ckeditor/init
 //= require chosen-jquery
+//= require raphael
+//= require morris
 //= require_tree .

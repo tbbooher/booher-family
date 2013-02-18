@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :expense_tracker_vendor, :class => 'ExpenseTracker::Vendor' do
-    name "MyString"
+    name "Walmart"
   end
 end

@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :expense_tracker_category, :class => 'ExpenseTracker::Category' do
-    name "MyString"
+    name "Eating Out"
   end
 end
