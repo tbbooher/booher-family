@@ -1,27 +1,7 @@
-- model_class = ExpenseTracker::DailyExpense
-- title "Expenses"
+- title "Expenses for this week"
 
 = link_to "Expense Report", expense_tracker_daily_expenses_expense_report_path, class: "btn btn-primary"
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:date)
-      %th= model_class.human_attribute_name(:amount)
-      %th= model_class.human_attribute_name(:vendor)
-      %th= model_class.human_attribute_name(:category)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @daily_expenses.each do |daily_expense|
-      %tr
-        %td= link_to daily_expense.date, edit_expense_tracker_daily_expense_path(daily_expense)
-        %td= daily_expense.amount
-        %td= daily_expense.vendor.name if daily_expense.vendor.present?
-        %td= daily_expense.category_id if daily_expense.category.present?
-        %td=l daily_expense.created_at
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_expense_tracker_daily_expense_path(daily_expense), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), expense_tracker_daily_expense_path(daily_expense), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+= render :display_expenses, daily_expenses: @daily_expenses
 
-= link_to t('.new', :default => t("helpers.links.new")), new_expense_tracker_daily_expense_path, :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_expense_tracker_week_daily_expense_path, :class => 'btn btn-primary'

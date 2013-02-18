@@ -1,8 +1,8 @@
-= simple_form_for @daily_expense, :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for [@week, @daily_expense], :html => { :class => 'form-horizontal' } do |f|
   = f.input :amount
   = f.input :date, as: :string, input_html: {value: Date.today, data: {'datepicker-format' => "yyyy-mm-dd"}}
   = f.association :vendor, include_blank: false
   = f.association :category, include_blank: false
   .form-actions
     = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), expense_tracker_daily_expenses_path, :class => 'btn'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), expense_tracker_week_daily_expenses_path, :class => 'btn'

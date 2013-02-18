@@ -34,7 +34,8 @@
               - else
                 %li= link_to "Calendar", calendar_display_path(Date.today.to_s(:for_cal))
                 %li= link_to "Principles", principles_path
-                %li= link_to "Expenses", expenses_path
+                %li= link_to "AuPair Expenses", expenses_path
+                %li= link_to "Expenses", expense_tracker_weeks_path
                 %ul.nav.pull-right
                   %li= link_to current_user.name, edit_user_registration_path
                   %li.divider-vertical

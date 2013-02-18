@@ -1,0 +1,7 @@
+= simple_form_for @week, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :start_date
+  = f.input :total_spent_cents
+  = f.input :total_spent_currency
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), expense_tracker_weeks_path, :class => 'btn'

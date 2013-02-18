@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217201149) do
+ActiveRecord::Schema.define(:version => 20130218121736) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.string   "budget_currency", :default => "USD", :null => false
     t.integer  "activity_type"
     t.string   "currency"
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.integer  "post_count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -74,12 +80,6 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "event_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "events", :force => true do |t|
     t.string   "title"
     t.datetime "starts_at"
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.datetime "updated_at",                         :null => false
     t.integer  "amount_cents",    :default => 0,     :null => false
     t.string   "amount_currency", :default => "USD", :null => false
+    t.integer  "week_id"
   end
 
   add_index "expense_tracker_daily_expenses", ["category_id"], :name => "index_expense_tracker_daily_expenses_on_category_id"
@@ -129,6 +130,14 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "expense_tracker_weeks", :force => true do |t|
+    t.date     "start_date"
+    t.integer  "total_spent_cents",    :default => 0,     :null => false
+    t.string   "total_spent_currency", :default => "USD", :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "expenses", :force => true do |t|
@@ -276,26 +285,6 @@ ActiveRecord::Schema.define(:version => 20130217201149) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "time_slots", :force => true do |t|
-    t.string   "title"
-    t.integer  "event_type_id"
-    t.boolean  "monday"
-    t.boolean  "tuesday"
-    t.boolean  "wednesday"
-    t.boolean  "thursday"
-    t.boolean  "friday"
-    t.boolean  "saturday"
-    t.boolean  "sunday"
-    t.integer  "user_id"
-    t.time     "starts_at"
-    t.time     "ends_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "time_slots", ["event_type_id"], :name => "index_time_slots_on_event_type_id"
-  add_index "time_slots", ["user_id"], :name => "index_time_slots_on_user_id"
 
   create_table "trip_days", :force => true do |t|
     t.date     "day_date"
