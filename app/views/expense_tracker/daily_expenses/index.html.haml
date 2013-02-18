@@ -1,7 +1,7 @@
 - title "Expenses for this week"
 
-= link_to "Expense Report", expense_tracker_daily_expenses_expense_report_path, class: "btn btn-primary"
+= link_to "Expense Report", expense_tracker_week_daily_expenses_expense_report_path(@week), class: "btn btn-primary"
 
-= render :display_expenses, daily_expenses: @daily_expenses
+= render 'display_expenses', daily_expenses: @daily_expenses
 
-= link_to t('.new', :default => t("helpers.links.new")), new_expense_tracker_week_daily_expense_path, :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_expense_tracker_week_daily_expense_path(@week), :class => 'btn btn-primary'

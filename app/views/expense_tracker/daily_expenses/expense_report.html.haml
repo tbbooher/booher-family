@@ -2,8 +2,8 @@
 -title "Expense Report for week of #{@reference_date.beginning_of_week(start_day = :thursday)}"
 
 %p
-  = link_to "add expense", new_expense_tracker_daily_expense_path, class: "btn btn-primary"
-  = link_to "expenses", expense_tracker_daily_expenses_path, class: "btn btn-warning"
+  = link_to "add expense", new_expense_tracker_week_daily_expense_path(@week), class: "btn btn-primary"
+  = link_to "expenses", expense_tracker_week_daily_expenses_path(@week), class: "btn btn-warning"
 
 #expense_projection
 
