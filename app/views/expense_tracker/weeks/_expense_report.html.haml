@@ -2,6 +2,8 @@
   = link_to "add expense", new_expense_tracker_week_daily_expense_path(@week), class: "btn btn-primary"
   = link_to "expenses", expense_tracker_week_daily_expenses_path(@week), class: "btn btn-warning"
 
+%h3 Chart
+
 #expense_projection{data: {week: @week.id}}
 
 %h3 Summary Table
