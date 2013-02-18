@@ -4,7 +4,6 @@ BooherFamily::Application.routes.draw do
     resources :vendors
     resources :categories
     resources :weeks do
-      get "daily_expenses/expense_report"
       resources :daily_expenses
     end
   end

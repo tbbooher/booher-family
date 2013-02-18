@@ -3,11 +3,13 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $.get("/expense_tracker/daily_expenses/expense_report.json", (data) ->
-    Morris.Line
-      element: 'expense_projection'
-      data: data
-      xkey: 'day'
-      ykeys: ['ideal', 'remaining']
-      labels: ['ideal', 'remaining']
-  )
+  if $("#expense_projection").length > 0
+    week = $("#expense_projection").data('week')
+    $.get("/expense_tracker/weeks/" + week + ".json", (data) ->
+      Morris.Line
+        element: 'expense_projection'
+        data: data
+        xkey: 'day'
+        ykeys: ['ideal', 'remaining']
+        labels: ['ideal', 'remaining']
+    )

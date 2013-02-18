@@ -15,15 +15,4 @@ class ExpenseTracker::DailyExpensesController < InheritedResources::Base
     create!{ expense_tracker_week_daily_expenses_path(@week) }
   end
 
-  def expense_report
-    #@week = ExpenseTracker::Week.find(params[:id])
-    @reference_date = Date.today
-    @expenses = ExpenseTracker::DailyExpense.weekly_expenses(@reference_date)
-    # {date: date, day: idx, ideal: ideal, spent: spent, cumulative: cumulative, surplus: surplus, remaining: remaining}
-    respond_to do |format|
-      format.html
-      format.json { render json: ExpenseTracker::DailyExpense.full_week(@reference_date)}
-    end
-  end
-
 end

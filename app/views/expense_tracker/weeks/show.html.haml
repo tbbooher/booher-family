@@ -1,11 +1,10 @@
 - title "Week of #{@week.start_date}"
 
-%p
-  %strong Total Spent
-  %br
-  = @week.total_spent_cents
+- # add total spent here eventually ...
 
 = render 'expense_tracker/daily_expenses/display_expenses', daily_expenses: @week.daily_expenses
+
+= render 'expense_report', expense_report: @expense_report
 
 .form-actions
   = link_to 'New Expense', new_expense_tracker_week_daily_expense_path(@week), class: 'btn btn-primary'
