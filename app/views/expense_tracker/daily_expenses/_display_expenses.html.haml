@@ -3,6 +3,7 @@
     %tr
       %th Date
       %th Amount
+      %th Memo
       %th Vendor
       %th Category
       %th Created
@@ -12,9 +13,10 @@
       %tr
         %td= link_to daily_expense.date, edit_expense_tracker_week_daily_expense_path(@week, daily_expense)
         %td= daily_expense.amount
+        %td= daily_expense.memo
         %td= daily_expense.vendor.name if daily_expense.vendor.present?
         %td= daily_expense.category.name if daily_expense.category.present?
-        %td=l daily_expense.created_at
+        %td= daily_expense.created_at.to_s(:short)
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_expense_tracker_week_daily_expense_path(@week,daily_expense), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), expense_tracker_week_daily_expense_path(@week,daily_expense), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
