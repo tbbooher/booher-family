@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218121736) do
+ActiveRecord::Schema.define(:version => 20130219020322) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20130218121736) do
     t.integer  "amount_cents",    :default => 0,     :null => false
     t.string   "amount_currency", :default => "USD", :null => false
     t.integer  "week_id"
+    t.string   "memo"
   end
 
   add_index "expense_tracker_daily_expenses", ["category_id"], :name => "index_expense_tracker_daily_expenses_on_category_id"

@@ -3,7 +3,7 @@ class ExpenseTracker::DailyExpense < ActiveRecord::Base
   belongs_to :category, class_name: "ExpenseTracker::Category"
   belongs_to :week, :class_name => 'ExpenseTracker::Week'
 
-  attr_accessible :amount, :date, :vendor_id, :category_id, :amount_cents, :amount_currency
+  attr_accessible :amount, :date, :vendor_id, :category_id, :amount_cents, :amount_currency, :memo
 
   monetize :amount_cents
 
