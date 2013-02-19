@@ -14,5 +14,5 @@ jQuery ->
         labels: ['ideal', 'remaining']
     )
 
-  $('#product_category_name').autocomplete
-    source: $('#product_category_name').data('autocomplete-source')
+#  $('#product_category_name').autocomplete
+#    source: $('#product_category_name').data('autocomplete-source')
