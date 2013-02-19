@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(:version => 20130218121736) do
     t.string   "currency"
   end
 
+  create_table "blogs", :force => true do |t|
+    t.integer  "post_count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false
     t.string   "data_content_type"
@@ -42,6 +48,23 @@ ActiveRecord::Schema.define(:version => 20130218121736) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id",   :default => 0
+    t.string   "commentable_type", :default => ""
+    t.string   "title",            :default => ""
+    t.text     "body",             :default => ""
+    t.string   "subject",          :default => ""
+    t.integer  "user_id",          :default => 0,  :null => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "components", :force => true do |t|
     t.decimal  "length_in_inches"
     t.decimal  "weight_per_inch"
@@ -55,12 +78,6 @@ ActiveRecord::Schema.define(:version => 20130218121736) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "event_types", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -268,26 +285,6 @@ ActiveRecord::Schema.define(:version => 20130218121736) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "time_slots", :force => true do |t|
-    t.string   "title"
-    t.integer  "event_type_id"
-    t.boolean  "monday"
-    t.boolean  "tuesday"
-    t.boolean  "wednesday"
-    t.boolean  "thursday"
-    t.boolean  "friday"
-    t.boolean  "saturday"
-    t.boolean  "sunday"
-    t.integer  "user_id"
-    t.time     "starts_at"
-    t.time     "ends_at"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "time_slots", ["event_type_id"], :name => "index_time_slots_on_event_type_id"
-  add_index "time_slots", ["user_id"], :name => "index_time_slots_on_user_id"
 
   create_table "trip_days", :force => true do |t|
     t.date     "day_date"
