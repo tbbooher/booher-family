@@ -9,6 +9,13 @@
 
 = render 'expense_tracker/daily_expenses/display_expenses', daily_expenses: @week.daily_expenses
 
+%h3 By Category
+
+%ul
+- @week.daily_expenses.group_by{|e| e.category}.each do |k|
+  %li= "#{k.first.name}: #{k.last.sum{|r| r.amount}}"
+
+
 .form-actions
   = link_to 'New Expense', new_expense_tracker_week_daily_expense_path(@week), class: 'btn btn-primary'
   = link_to t('.back', :default => t("helpers.links.back")), expense_tracker_weeks_path, :class => 'btn'
