@@ -15,6 +15,10 @@
 - @week.daily_expenses.group_by{|e| e.category}.each do |k|
   %li= "#{k.first.name}: #{k.last.sum{|r| r.amount}}"
 
+%h3 Category Plot
+
+#category_doughnut{data: {week: @week.id}}
+
 
 .form-actions
   = link_to 'New Expense', new_expense_tracker_week_daily_expense_path(@week), class: 'btn btn-primary'

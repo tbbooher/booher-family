@@ -16,3 +16,11 @@ jQuery ->
 
 #  $('#product_category_name').autocomplete
 #    source: $('#product_category_name').data('autocomplete-source')
+
+  if $("#category_doughnut").length > 0
+    week = $("#category_doughnut").data('week')
+    $.get("/expense_tracker/weeks/" + week + "/expense_by_categories.json", (data) ->
+      Morris.Donut
+        element: 'category_doughnut'
+        data: data
+    )
