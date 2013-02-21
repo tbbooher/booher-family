@@ -65,10 +65,10 @@ BooherFamily::Application.routes.draw do
     resources :sonship_classes do
       resources :sonship_lessons
     end
-  end
 
-  resources :sonship_lessons do
-    resources :sonship_questions
+    resources :sonship_lessons do
+      resources :sonship_questions
+    end
   end
 
   # calendar views
