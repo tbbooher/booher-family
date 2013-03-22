@@ -14,6 +14,10 @@ BooherFamily::Application.routes.draw do
     resources :posts
   end
 
+  get '/journal_entries/data', to: 'journal_entries#data'
+  put '/journal_entries/form_update/:id' => "journal_entries#form_update"
+  get '/journal_entries/report', to: 'journal_entries#report'
+
   resources :journal_entries
 
   resources :components

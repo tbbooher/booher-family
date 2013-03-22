@@ -26,6 +26,21 @@ class JournalEntriesController < InheritedResources::Base
     update! { journal_entries_path }
   end
 
+  def data
+    render json: JournalEntry.smooth_results.to_json # all.to_json(except: [:description, :to_do, :memory_verse, :created_at, :health_statement, :friends_in_focus])
+  end
+
+  def report
+
+  end
+
+  def form_update
+    # only requested via json
+    # just a json response -- no redirect
+    JournalEntry.find(params[:id]).update_attributes(params[:journal_entry])
+    head :no_content
+  end
+
   def only_tim
     unless current_user && current_user.id == 1
       redirect_to root_url, :alert => "Access denied."

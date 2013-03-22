@@ -4,6 +4,12 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
+require 'capybara/rails'
+require 'capybara/rspec'
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 
 #DatabaseCleaner.strategy = :truncation
 
