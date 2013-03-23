@@ -65,3 +65,5 @@ gem 'chosen-rails'
 #gem 'acts_as_commentable_with_threading'
 #gem 'acts_as_votable'
 gem 'chronic_duration'
+gem 'render_csv'
+gem 'faker', :group => [:development, :test]

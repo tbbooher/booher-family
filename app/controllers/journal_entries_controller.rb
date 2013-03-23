@@ -27,7 +27,12 @@ class JournalEntriesController < InheritedResources::Base
   end
 
   def data
-    render json: JournalEntry.smooth_results.to_json # all.to_json(except: [:description, :to_do, :memory_verse, :created_at, :health_statement, :friends_in_focus])
+    respond_to do |format|
+      format.json {render json: JournalEntry.smooth_results.to_json}
+      format.csv {render csv: 'foo'}
+      format.text  { render :text => JournalEntry.all.map{|j| "#{j.fitness ? j.fitness : "NaN"} #{j.purity ? j.purity : "NaN"} #{j.chrissy ? j.chrissy : "NaN"}" }.join(";") }
+    end
+
   end
 
   def report
