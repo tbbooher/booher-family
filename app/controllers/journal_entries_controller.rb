@@ -30,7 +30,7 @@ class JournalEntriesController < InheritedResources::Base
     respond_to do |format|
       format.json {render json: JournalEntry.smooth_results.to_json}
       format.csv {render csv: 'foo'}
-      format.text  { render :text => JournalEntry.all.map{|j| "#{j.fitness ? j.fitness : "NaN"} #{j.purity ? j.purity : "NaN"} #{j.chrissy ? j.chrissy : "NaN"}" }.join(";") }
+      format.text  { render :text => JournalEntry.all.map{|j| "'#{j.entry_date}' #{j.fitness ? j.fitness : "NaN"} #{j.purity ? j.purity : "NaN"} #{j.chrissy ? j.chrissy : "NaN"}" }.join(";") }
     end
 
   end
