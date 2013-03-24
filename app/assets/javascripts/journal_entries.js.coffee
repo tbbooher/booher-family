@@ -45,12 +45,25 @@ $("#journal_entry_to_do").live "blur", ->
   save_form this
 
 if $("#journal_entries_report").length > 0
-  $.get("/journal_entries/data", (data) ->
+  months = $("#journal_entries_report").data('months')
+  $.get("/journal_entries/data/" + months, (data) ->
     Morris.Line
       element: 'journal_entries_report'
       data: data
-      xkey: 'date'
-      ykeys: ['fitness', 'purity', 'chrissy', 'devotional']
-      labels: ['fitness', 'purity', 'chrissy', 'devotional']
+      xkey: 'index'
+      ykeys: ['count'] # , 'purity', 'chrissy', 'devotional']
+      labels: ['frequency'] #, 'purity', 'chrissy', 'devotional']
+  )
+
+if $("#monthly_report").length > 0
+  month = $("#monthly_report").data('month_string')
+  #monthly_report{data: { month_string: @month_string }}
+  $.get("/journal_entries/month_data/" + month, (data) ->
+    Morris.Line
+      element: 'monthly_report'
+      data: data
+      xkey: 'entry_date'
+      ykeys: ['purity', 'chrissy', 'devotional', 'fitness']
+      labels: ['purity', 'chrissy', 'devotional', 'fitness']
   )
 

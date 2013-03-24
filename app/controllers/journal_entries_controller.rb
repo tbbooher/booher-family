@@ -28,16 +28,26 @@ class JournalEntriesController < InheritedResources::Base
 
   def data
     d = Date.new(0,1,1)-1
+    months = params[:months].to_i
     respond_to do |format|
-      format.json {render json: JournalEntry.smooth_results.to_json}
-      format.csv {render csv: 'foo'}
+      format.json {render json: JournalEntry.build_stairs(months).to_json}
+      #format.csv {render csv: 'foo'}
       format.text  { render :text => JournalEntry.all.map{|j| "#{(j.entry_date - d).to_i} #{j.fitness ? j.fitness : "NaN"} #{j.purity ? j.purity : "NaN"} #{j.chrissy ? j.chrissy : "NaN"}" }.join(";") }
     end
 
   end
 
-  def report
 
+  def report
+    @months = (params[:months].nil? ? 2 : params[:months]).to_i
+  end
+
+  def month_data
+    render json: JournalEntry.monthly_report(params[:month_string]).to_json(only: [:entry_date, :purity, :fitness, :chrissy, :devotional])
+  end
+
+  def month_report
+    @month_string = params[:month_string]
   end
 
   def form_update

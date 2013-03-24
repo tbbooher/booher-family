@@ -14,9 +14,12 @@ BooherFamily::Application.routes.draw do
     resources :posts
   end
 
-  get '/journal_entries/data', to: 'journal_entries#data'
+  get '/journal_entries/data(/:months)', to: 'journal_entries#data'
   put '/journal_entries/form_update/:id' => "journal_entries#form_update"
-  get '/journal_entries/report', to: 'journal_entries#report'
+  get '/journal_entries/report(/:months)', to: 'journal_entries#report', as: :frequency_report
+
+  get '/journal_entries/month_data(/:month_string)', to: 'journal_entries#month_data'
+  get '/journal_entries/month_report(/:month_string)', to: 'journal_entries#month_report', as: :month_report
 
   resources :journal_entries
 
