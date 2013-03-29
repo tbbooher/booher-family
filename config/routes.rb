@@ -20,6 +20,7 @@ BooherFamily::Application.routes.draw do
 
   get '/journal_entries/month_data(/:month_string)', to: 'journal_entries#month_data'
   get '/journal_entries/month_report(/:month_string)', to: 'journal_entries#month_report', as: :month_report
+  get '/journal_entries/calendar_report', to: 'journal_entries#calendar_report'
 
   resources :journal_entries
 

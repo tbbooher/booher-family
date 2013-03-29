@@ -1,9 +1,16 @@
 class JournalEntry < ActiveRecord::Base
-  attr_accessible :chrissy, :description, :devotional, :discipline, :entry_date, :facepicking, :fitness, :flossed, :friends_in_focus, :health_statement, :lack_of_discipline, :memory_verse, :problem_attempted, :problem_of_the_day, :problem_solved, :purity, :relational, :sick, :stress, :to_do, :workout
+  attr_accessible :chrissy, :description, :devotional, :discipline, :entry_date, :facepicking, :fitness, :flossed, :friends_in_focus, :health_statement, :lack_of_discipline, :memory_verse, :problem_attempted, :problem_of_the_day, :problem_solved, :purity, :relational, :sick, :stress, :to_do, :workout, :start_time
   # require entry_date
 
   scope :entered_between, lambda {|start_date, end_date| where("entry_date >= ? AND entry_date <= ?", start_date, end_date )}
 
+  def start_time
+    entry_date
+  end
+
+  def title
+
+  end
 
   class << self
     def smooth_results

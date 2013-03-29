@@ -1,0 +1,23 @@
+= calendar @events do |event|
+  - if event.lack_of_discipline
+    .calendar_report.discipline &nbsp;
+  - if event.sick
+    .calendar_report.sick &nbsp;
+  - if event.workout
+    .calendar_report.workout &nbsp;
+  - if event.problem_attempted
+    .calendar_report.problem_attempted &nbsp;
+  - if event.flossed
+    .calendar_report.flossed &nbsp;
+
+.row
+  .span2.offset1.well.discipline
+    Lack of Discipline
+  .span2.well.sick
+    Sick
+  .span2.well.workout
+    Workout
+  .span2.well.problem_attempted
+    Problem Attempted
+  .span2.well.flossed
+    %span.white Flossed

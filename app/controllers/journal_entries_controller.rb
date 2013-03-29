@@ -57,6 +57,10 @@ class JournalEntriesController < InheritedResources::Base
     head :no_content
   end
 
+  def calendar_report
+    @events = JournalEntry.all
+  end
+
   def only_tim
     unless current_user && current_user.id == 1
       redirect_to root_url, :alert => "Access denied."
