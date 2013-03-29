@@ -67,3 +67,21 @@ if $("#monthly_report").length > 0
       labels: ['purity', 'chrissy', 'devotional', 'fitness']
   )
 
+$("#flossed").click ->
+  $(".calendar_report.flossed").toggleClass "hide"
+
+$("#discipline").click ->
+  $(".calendar_report.discipline").toggleClass "hide"
+
+$("#sick").click ->
+  $(".calendar_report.sick").toggleClass "hide"
+
+$("#workout").click ->
+  $(".calendar_report.workout").toggleClass "hide"
+
+$("#problem_attempted").click ->
+  $(".calendar_report.problem_attempted").toggleClass "hide"
+
+
+
+
