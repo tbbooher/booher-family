@@ -9,7 +9,7 @@
     .calendar_report.problem_attempted &nbsp;
   - if event.flossed
     .calendar_report.flossed &nbsp;
-  = event.friends_in_focus
+  = link_to event.friends_in_focus, edit_journal_entry_path(event)
 
 .row
   #discipline.span2.offset1.well.discipline
