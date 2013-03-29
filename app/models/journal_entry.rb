@@ -8,8 +8,8 @@ class JournalEntry < ActiveRecord::Base
     entry_date
   end
 
-  def title
-
+  def friends
+    friends_in_focus.empty? ? "." : friends_in_focus
   end
 
   class << self
