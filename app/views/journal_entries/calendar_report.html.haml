@@ -1,3 +1,19 @@
+%ul.breadcrumb
+  %li
+    = link_to 'new', new_journal_entry_path
+    %span.divider /
+  %li.active
+    = link_to 'monthly report', month_report_path(Date.today.strftime('%b-%Y'))
+    %span.divider /
+  %li
+    = link_to 'frequency report', frequency_report_path
+    %span.divider /
+  %li
+    = link_to 'index', journal_entries_path
+    %span.divider /
+  %li.current
+    calendar report
+
 = calendar @events do |event|
   - if event.lack_of_discipline
     .calendar_report.discipline &nbsp;

@@ -7,6 +7,9 @@
   %li
     = link_to 'monthly report', month_report_path(Date.today.strftime('%b-%Y'))
     %span.divider /
+  %li
+    = link_to 'calendar report', calendar_report_path
+    %span.divider /
   %li.active
     frequency report
     %span.divider /
