@@ -37,7 +37,6 @@ class JournalEntriesController < InheritedResources::Base
 
   end
 
-
   def report
     @months = (params[:months].nil? ? 2 : params[:months]).to_i
   end
@@ -59,6 +58,7 @@ class JournalEntriesController < InheritedResources::Base
 
   def calendar_report
     @events = JournalEntry.all
+    @month_string = params[:month_string].nil? ? Date.today.strftime('%b-%Y') : params[:month_string]
   end
 
   def only_tim

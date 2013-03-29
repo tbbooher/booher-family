@@ -28,13 +28,17 @@
   = link_to event.friends, edit_journal_entry_path(event)
 
 .row
-  #discipline.span2.offset1.well.discipline
+  #discipline.span2.offset1.well.discipline.pointer
     Lack of Discipline
-  #sick.span2.well.sick
+  #sick.span2.well.sick.pointer
     Sick
-  #workout.span2.well.workout
+  #workout.span2.well.workout.pointer
     Workout
-  #problem_attempted.span2.well.problem_attempted
+  #problem_attempted.span2.well.problem_attempted.pointer
     Problem Attempted
-  #flossed.span2.well.flossed
+  #flossed.span2.well.flossed.pointer
     %span.white Flossed
+
+%h3 Monthly Report
+
+#monthly_report{data: { month_string: @month_string }}
