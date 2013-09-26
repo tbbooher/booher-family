@@ -6,7 +6,17 @@ class JournalEntriesController < InheritedResources::Base
   def new
     @journal_entry = JournalEntry.new
     @last_entry = JournalEntry.last
-    @journal_entry.to_do = @last_entry.to_do if @last_entry
+    if @last_entry
+      @journal_entry.memory_verse = @last_entry.memory_verse
+      # @journal_entry.to_do = @last_entry.to_do
+      @journal_entry.friends = @last_entry.friends
+      @journal_entry.at_work = @last_entry.at_work
+      @journal_entry.at_home_pc = @last_entry.at_home_pc
+      @journal_entry.at_home = @last_entry.at_home
+      @journal_entry.at_work = @last_entry.at_work
+      @journal_entry.blog_post_ideas = @last_entry.blog_post_ideas
+      @journal_entry.friends = @last_entry.friends
+    end
     new!
   end
 

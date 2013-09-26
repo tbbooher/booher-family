@@ -11,6 +11,12 @@
           %a{href: "#home", "data-toggle" => "pill"} At Home
         %li
           %a{href: "#home_pc", "data-toggle" => "pill"} At Home PC
+        %li
+          %a{href: "#someday_maybe", "data-toggle" => "pill"} Someday/Maybe
+        %li
+          %a{href: "#blog_post_ideas", "data-toggle" => "pill"} Someday/Maybe
+        %li
+          %a{href: "#friends", "data-toggle" => "pill"} Friends
       .tab-content
         #work.tab-pane.active
           = f.input_field :at_work, as: :text, input_html: { style: 'height:300px' }
@@ -18,10 +24,13 @@
           = f.input_field :at_home, as: :text, input_html: { style: 'height:300px' }
         #home_pc.tab-pane
           = f.input_field :at_home_pc, as: :text, input_html: { style: 'height:300px' }
+        #someday_maybe.tab-pane
+          = f.input_field :someday_maybe, as: :text, input_html: { style: 'height:300px' }
+        #blog_post_ideas.tab-pane
+          = f.input_field :blog_post_ideas, as: :text, input_html: { style: 'height:300px' }
+        #friends.tab-pane
+          = f.input_field :friends, as: :text, input_html: { style: 'height:300px'}
   = f.input :memory_verse, as: :text
-  = f.input :someday_maybe, as: :text
-  = f.input :blog_post_ideas, as: :text
-  = f.input :friends, as: :text
   = f.input :purity, as: :range, input_html: {min: 1, max: 5, step: 0.25}, label: "Purity (high is pure)"
   = f.input :lack_of_discipline, as: :boolean
   = f.input :fitness, as: :range, input_html: {min: 1, max: 5, step: 0.25}
@@ -33,10 +42,10 @@
   = f.input :stress, as: :range, input_html: {min: 1, max: 5, step: 0.25}
   = f.input :facepicking, as: :range, input_html: {min: 1, max: 5, step: 0.25}, label: "Facepicking (high is good)"
   = f.input :sick, as: :boolean
-  = f.input :health_statement
+  = f.input :health_statement, as: :text
   = f.input :flossed, as: :boolean
   = f.input :workout, as: :boolean
-  = f.input :problem_of_the_day, as: :text
+  = f.input :problem_of_the_day, as: :text, label: "Technical Challenge"
   = f.input :problem_attempted, as: :boolean
   = f.input :problem_solved, as: :boolean
   .form-actions
