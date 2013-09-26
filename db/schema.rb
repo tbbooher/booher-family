@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130922152431) do
+ActiveRecord::Schema.define(:version => 20130926023837) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -202,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20130922152431) do
     t.text     "someday_maybe"
     t.text     "blog_post_ideas"
     t.text     "friends"
+    t.text     "workout_done"
   end
 
   create_table "locations", :force => true do |t|
