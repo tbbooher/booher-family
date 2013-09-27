@@ -17,4 +17,5 @@
 //= require chosen-jquery
 //= require raphael
 //= require morris
+//= require autocomplete-rails
 //= require_tree .

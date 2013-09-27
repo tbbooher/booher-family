@@ -1,0 +1,29 @@
+%h1 Listing exertions
+
+%table
+  %tr
+    %th Journal entry
+    %th Weight
+    %th Reps
+    %th Time
+    %th Distance
+    %th Exercise
+    %th
+    %th
+    %th
+
+  - @exertions.each do |exertion|
+    %tr
+      %td= exertion.journal_entry_id
+      %td= exertion.weight
+      %td= exertion.reps
+      %td= exertion.time
+      %td= exertion.distance
+      %td= exertion.exercise_id
+      %td= link_to 'Show', exertion
+      %td= link_to 'Edit', edit_exertion_path(exertion)
+      %td= link_to 'Destroy', exertion, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Exertion', new_exertion_path

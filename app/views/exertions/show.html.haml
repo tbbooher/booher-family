@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Journal entry:
+  = @exertion.journal_entry_id
+%p
+  %b Weight:
+  = @exertion.weight
+%p
+  %b Reps:
+  = @exertion.reps
+%p
+  %b Time:
+  = @exertion.time
+%p
+  %b Distance:
+  = @exertion.distance
+%p
+  %b Exercise:
+  = @exertion.exercise_id
+
+= link_to 'Edit', edit_exertion_path(@exertion)
+\|
+= link_to 'Back', exertions_path

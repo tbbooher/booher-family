@@ -1,7 +1,9 @@
 class Exercise < ActiveRecord::Base
-  attr_accessible :exercise_type, :bw_total_weight_moved_1, :bw_total_weight_moved_2, :bw_distance_moved_1, :bw_distance_moved_2, :weight_distance_moved, :bw_work_done_per_rep
+  attr_accessible :name, :exercise_type, :bw_total_weight_moved_1, :bw_total_weight_moved_2, :bw_distance_moved_1, :bw_distance_moved_2, :weight_distance_moved, :bw_work_done_per_rep
 
-  has_many :workouts, through: :reps
+  autocomplete :brand, :name
+
+  #has_many :workouts, through: :reps
 
   TYPE = {1 => :crossfit, 2 => :weight_lifting, 3 => :running}
 
@@ -14,7 +16,7 @@ class Exercise < ActiveRecord::Base
   # weight_distance_moved (ft)
   # bw_work_done_per_rep (ft lbs)
 
-  has_many :reps
+  #has_many :reps
 
 
 

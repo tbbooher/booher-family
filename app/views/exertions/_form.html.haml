@@ -1,0 +1,13 @@
+= simple_form_for(@exertion) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :journal_entry_id
+    = f.input :weight
+    = f.input :reps
+    = f.input :time
+    = f.input :distance
+    = f.input :exercise_id
+
+  .form-actions
+    = f.button :submit
