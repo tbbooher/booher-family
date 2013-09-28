@@ -24,7 +24,6 @@ BooherFamily::Application.routes.draw do
 
   resources :journal_entries do
     resources :exertions
-    #get :autocomplete_exercise_name, :on => :collection
   end
 
   resources :components
