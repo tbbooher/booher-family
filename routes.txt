@@ -41,6 +41,20 @@ expense_tracker_week_expense_by_categories GET    /expense_tracker/weeks/:week_i
                                  blog_post GET    /blog/posts/:id(.:format)                                                blog/posts#show
                                            PUT    /blog/posts/:id(.:format)                                                blog/posts#update
                                            DELETE /blog/posts/:id(.:format)                                                blog/posts#destroy
+                                           GET    /journal_entries/data(/:months)(.:format)                                journal_entries#data
+                                           PUT    /journal_entries/form_update/:id(.:format)                               journal_entries#form_update
+                          frequency_report GET    /journal_entries/report(/:months)(.:format)                              journal_entries#report
+                                           GET    /journal_entries/month_data(/:month_string)(.:format)                    journal_entries#month_data
+                              month_report GET    /journal_entries/month_report(/:month_string)(.:format)                  journal_entries#month_report
+                           calendar_report GET    /journal_entries/calendar_report(/:month_string)(.:format)               journal_entries#calendar_report
+                   journal_entry_exertions GET    /journal_entries/:journal_entry_id/exertions(.:format)                   exertions#index
+                                           POST   /journal_entries/:journal_entry_id/exertions(.:format)                   exertions#create
+                new_journal_entry_exertion GET    /journal_entries/:journal_entry_id/exertions/new(.:format)               exertions#new
+               edit_journal_entry_exertion GET    /journal_entries/:journal_entry_id/exertions/:id/edit(.:format)          exertions#edit
+                    journal_entry_exertion GET    /journal_entries/:journal_entry_id/exertions/:id(.:format)               exertions#show
+                                           PUT    /journal_entries/:journal_entry_id/exertions/:id(.:format)               exertions#update
+                                           DELETE /journal_entries/:journal_entry_id/exertions/:id(.:format)               exertions#destroy
+autocomplete_exercise_name_journal_entries GET    /journal_entries/autocomplete_exercise_name(.:format)                    journal_entries#autocomplete_exercise_name
                            journal_entries GET    /journal_entries(.:format)                                               journal_entries#index
                                            POST   /journal_entries(.:format)                                               journal_entries#create
                          new_journal_entry GET    /journal_entries/new(.:format)                                           journal_entries#new
