@@ -16,6 +16,7 @@ class JournalEntriesController < InheritedResources::Base
       @journal_entry.at_work = @last_entry.at_work
       @journal_entry.blog_post_ideas = @last_entry.blog_post_ideas
       @journal_entry.friends = @last_entry.friends
+      @journal_entry.someday_maybe = @last_entry.someday_maybe
     end
     new!
   end
