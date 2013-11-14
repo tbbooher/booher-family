@@ -17,6 +17,8 @@ class JournalEntriesController < InheritedResources::Base
       @journal_entry.blog_post_ideas = @last_entry.blog_post_ideas
       @journal_entry.someday_maybe = @last_entry.someday_maybe
       @journal_entry.networking = @last_entry.networking
+      @journal_entry.consulting = @last_entry.consulting
+      @journal_entry.to_read = @last_entry.to_read
     end
     new!
   end
