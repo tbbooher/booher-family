@@ -23,6 +23,8 @@
           %a{href: "#consulting", "data-toggle" => "pill"} Consulting
         %li
           %a{href: "#to_read", "data-toggle" => "pill"} To Read
+        %li
+          %a{href: "#goals", "data-toggle" => "pill"} Goals
       .tab-content
         #work.tab-pane.active
           = f.input_field :at_work, as: :text, style: 'height:500px'
@@ -42,6 +44,8 @@
           = f.input_field :consulting, as: :text, style: 'height:500px'
         #to_read.tab-pane
           = f.input_field :to_read, as: :text, style: 'height:500px'
+        #goals.tab-pane
+          = f.input_field :goals, as: :text, style: 'height:500px'
   = f.input :memory_verse, as: :text
   = f.input :purity, as: :range, input_html: {min: 1, max: 5, step: 0.25}, label: "Purity (high is pure)"
   = f.input :fitness, as: :range, input_html: {min: 1, max: 5, step: 0.25}

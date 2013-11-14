@@ -19,6 +19,7 @@ class JournalEntriesController < InheritedResources::Base
       @journal_entry.networking = @last_entry.networking
       @journal_entry.consulting = @last_entry.consulting
       @journal_entry.to_read = @last_entry.to_read
+      @journal_entry.goals = @last_entry.goals
     end
     new!
   end
