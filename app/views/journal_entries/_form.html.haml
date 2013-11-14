@@ -17,6 +17,8 @@
           %a{href: "#blog_post_ideas", "data-toggle" => "pill"} Blog Ideas
         %li
           %a{href: "#friends", "data-toggle" => "pill"} Friends
+        %li
+          %a{href: "#networking", "data-toggle" => "pill"} Networking
       .tab-content
         #work.tab-pane.active
           = f.input_field :at_work, as: :text, style: 'height:500px'
@@ -30,16 +32,18 @@
           = f.input_field :blog_post_ideas, as: :text, style: 'height:500px'
         #friends.tab-pane
           = f.input_field :friends, as: :text, style: 'height:500px'
+        #networking.tab-pane
+          = f.input_field :networking, as: :text, style: 'height:500px'
   = f.input :memory_verse, as: :text
   = f.input :purity, as: :range, input_html: {min: 1, max: 5, step: 0.25}, label: "Purity (high is pure)"
   = f.input :fitness, as: :range, input_html: {min: 1, max: 5, step: 0.25}
   = f.input :devotional, as: :range, input_html: {min: 1, max: 5, step: 0.25}
   = f.input :chrissy, as: :range, input_html: {min: 1, max: 5, step: 0.25}
   = f.input :relational, as: :range, input_html: {min: 1, max: 5, step: 0.25}
-  = f.input :friends_in_focus
   = f.input :discipline, as: :range, input_html: {min: 1, max: 5, step: 0.25}
   = f.input :stress, as: :range, input_html: {min: 1, max: 5, step: 0.25}
   = f.input :facepicking, as: :range, input_html: {min: 1, max: 5, step: 0.25}, label: "Facepicking (high is good)"
+  = f.input :friends_in_focus  
   = f.input :health_statement, as: :string, input_html: {style: 'width:80%;'}
   = f.input :lack_of_discipline, as: :boolean
   = f.input :sick, as: :boolean

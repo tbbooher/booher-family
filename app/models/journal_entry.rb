@@ -1,5 +1,5 @@
 class JournalEntry < ActiveRecord::Base
-  attr_accessible :chrissy, :description, :devotional, :discipline, :entry_date, :facepicking, :fitness, :flossed, :friends_in_focus, :health_statement, :lack_of_discipline, :memory_verse, :problem_attempted, :problem_of_the_day, :problem_solved, :purity, :relational, :sick, :stress, :to_do, :workout, :start_time, :at_work, :at_home, :at_home_pc, :someday_maybe, :blog_post_ideas, :friends, :exertions_attributes, :workout_done
+  attr_accessible :chrissy, :description, :devotional, :discipline, :entry_date, :facepicking, :fitness, :flossed, :friends_in_focus, :health_statement, :lack_of_discipline, :memory_verse, :problem_attempted, :problem_of_the_day, :problem_solved, :purity, :relational, :sick, :stress, :to_do, :workout, :start_time, :at_work, :at_home, :at_home_pc, :someday_maybe, :blog_post_ideas, :friends, :exertions_attributes, :workout_done, :networking
 
   has_many :exertions
   accepts_nested_attributes_for :exertions, allow_destroy: true
@@ -12,9 +12,10 @@ class JournalEntry < ActiveRecord::Base
     entry_date
   end
 
-  def friends
-    friends_in_focus.empty? ? "." : friends_in_focus
-  end
+  # not sure why we did this
+  #def friends
+  #  friends_in_focus.empty? ? "." : friends_in_focus
+  #end
 
   class << self
     def smooth_results
