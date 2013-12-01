@@ -70,4 +70,4 @@ gem 'render_csv'
 gem 'faker', :group => [:development, :test]
 gem "simple_calendar", "~> 0.1.5"
 
-gem "simplecov"
+gem 'simplecov'
