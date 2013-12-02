@@ -56,6 +56,7 @@ class JournalEntriesController < InheritedResources::Base
   end
 
   def month_data
+    #params[:month_string] = Time.local(2013, 11,1).strftime("%b-%g") if params[:month_string] == "undefined"
     render json: JournalEntry.monthly_report(params[:month_string]).to_json(only: [:entry_date, :purity, :fitness, :chrissy, :devotional])
   end
 
@@ -72,6 +73,9 @@ class JournalEntriesController < InheritedResources::Base
 
   def calendar_report
     @events = JournalEntry.all
+    month = params[:month]
+    year = params[:year]
+    params[:month_string] = Time.local(year, month, 1).strftime('%b-%Y') if month && year
     @month_string = params[:month_string].nil? ? Date.today.strftime('%b-%Y') : params[:month_string]
   end
 

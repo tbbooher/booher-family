@@ -37,12 +37,12 @@ save_form = (that) ->
 
 $("#update-button").click ->
   save_form this
+if  $("#journal_entry_form").length > 0
+  $("#journal_entry_description").live "blur", ->
+    save_form this
 
-$("#journal_entry_description").live "blur", ->
-  save_form this
-
-$("#journal_entry_to_do").live "blur", ->
-  save_form this
+  $("#journal_entry_to_do").live "blur", ->
+    save_form this
 
 if $("#journal_entries_report").length > 0
   months = $("#journal_entries_report").data('months')
@@ -56,8 +56,10 @@ if $("#journal_entries_report").length > 0
   )
 
 if $("#monthly_report").length > 0
-  month = $("#monthly_report").data('month_string')
+  month = $("#monthly_report").data('month-string')
   #monthly_report{data: { month_string: @month_string }}
+  console.log "about to request: " + month
+#  month = "Nov-13" if month == "undefined"
   $.get("/journal_entries/month_data/" + month, (data) ->
     Morris.Line
       element: 'monthly_report'
@@ -68,6 +70,7 @@ if $("#monthly_report").length > 0
   )
 
 $("#flossed").click ->
+  console.log "flossed"
   $(".calendar_report.flossed").toggleClass "hide"
 
 $("#discipline").click ->

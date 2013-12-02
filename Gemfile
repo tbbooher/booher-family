@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
-
+gem 'nokogiri'
 gem 'pg'
+
+gem 'rails', '3.2.11'
 
 gem 'json'
 
@@ -13,7 +14,7 @@ group :assets do
   gem 'turbo-sprockets-rails3'
 end
 
-gem 'jquery-rails', '~> 2.0.3'
+gem 'jquery-rails', '~> 3.0.4'
 
 gem "thin", ">= 1.5.0"
 gem "haml", ">= 3.1.7"
