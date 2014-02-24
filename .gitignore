@@ -20,6 +20,7 @@ db/*.sqlite3
 /log/*
 /tmp/*
 usaa_creds
+/config/usaa_creds.yml
 
 # various artifacts
 **.war

@@ -7,7 +7,7 @@ module ExpenseTracker
 
     def get_usaa_creds
       File.open(Rails.root.join('usaa_creds')) do |file|
-        @user_name, @password, @account = file.gets.split(',')
+        @user_name, @password, @account = USAA_CREDENTIALS['USAA_NUM'],  USAA_CREDENTIALS['USAA_PIN'],  USAA_CREDENTIALS['USAA_ACCOUNT']
       end
     end
 
