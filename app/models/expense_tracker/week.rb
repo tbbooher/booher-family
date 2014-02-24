@@ -7,6 +7,12 @@ class ExpenseTracker::Week < ActiveRecord::Base
 
   TOTAL = Money.new(50000)
 
+  def populate_week
+    ExpenseTracker.get_expenses_for_week(self.start_date).each do |expense|
+      puts expense[:id]
+    end
+  end
+
   def update_total_spent
     self.total_spent = self.daily_expenses.sum{|e| e.amount}
   end

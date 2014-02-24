@@ -1,10 +1,12 @@
 BooherFamily::Application.routes.draw do
 
   namespace :expense_tracker do
+    get '/report'
     resources :vendors
     resources :categories
     resources :weeks do
       get "expense_by_categories"
+      get "populate_week"
       resources :daily_expenses
     end
   end

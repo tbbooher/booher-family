@@ -1,0 +1,23 @@
+- title 'Spending Report'
+
+- @report.each do |week|
+  - expenses = week[:expenses]
+  - divid = week[:start].strftime("%e%b")
+  %h2= "#{week[:start].strftime("%e %b")}: #{number_to_currency(week[:total])}"
+  - unless expenses.nil?
+    %button.btn.btn-danger{"data-target" => divid, "data-toggle" => "collapse", type: "button"}
+      expand
+    .collapse.in{id: divid}
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Date
+            %th Payee
+            %th Amount
+        %tbody
+          - expenses.each do |e|
+            %tr
+              %td= e[:date_posted].strftime("%a, %e %b")
+              %td= e[:payee].humanize
+              %td= number_to_currency(e[:amount])
+

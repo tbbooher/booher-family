@@ -72,3 +72,4 @@ gem 'faker', :group => [:development, :test]
 gem "simple_calendar", "~> 0.1.5"
 
 gem 'simplecov'
+gem 'ofx_for_ruby', git: 'https://github.com/tbbooher/ofx_for_ruby'

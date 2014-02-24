@@ -1,0 +1,4 @@
+- title 'The week is populated.'
+
+- @new_expenses.each do |expense|
+   %p= "#{expense[:id]} | #{expense[:amount]} | #{expense[:date_posted]} | #{expense[:payee]}"

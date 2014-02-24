@@ -19,6 +19,7 @@
 db/*.sqlite3
 /log/*
 /tmp/*
+usaa_creds
 
 # various artifacts
 **.war

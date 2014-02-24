@@ -13,6 +13,7 @@
                                            PUT    /expense_tracker/categories/:id(.:format)                                expense_tracker/categories#update
                                            DELETE /expense_tracker/categories/:id(.:format)                                expense_tracker/categories#destroy
 expense_tracker_week_expense_by_categories GET    /expense_tracker/weeks/:week_id/expense_by_categories(.:format)          expense_tracker/weeks#expense_by_categories
+                                           GET    /expense_tracker/weeks/:week_id/populate_week(/:date_string)(.:format)   expense_tracker/weeks#populate_week
        expense_tracker_week_daily_expenses GET    /expense_tracker/weeks/:week_id/daily_expenses(.:format)                 expense_tracker/daily_expenses#index
                                            POST   /expense_tracker/weeks/:week_id/daily_expenses(.:format)                 expense_tracker/daily_expenses#create
     new_expense_tracker_week_daily_expense GET    /expense_tracker/weeks/:week_id/daily_expenses/new(.:format)             expense_tracker/daily_expenses#new
@@ -54,7 +55,6 @@ expense_tracker_week_expense_by_categories GET    /expense_tracker/weeks/:week_i
                     journal_entry_exertion GET    /journal_entries/:journal_entry_id/exertions/:id(.:format)               exertions#show
                                            PUT    /journal_entries/:journal_entry_id/exertions/:id(.:format)               exertions#update
                                            DELETE /journal_entries/:journal_entry_id/exertions/:id(.:format)               exertions#destroy
-autocomplete_exercise_name_journal_entries GET    /journal_entries/autocomplete_exercise_name(.:format)                    journal_entries#autocomplete_exercise_name
                            journal_entries GET    /journal_entries(.:format)                                               journal_entries#index
                                            POST   /journal_entries(.:format)                                               journal_entries#create
                          new_journal_entry GET    /journal_entries/new(.:format)                                           journal_entries#new
