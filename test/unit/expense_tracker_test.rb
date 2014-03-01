@@ -20,7 +20,4 @@ class ExpenseTrackerTest < ActiveSupport::TestCase
     assert_equal transactions.first[:id], '201402130000003'
   end
 
-  def test_populate_week
-    ExpenseTracker::Week.populate_week("02-Feb-2014")
-  end
 end

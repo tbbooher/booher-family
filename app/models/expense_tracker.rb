@@ -6,9 +6,9 @@ module ExpenseTracker
   class << self
 
     def get_usaa_creds
-      File.open(Rails.root.join('usaa_creds')) do |file|
+      #File.open(Rails.root.join('usaa_creds')) do |file|
         @user_name, @password, @account = USAA_CREDENTIALS['USAA_NUM'],  USAA_CREDENTIALS['USAA_PIN'],  USAA_CREDENTIALS['USAA_ACCOUNT']
-      end
+      #end
     end
 
     def get_expenses_for_week(d)
