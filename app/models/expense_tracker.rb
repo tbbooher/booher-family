@@ -64,12 +64,12 @@ module ExpenseTracker
         st_ = st - 1.day # because of the shift
         ed_ = ed + 1.day # because of the shift again
         if (range.begin < st_) || (range.end > ed_) # then we are not valid
-          puts "beginning out of range: #{range.begin}" if (range.begin < st)
-          puts "end out of range: #{range.end}" if (range.end > ed)
+          logger.debug "beginning out of range: #{range.begin}" if (range.begin < st)
+          logger.debug "end out of range: #{range.end}" if (range.end > ed)
         else
           # request was good, but we might have some bad transactions
           transactions.each do |t|
-            puts "OUT OF RANGE: #{t.date_posted.to_s(:db)} and #{t.financial_institution_transaction_identifier} and #{t.payee}" unless t.date_posted.to_i.between?(st.to_i,ed.to_i)
+            logger.debug "OUT OF RANGE: #{t.date_posted.to_s(:db)} and #{t.financial_institution_transaction_identifier} and #{t.payee}" unless t.date_posted.to_i.between?(st.to_i,ed.to_i)
           end
           transactions.delete_if{|t| !(t.date_posted.to_i.between?(st.to_i,ed.to_i))}
           trans = transactions

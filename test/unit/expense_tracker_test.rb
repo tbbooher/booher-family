@@ -2,10 +2,12 @@ require 'test_helper'
 
 class ExpenseTrackerTest < ActiveSupport::TestCase
   def test_bank_account
-    st = "1/1/2014".to_date
-    ed = "2/1/2014".to_date
-    transactions = ExpenseTracker.get_expenses_from_daily_spending(st, ed)
-    assert_equal transactions.length, 12
+    VCR.use_cassette('test_bank_account') do
+      st = "2/1/2014".to_datetime
+      ed = "2/10/2014".to_datetime
+      transactions = ExpenseTracker.get_expenses_from_daily_spending(st, ed)
+      assert_equal transactions.length, 169
+    end
   end
 
   def test_weekly_report
