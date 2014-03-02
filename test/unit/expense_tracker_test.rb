@@ -23,12 +23,12 @@ class ExpenseTrackerTest < ActiveSupport::TestCase
     assert_equal wks[0][:end].to_s, "2014-02-05 23:59:59 UTC"
   end
 
-  def test_that_each_report_is_accurate
-    Timecop.travel(Time.local(2014, 3, 1, 10, 0, 0))
-    ExpenseTracker.get_weeks(10).each do |wk|
-
-    end
-  end
+  #def test_that_each_report_is_accurate
+  #  Timecop.travel(Time.local(2014, 3, 1, 10, 0, 0))
+  #  ExpenseTracker.get_weeks(10).each do |wk|
+  #
+  #  end
+  #end
 
   def test_the_ability_to_get_exact_transations_for_a_week
     VCR.use_cassette('expense_test_pull') do

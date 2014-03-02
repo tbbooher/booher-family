@@ -11,12 +11,12 @@ module ExpenseTracker
     #  #end
     #end
 
-    #def get_expenses_for_week(d)
-    #  dt = d.to_date
-    #  st = dt.beginning_of_week(start_day = :thursday)
-    #  ed = dt.end_of_week(start_day = :thursday)
-    #  get_expenses_from_daily_spending(st, ed)
-    #end
+    def get_expenses_for_week(d)
+      dt = d.to_date
+      st = dt.beginning_of_week(start_day = :thursday)
+      ed = dt.end_of_week(start_day = :thursday)
+      get_expenses_from_daily_spending(st, ed)
+    end
 
     def summarize_week(st, ed)
       expenses = get_expenses_from_daily_spending(st, ed)
@@ -56,7 +56,7 @@ module ExpenseTracker
       trans = []
       loop do
         attempts = attempts + 1
-        raise "too many attempts, api is jacked up" if attempts > 5
+        raise "too many attempts, api is jacked up" if attempts > 7
         # load transactions
         resp = request_statement(st, ed)
         transactions, range = resp.transactions, resp.transaction_range
