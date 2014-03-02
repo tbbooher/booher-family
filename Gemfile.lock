@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/tbbooher/ofx_for_ruby
-  revision: 34daeadde6ae7d5f8a99af04bee368cde3e63a1c
+  revision: 3923242665e56fc6567a241cae2cfdbc424d3ddc
   specs:
     ofx_for_ruby (0.2.0)
       activesupport
