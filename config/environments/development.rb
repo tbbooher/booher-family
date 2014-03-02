@@ -36,3 +36,4 @@ BooherFamily::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+WebMock.allow_net_connect!

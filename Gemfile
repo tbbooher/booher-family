@@ -38,6 +38,9 @@ gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "hub", ">= 1.10.2", :group => [:development], :require => nil
 gem "better_errors", group: [:development]
 gem "binding_of_caller", group: [:development]
+gem "vcr", group: [:development, :test]
+gem 'webmock', group: [:development, :test]
+gem 'timecop', group: [:development, :test]
 
 #tim's gems
 gem 'inherited_resources'

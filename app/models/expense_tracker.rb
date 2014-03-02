@@ -5,22 +5,21 @@ module ExpenseTracker
 
   class << self
 
-    def get_usaa_creds
-      #File.open(Rails.root.join('usaa_creds')) do |file|
-        @user_name, @password, @account = USAA_CREDENTIALS['USAA_NUM'],  USAA_CREDENTIALS['USAA_PIN'],  USAA_CREDENTIALS['USAA_ACCOUNT']
-      #end
-    end
+    #def get_usaa_creds
+    #  #File.open(Rails.root.join('usaa_creds')) do |file|
+    #    @user_name, @password, @account = USAA_CREDENTIALS['USAA_NUM'],  USAA_CREDENTIALS['USAA_PIN'],  USAA_CREDENTIALS['USAA_ACCOUNT']
+    #  #end
+    #end
 
-    def get_expenses_for_week(d)
-      dt = d.to_date
-      st = dt.beginning_of_week(start_day = :thursday)
-      ed = dt.end_of_week(start_day = :thursday)
-      puts "#{st} | #{ed}"
-      get_expenses_from_daily_spending(st, ed)
-    end
+    #def get_expenses_for_week(d)
+    #  dt = d.to_date
+    #  st = dt.beginning_of_week(start_day = :thursday)
+    #  ed = dt.end_of_week(start_day = :thursday)
+    #  get_expenses_from_daily_spending(st, ed)
+    #end
 
-    def summarize_week(st)
-      expenses = get_expenses_for_week(st)
+    def summarize_week(st, ed)
+      expenses = get_expenses_from_daily_spending(st, ed)
       total = 0.0
       expenses.each do |e|
         total = total + e[:amount] unless e[:amount] > 0
@@ -29,27 +28,57 @@ module ExpenseTracker
     end
 
     def get_weekly_report(week_num)
+      get_weeks(week_num).map{ |wk| summarize_week(wk[:start], wk[:end]) }
+    end
+
+    def get_weeks(week_num)
+      # find thursday based weeks
       st = week_num.weeks.ago.beginning_of_week(start_day = :thursday)
-      i = 0
-      summaries = []
-      while st < Date.today
-        summaries[i] = summarize_week(st)
-        i = i + 1
-        st = st.next_week(:thursday)
+      (0..3).map do |w|
+        s = st + w.weeks
+        {start: s, end: s.end_of_week(start_day = :thursday)}
       end
-      summaries
+    end
+
+    def request_statement(st, ed)
+      # OFX (at USAA at least) changes the range to be noon the day before the
+      # first date of the request and to noon of the last day of the request, so we add 12.hours on at the end
+      # it would be great to be able to request by day
+      st, ed = (st.to_datetime), (ed.to_datetime + 1.day)
+      fi = OFX::FinancialInstitution.get_institution('USAA')
+      fi.set_client(USAA_CREDENTIALS['USAA_NUM'], USAA_CREDENTIALS['USAA_PIN'])
+      bsm = fi.send(fi.create_request_document_for_bank_statement(USAA_CREDENTIALS['USAA_ACCOUNT'],(st..ed)))
+      bsm.message_sets[1].responses[0]
     end
 
     def get_expenses_from_daily_spending(st, ed)
-      # this requires st and ed to be actual dates
-      # this should return transactions
-      get_usaa_creds
-      fi = OFX::FinancialInstitution.get_institution('USAA')
-      fi.set_client(@user_name, @password)
-      bsm = fi.send(fi.create_request_document_for_bank_statement(@account,(st..ed)))
-      transactions = bsm.message_sets[1].responses[0].transactions
-      return transactions.map{|t| {id: t.financial_institution_transaction_identifier, date_posted: t.date_posted, amount: t.amount, payee: t.payee} }
+      attempts = 0
+      trans = []
+      loop do
+        attempts = attempts + 1
+        raise "too many attempts, api is jacked up" if attempts > 5
+        # load transactions
+        resp = request_statement(st, ed)
+        transactions, range = resp.transactions, resp.transaction_range
+        # test if valid and break if valid
+        st_ = st - 1.day # because of the shift
+        ed_ = ed + 1.day # because of the shift again
+        if (range.begin < st_) || (range.end > ed_) # then we are not valid
+          puts "beginning out of range: #{range.begin}" if (range.begin < st)
+          puts "end out of range: #{range.end}" if (range.end > ed)
+        else
+          # request was good, but we might have some bad transactions
+          transactions.each do |t|
+            puts "OUT OF RANGE: #{t.date_posted.to_s(:db)} and #{t.financial_institution_transaction_identifier} and #{t.payee}" unless t.date_posted.to_i.between?(st.to_i,ed.to_i)
+          end
+          transactions.delete_if{|t| !(t.date_posted.to_i.between?(st.to_i,ed.to_i))}
+          trans = transactions
+          break
+        end
+      end
+      trans.map{|t| {id: t.financial_institution_transaction_identifier, date_posted: t.date_posted, amount: t.amount, payee: t.payee} }
     end
+
   end
 
 end
