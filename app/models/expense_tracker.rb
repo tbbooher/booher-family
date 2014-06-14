@@ -5,12 +5,6 @@ module ExpenseTracker
 
   class << self
 
-    #def get_usaa_creds
-    #  #File.open(Rails.root.join('usaa_creds')) do |file|
-    #    @user_name, @password, @account = USAA_CREDENTIALS['USAA_NUM'],  USAA_CREDENTIALS['USAA_PIN'],  USAA_CREDENTIALS['USAA_ACCOUNT']
-    #  #end
-    #end
-
     def get_expenses_for_week(d)
       dt = d.to_date
       st = dt.beginning_of_week(start_day = :thursday)
@@ -34,7 +28,7 @@ module ExpenseTracker
     def get_weeks(week_num)
       # find thursday based weeks
       st = week_num.weeks.ago.beginning_of_week(start_day = :thursday)
-      (0..3).map do |w|
+      (0..(week_num-1)).map do |w|
         s = st + w.weeks
         {start: s, end: s.end_of_week(start_day = :thursday)}
       end
@@ -64,16 +58,12 @@ module ExpenseTracker
         st_ = st - 1.day # because of the shift
         ed_ = ed + 1.day # because of the shift again
         unless (range.begin < st_) || (range.end > ed_) # then we are not valid
-        #  logger.debug "beginning out of range: #{range.begin}" if (range.begin < st)
-        #  logger.debug "end out of range: #{range.end}" if (range.end > ed)
-        #else
-          # request was good, but we might have some bad transactions
-          #transactions.each do |t|
-          #  logger.debug "OUT OF RANGE: #{t.date_posted.to_s(:db)} and #{t.financial_institution_transaction_identifier} and #{t.payee}" unless t.date_posted.to_i.between?(st.to_i,ed.to_i)
-          #end
+          # remove any rough edges
           transactions.delete_if{|t| !(t.date_posted.to_i.between?(st.to_i,ed.to_i))}
           trans = transactions
           break
+        else
+          puts "repeat"
         end
       end
       trans.map{|t| {id: t.financial_institution_transaction_identifier, date_posted: t.date_posted, amount: t.amount, payee: t.payee} }
