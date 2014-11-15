@@ -18,7 +18,7 @@ class Expense < ActiveRecord::Base
   end
 
   def self.calculate_owed
-    # -10 => tim and chrissy owe vivi 10 dollars (payer => 1)
+    # -10 => tim and chrissy owe Iara 10 dollars (payer => 1)
     a = Money.new(0)
     Expense.unpaid.each do |e|
       puts "here: #{a}"

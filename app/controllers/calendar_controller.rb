@@ -39,7 +39,7 @@ class CalendarController < ApplicationController
           st = Date.parse(w['week_start']) + index.days
           starts_at = DateTime.new(st.year, st.month, st.day, start.hour, start.min)
           ends_at = DateTime.new(st.year, st.month, st.day, stop.hour, stop.min)
-          Event.create! title: 'Vivi Works', starts_at: starts_at, ends_at: ends_at, event_type_id: 1, description: 'vivi work time'
+          Event.create! title: 'Iara Works', starts_at: starts_at, ends_at: ends_at, event_type_id: 1, description: 'vivi work time'
         #rescue
           events_added = events_added + 1
         #end
