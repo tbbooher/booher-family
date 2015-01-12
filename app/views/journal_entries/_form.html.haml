@@ -1,6 +1,5 @@
 = simple_form_for @journal_entry, :html => {class: 'form-horizontal', id: 'journal_entry_form'} do |f|
-  = f.input :entry_date, as: :date
-  put day here
+  = f.input :entry_date, as: :date, hint: 'this should be your first name'
   = f.input :description, as: :text
   .control-group.text.optional
     %label.text.optional.control-label{for: "journal_entry_description"} Next Action Lists

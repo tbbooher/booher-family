@@ -4,7 +4,6 @@ gem 'nokogiri'
 gem 'pg'
 
 gem 'rails', '3.2.11'
-
 gem 'json'
 
 group :assets do

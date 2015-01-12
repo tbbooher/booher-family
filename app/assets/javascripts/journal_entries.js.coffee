@@ -2,6 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+$('#journal_entry_entry_date_3i').change ->
+  year = $('#journal_entry_entry_date_1i').val()
+  month = $('#journal_entry_entry_date_2i').val()
+  weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  day = $(this).val()
+  date = new Date(year, month,day)
+  $(this).next('.help-block').html(weekdays[date.getDay()])
+
 display_saved = (that) ->
   # put a green border around the text area
   $(that).css('border-color', 'green')
@@ -37,12 +46,13 @@ save_form = (that) ->
 
 $("#update-button").click ->
   save_form this
-if  $("#journal_entry_form").length > 0
-  $("#journal_entry_description").live "blur", ->
-    save_form this
 
-  $("#journal_entry_to_do").live "blur", ->
-    save_form this
+#if  $("#journal_entry_form").length > 0
+#  $("#journal_entry_description").live "blur", ->
+#    save_form this
+#
+#  $("#journal_entry_to_do").live "blur", ->
+#    save_form this
 
 if $("#journal_entries_report").length > 0
   months = $("#journal_entries_report").data('months')
