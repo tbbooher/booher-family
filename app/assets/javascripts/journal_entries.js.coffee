@@ -8,7 +8,7 @@ $('#journal_entry_entry_date_3i').change ->
   month = $('#journal_entry_entry_date_2i').val()
   weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
   day = $(this).val()
-  date = new Date(year, month,day)
+  date = new Date(year, month - 1,day)
   $(this).next('.help-block').html(weekdays[date.getDay()])
 
 display_saved = (that) ->
