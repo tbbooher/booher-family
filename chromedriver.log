@@ -1,0 +1,88 @@
+[0.001][INFO]:      ChromeDriver 26.0.1383.0 /usr/local/bin/chromedriver
+[0.226][FINE]:      Initializing session with capabilities {
+   "browserName": "chrome",
+   "chrome.detach": true,
+   "chromeOptions": {
+      "detach": true
+   },
+   "cssSelectorsEnabled": true,
+   "javascriptEnabled": true,
+   "nativeEvents": false,
+   "platform": "ANY",
+   "rotatable": false,
+   "takesScreenshot": false,
+   "version": ""
+}
+
+[0.228][INFO]:      Using named testing interface
+[1.814][INFO]:      Connected to Chrome successfully. Version: 26.0.1410.43
+[1.820][FINE]:      Command received (/session/257a039c02adf4d7d0a74323bb2abe0d)
+[1.820][FINE]:      Command finished (/session/257a039c02adf4d7d0a74323bb2abe0d) with response {
+   "sessionId": "257a039c02adf4d7d0a74323bb2abe0d",
+   "status": 0,
+   "value": {
+      "acceptSslCerts": false,
+      "applicationCacheEnabled": false,
+      "browserConnectionEnabled": false,
+      "browserName": "chrome",
+      "chrome.chromedriverVersion": "26.0.1383.0",
+      "cssSelectorsEnabled": true,
+      "databaseEnabled": false,
+      "handlesAlerts": true,
+      "javascriptEnabled": true,
+      "locationContextEnabled": false,
+      "nativeEvents": true,
+      "platform": "mac",
+      "rotatable": false,
+      "takesScreenshot": true,
+      "version": "26.0.1410.43",
+      "webStorageEnabled": true
+   }
+}
+
+[1.822][FINE]:      Command received (/session/257a039c02adf4d7d0a74323bb2abe0d/elements) with params {
+   "using": "xpath",
+   "value": ".//*[self::input | self::textarea][not(./@type = 'submit' or ./@type = 'image' or ./@type = 'radi..."
+}
+
+[1.822][FINER]:     Waiting for all views to stop loading...
+[1.823][FINER]:     Done waiting for all views to stop loading
+[1.985][FINER]:     Waiting for all views to stop loading...
+[2.015][FINER]:     Done waiting for all views to stop loading
+[2.015][FINE]:      Command finished (/session/257a039c02adf4d7d0a74323bb2abe0d/elements) with response {
+   "sessionId": "257a039c02adf4d7d0a74323bb2abe0d",
+   "status": 0,
+   "value": [  ]
+}
+
+[2.133][FINE]:      Command received (/session/257a039c02adf4d7d0a74323bb2abe0d/cookie)
+[2.133][FINER]:     Waiting for all views to stop loading...
+[2.133][FINER]:     Done waiting for all views to stop loading
+[2.141][FINER]:     Waiting for all views to stop loading...
+[2.141][FINER]:     Done waiting for all views to stop loading
+[2.141][FINE]:      Command finished (/session/257a039c02adf4d7d0a74323bb2abe0d/cookie) with response {
+   "sessionId": "257a039c02adf4d7d0a74323bb2abe0d",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[2.143][FINE]:      Command received (/session/257a039c02adf4d7d0a74323bb2abe0d/url) with params {
+   "url": "about:blank"
+}
+
+[2.143][FINER]:     Waiting for all views to stop loading...
+[2.143][FINER]:     Done waiting for all views to stop loading
+[2.161][FINER]:     Waiting for all views to stop loading...
+[2.161][FINER]:     Done waiting for all views to stop loading
+[2.161][FINE]:      Command finished (/session/257a039c02adf4d7d0a74323bb2abe0d/url) with response {
+   "sessionId": "257a039c02adf4d7d0a74323bb2abe0d",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[2.169][FINE]:      Command received (/session/257a039c02adf4d7d0a74323bb2abe0d)
+[2.238][INFO]:      Chrome shutdown
