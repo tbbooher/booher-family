@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.5'
 
 gem 'nokogiri'
 gem 'pg'
@@ -76,3 +76,7 @@ gem "simple_calendar", "~> 0.1.5"
 
 gem 'simplecov'
 gem 'ofx_for_ruby', git: 'https://github.com/tbbooher/ofx_for_ruby'
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails', :groups => [:development, :test]
