@@ -54,7 +54,7 @@ BooherFamily::Application.routes.draw do
   get "home/index"
   get "calendar/work_history"
 
-  devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }
 
   resources :events
 
