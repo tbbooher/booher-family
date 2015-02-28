@@ -80,3 +80,6 @@ gem 'ofx_for_ruby', git: 'https://github.com/tbbooher/ofx_for_ruby'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'ruby-debug-ide'
+gem 'debase'
